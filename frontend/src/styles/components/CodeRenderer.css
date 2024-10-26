@@ -14,28 +14,31 @@
 }
 
 .render_header {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 0;
     width: 100%;
+    height: 10%;
     padding: 10px 20px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
 }
 
 .rendered-iframe {
     border: none;
     width: 100%;
-    height: 100%;
+    height: 90%;
     display: block;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
     pointer-events: none;
 }
 
 .zoom-controls {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     z-index: 10;
     display: flex;
     align-items: center;

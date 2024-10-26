@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import io from 'socket.io-client'
 import CodeRenderer from './CodeRenderer'
@@ -29,6 +29,9 @@ const Project = ({ newProject, setNewProject }) => {
     const [editClasses, setEditClasses] = useState(false)
     const [isNewProject, setIsNewProject] = useState(true)
     const [socket, setSocket] = useState(null)
+    const [capturedImage, setCapturedImage] = useState(null)
+
+    const codeRendererRef = useRef(null);
 
     useEffect(() => {
         const newSocket = io(SOCKET_SERVER_URL)
@@ -42,6 +45,23 @@ const Project = ({ newProject, setNewProject }) => {
                 updateProjectInDB(projectID, { cssCode: data.code, updated: true })
             }
         })
+
+        newSocket.on('agent_response', (data) => {
+            setMessages((prevMessages) => [...prevMessages, { text: data.message, sender: 'agent' }])
+        })
+
+        newSocket.on('screenshot', () => {
+            if (codeRendererRef.current) {
+                codeRendererRef.current.captureImage().then(imageDataUrl => {
+                    newSocket.emit('screenshot_response', { screenshot: imageDataUrl });
+                }).catch(error => {
+                    console.error('Error capturing screenshot:', error);
+                    newSocket.emit('screenshot_response', { error: 'Failed to capture screenshot' });
+                });
+            } else {
+                newSocket.emit('screenshot_response', { error: 'CodeRenderer not ready' });
+            }
+        });
 
         return () => newSocket.close()
     }, [projectID])
@@ -74,6 +94,7 @@ const Project = ({ newProject, setNewProject }) => {
             setCssCode('')
             setInstructions('')
             setCssType('external')
+            setMessages([])
             setEditClasses(false)
             setNewProject(false)
         }
@@ -102,8 +123,30 @@ const Project = ({ newProject, setNewProject }) => {
         await updateDoc(projectRef, data)
     }
 
+    const handleCaptureImage = (imageDataUrl) => {
+        setCapturedImage(imageDataUrl);
+        // The image is now downloaded directly in the CodeRenderer component
+        // You can still use this function if you need to do anything else with the captured image
+    };
+
+    // Comment out or remove the sendImageToBackend function
+    /*
+    const sendImageToBackend = (imageDataUrl) => {
+        if (socket && socket.connected) {
+            socket.emit('send_image', { 
+                image: imageDataUrl,
+                id: projectID,
+            });
+        } else {
+            console.error("Socket is not connected");
+        }
+    };
+    */
+
     const styleCode = async () => {
         let projectId = id
+
+        console.log("Initiating style code process")
 
         if (isNewProject) {
             const projectRef = collection(db, 'projects')
@@ -120,16 +163,37 @@ const Project = ({ newProject, setNewProject }) => {
             navigate(`/project/${newDoc.id}`)
         }
 
-        if (socket) {
-            socket.emit('style_code', { 
-                htmlCode, 
-                cssCode, 
-                cssType, 
-                editClasses,
-                id: projectId
-            })
+        if (socket && socket.connected) {
+            try {
+                socket.emit('style_code', { 
+                    htmlCode, 
+                    cssCode, 
+                    cssType, 
+                    editClasses,
+                    id: projectId,
+                    messages,
+                });
+                console.log("Style code data emitted successfully");
+            } catch (error) {
+                console.error("Error emitting style_code event:", error);
+            }
+        } else {
+            console.error("Socket is not connected");
         }
     }
+
+
+    // handling the chat section
+    const [messages, setMessages] = useState([])
+    const sendMessage = (message) => {
+        setMessages((prevMessages) => [...prevMessages, message])
+    }
+
+    useEffect(() => {
+        if (messages.length > 0) {
+            styleCode();
+        }
+    }, [messages])
 
     return (
         <div className="project">
@@ -172,8 +236,14 @@ const Project = ({ newProject, setNewProject }) => {
 
             <div className='body'>
                 <div className='section left'>
-                    <CodeRenderer key={renderKey} htmlCode={htmlCode} cssCode={cssCode} codeType={codeType} />
-                    <ChatComponent socket={socket} />
+                    <CodeRenderer 
+                        ref={codeRendererRef}
+                        key={renderKey} 
+                        htmlCode={htmlCode} 
+                        cssCode={cssCode} 
+                        codeType={codeType} 
+                    />
+                    <ChatComponent messages={messages} setMessages={setMessages} sendMessage={sendMessage} />
                 </div>
 
                 <div className='section right'>

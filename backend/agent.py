@@ -11,6 +11,7 @@ from promptStrings import componentPrompt, instructionPrompt, stylePrompt, memor
 import threading
 import os
 from dotenv import load_dotenv
+import asyncio
 
 # Load environment variables from .env file
 load_dotenv()
@@ -27,14 +28,24 @@ class Agent:
         self.long_term_memory = LongTermMemory()
         self.client_sid = None
         self.project_id = None
+        self.images = []
         # self.actions_instructions = self.load_actions_from_file("actions.txt")
         self.decision_loop_running = False
         self.decision_thread = None
+        self.screenshot_received = asyncio.Event()
+        self.client_connected = True
 
+
+    def reply(self, message):
+        if (self.client_connected):
+            if self.reply_callback:
+                self.reply_callback(message, self.client_sid)
+        else:
+            self.working_memory.observations.append("Client disconnected, cannot reply!")
 
     def style_code(self, html, css, css_type, edit_classes):
         """Styles the code based on the css_type"""
-        component_prompt = componentPrompt(html, self.working_memory)
+        component_prompt = componentPrompt(self.working_memory)
 
         componentsResponse = use_claude(component_prompt)
 
@@ -58,7 +69,7 @@ class Agent:
 
         style_prompt = stylePrompt(components, self.working_memory)
 
-        response = use_claude(style_prompt)
+        response = use_claude(user_prompt=style_prompt, images=self.images)
         
         # Extract CSS code from the response
         css_start = response.find('<css>')
@@ -72,6 +83,9 @@ class Agent:
 
         if self.style_callback:
             self.style_callback(css_code, self.client_sid, self.project_id);
+
+
+        self.working_memory.reset_after_style();
 
         return;
 
@@ -89,93 +103,7 @@ class Agent:
         self.long_term_memory = LongTermMemory()
         self.decision_loop_running = False
         self.decision_thread = None
-        print("Agent has been reset to its initial state.")
-
-    def select_action(self, best_action):
-        """Decides to either select the highest-scoring action or reject all actions"""
-
-        prompt = f"""
-        You are an intelligent agent. You have access to your current working memory, and the actions available to you. 
-
-        You will be given an input, access to your current working memory, and the selected best action to take. 
-
-        Your choice is to decide to either execute the action or reject it. If you execute the action, that means that it is the best action to take at this stage.
-        If you reject the action, new actions will be proposed and evaluated for this state. 
-
-        If you wish to execute the action, output "<execute>". If you wish to reject the action, output "<reject>". 
-        First output about what that action would do and entail, and then output the choice. 
-
-        {actions_instructions}
-
-        # Working Memory
-        {self.working_memory.print()}
-
-        # Selected Action
-        {best_action}
-        """
-
-        response = use_claude(prompt);
-
-        if "<execute>" in response:
-            return best_action
-        else:
-            print(response);
-            return None
-    
-    def evaluate_actions(self, actions): 
-        """Evaluates the proposed actions and assigns them a score based on their relevance"""
-
-        prompt = f"""
-        You are an intelligent agent. You have access to your current working memory, and the actions available to you. 
-
-        You will be given an input, access to your current working memory, and a list of proposed actions.
-
-        Your job is to, one by one, evaluate each proposed action based on how helpful it would be at the moment, given the working memory and everything you know about the actions.
-
-        Once you have evaluated each action, give them a score out of 10 based on your evaluation, and output the final list of actions with their scores in the following format:
-
-        {{
-            "action 1": "score 1",
-            "action 2": "score 2",
-            "action 3": "score 3",
-            ...
-        }}
-
-        Please note that for the scores, you should just output the number as a plain integer, not a fraction, decimal, or sentence.
-
-        {actions_instructions}
-
-
-        Please evaluate each action carefully first, writing down your evaluation for each action. Then finally output the final list with the scores. 
-
-        # Working Memory
-        {self.working_memory.print()}
-
-        # Actions
-        {', '.join(actions)}
-        """
-
-        response = use_claude(prompt);
-
-        # Find the JSON-like part in the response
-        start = response.find('{')
-        end = response.find('}') + 1
-        if start != -1 and end != -1:
-            proposed_actions = response[start:end]
-            
-            # Separate the last character '}' from the rest, strip whitespaces from the rest
-            before_closing_brace = proposed_actions[:-1].rstrip()  # Strip everything except the last character
-            if before_closing_brace[-1] == ',':  # Check if there's a comma before the closing brace
-                before_closing_brace = before_closing_brace[:-1]  # Remove the comma
-
-            proposed_actions = before_closing_brace + '}'  # Add the closing brace back
-
-        else:
-            proposed_actions = "{}"  # Return empty object if no brackets found
-
-        print("SCORED ACTIONS: ", proposed_actions)
-        return json.loads(proposed_actions)
-    
+        print("Agent has been reset to its initial state.")    
     
     def propose_actions(self):
         """Use OpenAI API to select the best action based on memory"""
@@ -224,7 +152,7 @@ class Agent:
         """
 
         # Call OpenAI API to determine the action
-        response = use_claude(prompt);
+        response = use_claude(prompt, images=self.images);
 
         
         start = response.find('{')
@@ -237,24 +165,95 @@ class Agent:
         print("PROPOSED ACTIONS: ", proposed_actions)
         return proposed_actions
 
-    def learn(self):
-        """Learns from the working memory and updates the long term memory"""
-        prompt = memoryPrompt(self.working_memory)
-        response = use_claude(prompt)
+    def evaluate_actions(self, actions): 
+        """Evaluates the proposed actions and assigns them a score based on their relevance"""
 
-        # Extract the memory updates from the response
-        start = response.find('<memory_update>')
-        end = response.find('</memory_update>')
+        prompt = f"""
+        You are an intelligent agent. You have access to your current working memory, and the actions available to you. 
+
+        You will be given an input, access to your current working memory, and a list of proposed actions.
+
+        Your job is to, one by one, evaluate each proposed action based on how helpful it would be at the moment, given the working memory and everything you know about the actions.
+
+        Once you have evaluated each action, give them a score out of 10 based on your evaluation, and output the final list of actions with their scores in the following format:
+
+        {{
+            "action 1": "score 1",
+            "action 2": "score 2",
+            "action 3": "score 3",
+            ...
+        }}
+
+        Please note that for the scores, you should just output the number as a plain integer, not a fraction, decimal, or sentence.
+
+        {actions_instructions}
+
+
+        Please evaluate each action carefully first, writing down your evaluation for each action. Then finally output the final list with the scores. 
+
+        # Working Memory
+        {self.working_memory.print()}
+
+        # Actions
+        {', '.join(actions)}
+        """
+
+        response = use_claude(prompt, images=self.images);
+
+        print("EVALUATE ACTIONS RESPONSE: ", response, prompt)
+
+        # Find the JSON-like part in the response
+        start = response.find('{')
+        end = response.find('}') + 1
         if start != -1 and end != -1:
-            memory_update_json = response[start + len('<memory_update>'):end].strip()
-            memory_updates = json.loads(memory_update_json)["memory_update"]
-            self.long_term_memory.add_project_preferences(memory_updates, self.project_id)
-            print("Memory updates:", memory_updates)
+            proposed_actions = response[start:end]
+            
+            # Separate the last character '}' from the rest, strip whitespaces from the rest
+            before_closing_brace = proposed_actions[:-1].rstrip()  # Strip everything except the last character
+            if before_closing_brace[-1] == ',':  # Check if there's a comma before the closing brace
+                before_closing_brace = before_closing_brace[:-1]  # Remove the comma
+
+            proposed_actions = before_closing_brace + '}'  # Add the closing brace back
+
         else:
-            print("No memory updates found in the response.")
-        print("MEMORY UPDATE: ", response)
-        return;
+            proposed_actions = "{}"  # Return empty object if no brackets found
+
+        print("SCORED ACTIONS: ", proposed_actions)
+        return json.loads(proposed_actions)
+
+
+    def select_action(self, best_action):
+        """Decides to either select the highest-scoring action or reject all actions"""
+
+        prompt = f"""
+        You are an intelligent agent. You have access to your current working memory, and the actions available to you. 
+
+        You will be given an input, access to your current working memory, and the selected best action to take. 
+
+        Your choice is to decide to either execute the action or reject it. If you execute the action, that means that it is the best action to take at this stage.
+        If you reject the action, new actions will be proposed and evaluated for this state. 
+
+        If you wish to execute the action, output "<execute>". If you wish to reject the action, output "<reject>". 
+        First output about what that action would do and entail, and then output the choice. 
+
+        {actions_instructions}
+
+        # Working Memory
+        {self.working_memory.print()}
+
+        # Selected Action
+        {best_action}
+        """
+
+        response = use_claude(prompt, images=self.images);
+
+        if "<execute>" in response:
+            return best_action
+        else:
+            print(response);
+            return None
     
+
     def execute_action(self, action):
         """Executes the selected action. This will simply do whatever the action is supposed to do, and then store the action in the working memory"""
 
@@ -271,8 +270,15 @@ class Agent:
             self.working_memory.observations.append(action[6:])
 
         elif action_name == "screenshot":
-            self.screenshot_callback()
+            if self.client_connected:
+                self.screenshot_callback(self.client_sid)
+                isFinal = True
+            else:
+                self.working_memory.observations.append("Unable to access screenshots at the moment.")
 
+        elif action_name == "reply":
+            self.reply(action[5:])
+        
         elif action_name == "finish":
             self.learn()
             isFinal = True
@@ -313,19 +319,53 @@ class Agent:
             
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
-    def receive_input(self, html_code, css_code, user_input, client_sid, project_id):
-        """Receive HTML code from the user"""
+    
+    def learn(self):
+        """Learns from the working memory and updates the long term memory"""
+        prompt = memoryPrompt(self.working_memory)
+        response = use_claude(prompt)
+
+        # Extract the memory updates from the response
+        start = response.find('<memory_update>')
+        end = response.find('</memory_update>')
+        if start != -1 and end != -1:
+            memory_update_json = response[start + len('<memory_update>'):end].strip()
+            memory_updates = json.loads(memory_update_json)["memory_update"]
+            self.long_term_memory.add_project_preferences(memory_updates, self.project_id)
+            print("Memory updates:", memory_updates)
+        else:
+            print("No memory updates found in the response.")
+        print("MEMORY UPDATE: ", response)
+        return;
+    
+    
+    def receive_input(self, html_code, css_code, texts, images, css_type, edit_classes, client_sid, project_id):
+        """Receive full user input"""
+
         self.working_memory.html_code = html_code
         self.working_memory.css_code = css_code
-        
+        self.images = images
         # Handle both single inputs and arrays
-        if isinstance(user_input, list):
-            self.working_memory.observations.extend(user_input)
+        if isinstance(texts, list):
+            self.working_memory.observations.extend(texts)
         else:
-            self.working_memory.observations.append(user_input)
+            self.working_memory.observations.append(texts)
         
         self.client_sid = client_sid
         self.project_id = project_id
         if not self.decision_loop_running:
             self.decision_thread = threading.Thread(target=self.make_decision)
             self.decision_thread.start()
+
+    def receive_screenshot(self, screenshot):
+        self.images.append({"image": screenshot, "text": "Screenshot"})
+        self.screenshot_received.set()
+        if not self.decision_loop_running:
+            self.decision_thread = threading.Thread(target=self.make_decision)
+            self.decision_thread.start()
+
+    def set_client_disconnected(self):
+        self.client_connected = False
+
+    def set_client_connected(self):
+        self.client_connected = True

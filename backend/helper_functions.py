@@ -1,5 +1,6 @@
 import re
 import anthropic
+import base64
 
 client = anthropic.Anthropic(api_key="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")
 
@@ -27,7 +28,28 @@ def load_file(file_path):
 
 actions_instructions = load_file("actions.txt")
 
-def use_claude(user_prompt, system_prompt=None, temperature=0, json=False, tools=[]):
+def process_images(images):
+    processed_images = []
+    for image_data in images:
+        image = image_data['image']
+        text = image_data['text']
+        if image.startswith('data:image/'):
+            image_type, image_data = image.split(',', 1)
+            media_type = image_type.split(';')[0].split(':')[1]
+            processed_images.append({
+                "image": {
+                    "type": "image",
+                    "source": {
+                        "type": "base64",
+                        "media_type": media_type,
+                        "data": image_data,
+                    }
+                },
+                "text": text
+            })
+    return processed_images
+
+def use_claude(user_prompt, system_prompt=None, temperature=0, json=False, tools=[], images=[]):
     message_params = {
         "model": "claude-3-5-sonnet-20241022",
         "max_tokens": 2048,
@@ -35,7 +57,7 @@ def use_claude(user_prompt, system_prompt=None, temperature=0, json=False, tools
         "messages": [
             {
                 "role": "user",
-                "content": [{"type": "text", "text": user_prompt}]
+                "content": []
             }
         ]
     }
@@ -44,9 +66,20 @@ def use_claude(user_prompt, system_prompt=None, temperature=0, json=False, tools
         message_params["system"] = system_prompt
 
     if tools is not None and len(tools) > 0:
-        message_params["tools"] = tools;
+        message_params["tools"] = tools
+
+    content = []
+    if images:
+        processed_images = process_images(images)
+        for i, image_data in enumerate(processed_images):
+            content.append(image_data["image"])
+            if image_data["text"]:
+                content.append({"type": "text", "text": f"Description for Image {i+1}: {image_data['text']}"})
+
+    content.append({"type": "text", "text": user_prompt})
+    message_params["messages"][0]["content"] = content
     
     message = client.messages.create(**message_params)
 
-
     return message.content[0].text
+# End of Selection

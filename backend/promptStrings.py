@@ -1,16 +1,9 @@
 from helper_functions import use_claude
 
-def componentPrompt(code, working_memory):
+def componentPrompt(working_memory):
     """Returns a prompt for styling the code"""
     prompt = f"""
     You are an intelligent agent specializing in frontend web development. Your task is to analyze HTML code and separate it into distinct UI components. This process is crucial for organizing and styling web pages effectively.
-
-    Here is the HTML code you need to analyze:
-
-    <html_code>
-    {code}
-    </html_code>
-
 
     Here is the working memory you have been provided with:
     <working_memory>

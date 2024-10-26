@@ -1,11 +1,32 @@
 // CodeRenderer.jsx
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import * as Babel from '@babel/standalone';
+import html2canvas from 'html2canvas';
 import '../styles/components/CodeRenderer.css';
 
-const CodeRenderer = ({ htmlCode, cssCode, codeType }) => {
+const CodeRenderer = forwardRef(({ htmlCode, cssCode, codeType }, ref) => {
   const iframeRef = useRef(null);
   const [scale, setScale] = useState(1);
+
+  useImperativeHandle(ref, () => ({
+    captureImage: async () => {
+      const iframe = iframeRef.current;
+      if (iframe) {
+        const iframeContent = iframe.contentDocument.body;
+        try {
+          const canvas = await html2canvas(iframeContent, {
+            scale: 1,
+            useCORS: true,
+            allowTaint: true,
+          });
+          return canvas.toDataURL('image/png');
+        } catch (error) {
+          console.error('Error capturing image:', error);
+          throw error;
+        }
+      }
+    }
+  }));
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -81,10 +102,12 @@ const CodeRenderer = ({ htmlCode, cssCode, codeType }) => {
   const handleZoomOut = () => setScale(prev => Math.max(prev - 0.1, 0.5));
 
   return (
+    
     <div className="render">
 
       <div className="render_header">
           <h4 style={{margin: 0, fontSize: '1.2rem'}}>Render</h4>
+          
           <div className="zoom-controls">
             <button onClick={handleZoomOut}>-</button>
             <span>{Math.round(scale * 100)}%</span>
@@ -100,6 +123,6 @@ const CodeRenderer = ({ htmlCode, cssCode, codeType }) => {
       />
     </div>
   );
-};
+});
 
 export default CodeRenderer;

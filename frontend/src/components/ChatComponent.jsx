@@ -1,56 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './styles/chatComponent.css'
-import { FiRefreshCcw, FiSend, FiMic, FiStopCircle, FiPaperclip, FiX } from 'react-icons/fi'
+import { FiRefreshCcw, FiSend, FiMic, FiTrash2, FiPaperclip, FiX } from 'react-icons/fi'
 
-const ChatComponent = ({ socket }) => {
-  const [messages, setMessages] = useState([])
+const ChatComponent = ({ messages, setMessages, sendMessage }) => {
   const [inputMessage, setInputMessage] = useState('')
   const [isRecording, setIsRecording] = useState(false)
-  const [attachedImage, setAttachedImage] = useState(null)
+  const [attachedImages, setAttachedImages] = useState([])
+  const [audioVisualization, setAudioVisualization] = useState([])
   const messagesEndRef = useRef(null)
   const fileInputRef = useRef(null)
   const mediaRecorderRef = useRef(null)
+  const audioContextRef = useRef(null)
+  const analyserRef = useRef(null)
   const audioChunksRef = useRef([])
+  const visualizationIntervalRef = useRef(null)
 
-  useEffect(() => {
-    if (socket) {
-      socket.on('agent_response', (data) => {
-        setMessages((prevMessages) => [...prevMessages, { text: data.message, sender: 'agent' }])
-      })
-
-      socket.on('message', (data) => {
-        setMessages((prevMessages) => [...prevMessages, { text: data.message, sender: 'agent' }])
-      })
-
-      socket.on('error', (data) => {
-        console.error('Socket error:', data.message)
-      })
-    }
-  }, [socket])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
   const handleSendMessage = () => {
-    if ((inputMessage.trim() !== '' || attachedImage) && socket) {
+    if (isRecording) {
+      stopRecording()
+    } else if (inputMessage.trim() !== '' || attachedImages.length > 0) {
       const newMessage = {
-        text: inputMessage,
-        image: attachedImage,
+        text: inputMessage.trim(),
+        images: attachedImages,
         sender: 'user'
       }
-      setMessages((prevMessages) => [...prevMessages, newMessage])
-      socket.emit('user_message', newMessage)
+      sendMessage(newMessage)
       setInputMessage('')
-      setAttachedImage(null)
+      setAttachedImages([])
     }
   }
 
   const handleReset = () => {
-    if (socket) {
-      socket.emit('reset')
-      setMessages([])
-    }
+    setMessages([])
   }
 
   const startRecording = async () => {
@@ -58,6 +44,11 @@ const ChatComponent = ({ socket }) => {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       mediaRecorderRef.current = new MediaRecorder(stream)
       audioChunksRef.current = []
+
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)()
+      analyserRef.current = audioContextRef.current.createAnalyser()
+      const source = audioContextRef.current.createMediaStreamSource(stream)
+      source.connect(analyserRef.current)
 
       mediaRecorderRef.current.ondataavailable = (event) => {
         if (event.data.size > 0) {
@@ -68,13 +59,17 @@ const ChatComponent = ({ socket }) => {
       mediaRecorderRef.current.onstop = () => {
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' })
         const audioUrl = URL.createObjectURL(audioBlob)
-        setMessages((prevMessages) => [...prevMessages, { audio: audioUrl, sender: 'user' }])
-        // You can also send this blob to your server if needed
-        // socket.emit('audio_message', { audio: audioBlob })
+        const newMessage = { audio: audioUrl, sender: 'user' }
+        setMessages((prevMessages) => [...prevMessages, newMessage])
+        if (socket) {
+          socket.emit('audio_message', newMessage)
+        }
       }
 
       mediaRecorderRef.current.start()
       setIsRecording(true)
+      setAudioVisualization([])
+      startVisualization()
     } catch (error) {
       console.error('Error accessing microphone:', error)
     }
@@ -84,27 +79,53 @@ const ChatComponent = ({ socket }) => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop()
       setIsRecording(false)
-    }
-  }
-
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0]
-    if (file) {
-      const allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp']
-      if (allowedTypes.includes(file.type)) {
-        const reader = new FileReader()
-        reader.onload = (e) => {
-          setAttachedImage(e.target.result)
-        }
-        reader.readAsDataURL(file)
-      } else {
-        alert('Please upload only PNG, JPEG, GIF, or WebP images.')
+      stopVisualization()
+      if (audioContextRef.current) {
+        audioContextRef.current.close()
       }
     }
   }
 
-  const removeAttachedImage = () => {
-    setAttachedImage(null)
+  const startVisualization = () => {
+    if (!analyserRef.current) return
+    const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount)
+    
+    visualizationIntervalRef.current = setInterval(() => {
+      analyserRef.current.getByteFrequencyData(dataArray)
+      const levels = Array.from(dataArray).slice(0, 10).map(value => value / 255)
+      setAudioVisualization(prev => [...prev, ...levels].slice(-100))  // Keep last 100 values
+    }, 100)
+  }
+
+  const stopVisualization = () => {
+    if (visualizationIntervalRef.current) {
+      clearInterval(visualizationIntervalRef.current)
+    }
+  }
+
+  const handleFileUpload = (event) => {
+    const files = Array.from(event.target.files)
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp']
+    const validFiles = files.filter(file => allowedTypes.includes(file.type))
+
+    if (validFiles.length !== files.length) {
+      alert('Please upload only PNG, JPEG, GIF, or WebP images.')
+    }
+
+    Promise.all(validFiles.map(file => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onload = (e) => resolve(e.target.result)
+        reader.onerror = reject
+        reader.readAsDataURL(file)
+      })
+    })).then(results => {
+      setAttachedImages(prevImages => [...prevImages, ...results])
+    })
+  }
+
+  const removeAttachedImage = (index) => {
+    setAttachedImages(prevImages => prevImages.filter((_, i) => i !== index))
   }
 
   const AudioMessage = ({ audioUrl }) => {
@@ -115,10 +136,12 @@ const ChatComponent = ({ socket }) => {
     )
   }
 
-  const ImageMessage = ({ imageUrl }) => {
+  const ImageMessage = ({ images }) => {
     return (
       <div className="image-message">
-        <img src={imageUrl} alt="User uploaded" style={{ maxWidth: '100%', maxHeight: '200px' }} />
+        {images.map((imageUrl, index) => (
+          <img key={index} src={imageUrl} alt={`User uploaded ${index + 1}`} />
+        ))}
       </div>
     )
   }
@@ -132,45 +155,56 @@ const ChatComponent = ({ socket }) => {
       <div className="chat_messages">
         {messages.map((message, index) => (
           <div key={index} className={`message_container ${message.sender}`}>
-            {message.audio ? (
-              <AudioMessage audioUrl={message.audio} />
-            ) : (
-              <div className={`message ${message.sender}`}>
-                {message.image && <ImageMessage imageUrl={message.image} />}
-                {message.text && <div>{message.text}</div>}
-              </div>
-            )}
+            <div className={`message ${message.sender}`}>
+              {message.audio && <AudioMessage audioUrl={message.audio} />}
+              {message.images && message.images.length > 0 && <ImageMessage images={message.images} />}
+              {message.text && <div>{message.text}</div>}
+            </div>
           </div>
         ))}
         <div ref={messagesEndRef} />
       </div>
       <div className="chat_input_container">
-        {attachedImage && (
-          <div className="attached-image">
-            <img src={attachedImage} alt="Attached" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-            <FiX onClick={removeAttachedImage} className="remove-image" />
+        {attachedImages.length > 0 && (
+          <div className="attached-images-container">
+            <div className="attached-images">
+              {attachedImages.map((image, index) => (
+                <div key={index} className="attached-image">
+                  <img src={image} alt="Attached" />
+                  <FiX onClick={() => removeAttachedImage(index)} className="remove-image" />
+                </div>
+              ))}
+            </div>
           </div>
         )}
         <div className="chat_input">
-          <FiPaperclip onClick={() => fileInputRef.current.click()} className="icon" />
+          {isRecording ? (
+            <FiTrash2 onClick={stopRecording} className="icon" style={{marginRight: "0.5rem"}} />
+          ) : (
+            <FiPaperclip onClick={() => fileInputRef.current.click()} className="icon" style={{marginRight: "1rem"}} />
+          )}
           <input
             type="file"
             ref={fileInputRef}
             style={{ display: 'none' }}
             onChange={handleFileUpload}
             accept=".png,.jpg,.jpeg,.gif,.webp"
-          />
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            placeholder="Type your message..."
+            multiple
           />
           {isRecording ? (
-            <FiStopCircle onClick={stopRecording} className="icon recording" />
+            <div className="audio-visualization">
+              {audioVisualization.map((level, index) => (
+                <div key={index} className="audio-bar" style={{ height: `${level * 100}%` }}></div>
+              ))}
+            </div>
           ) : (
-            <FiMic onClick={startRecording} className="icon" />
+            <input
+              type="text"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              placeholder="Type your message..."
+            />
           )}
           <FiSend onClick={handleSendMessage} className="icon" />
         </div>

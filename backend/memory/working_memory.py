@@ -72,3 +72,7 @@ class WorkingMemory:
         {self.css_code if self.css_code else ""}
 
         """
+
+    def reset_after_style(self):
+        self.best_practices = []
+        self.project_preferences = []
