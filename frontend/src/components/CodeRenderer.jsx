@@ -43,10 +43,24 @@ const CodeRenderer = ({ htmlCode, cssCode, codeType }) => {
               body {
                 margin: 0;
                 padding: 0;
-                width: 1920px;
-                height: 1080px;
+                width: 1280px;
+                height: 720px;
                 transform-origin: top left;
                 transform: scale(${scale});
+              }
+              ::-webkit-scrollbar {
+                width: 10px !important;
+              }
+              ::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              ::-webkit-scrollbar-thumb {
+                background-color: hsl(243, 49%, 54%, 80%);
+                border-radius: 5px;
+              }
+              * {
+                scrollbar-width: thin !important;
+                scrollbar-color: hsl(243, 49%, 54%, 80%) transparent;
               }
             </style>
             <script src="https://cdn.tailwindcss.com"></script>
@@ -67,12 +81,17 @@ const CodeRenderer = ({ htmlCode, cssCode, codeType }) => {
   const handleZoomOut = () => setScale(prev => Math.max(prev - 0.1, 0.5));
 
   return (
-    <div className="code-renderer-container">
-      <div className="zoom-controls">
-        <button onClick={handleZoomOut}>-</button>
-        <span>{Math.round(scale * 100)}%</span>
-        <button onClick={handleZoomIn}>+</button>
+    <div className="render">
+
+      <div className="render_header">
+          <h4 style={{margin: 0, fontSize: '1.2rem'}}>Render</h4>
+          <div className="zoom-controls">
+            <button onClick={handleZoomOut}>-</button>
+            <span>{Math.round(scale * 100)}%</span>
+            <button onClick={handleZoomIn}>+</button>
+          </div>
       </div>
+      
       <iframe
         ref={iframeRef}
         title="rendered-output"

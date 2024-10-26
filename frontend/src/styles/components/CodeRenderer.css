@@ -1,35 +1,38 @@
-.code-renderer-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    touch-action: none;
-  }
-  
-  .code-renderer-container {
+.render {
     position: relative;
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16 / 9;
-    border: 2px solid #000;
     overflow: hidden;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    border: 1px solid var(--primary20);
+    background-color: var(--secondary5);
+    border-radius: 1rem;
     touch-action: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
-  }
-  
-  .rendered-iframe {
+}
+
+.render_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rendered-iframe {
     border: none;
     width: 100%;
     height: 100%;
     display: block;
     pointer-events: none;
-  }
-  
-  .zoom-controls {
+}
+
+.zoom-controls {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -37,35 +40,34 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 5px 10px;
     border-radius: 4px;
     pointer-events: auto;
-  }
-  
-  .zoom-controls button {
-    background-color: #fff;
-    border: 1px solid #ccc;
+}
+
+.zoom-controls button {
+    border: none;
+    background-color: transparent;
     padding: 5px 10px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s, border-color 0.3s;
-  }
-  
-  .zoom-controls button:hover:not(:disabled) {
+}
+
+.zoom-controls button:hover:not(:disabled) {
     background-color: #e6e6e6;
-  }
-  
-  .zoom-controls button:disabled {
+}
+
+.zoom-controls button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-  }
-  
-  .zoom-level {
+}
+
+.zoom-level {
     font-size: 16px;
     min-width: 50px;
     text-align: center;
     color: #333;
     user-select: none;
-  }
+}

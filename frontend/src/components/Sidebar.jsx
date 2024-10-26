@@ -2,35 +2,44 @@ import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import '../styles/components/Sidebar.css'
 import { FaPlus, FaPencilAlt, FaTrash } from 'react-icons/fa'
-import { getAllProjects, createNewProject, renameProject, deleteProject } from '../utils/projectStorage'
+import { db } from '../firebase'
+import { doc, updateDoc, deleteDoc, onSnapshot, collection } from 'firebase/firestore'
 
-const Sidebar = () => {
+const Sidebar = ({ onNewProject }) => {
     const [projects, setProjects] = useState([])
     const [editingId, setEditingId] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
 
     useEffect(() => {
-        setProjects(getAllProjects())
+        const unsubscribe = onSnapshot(collection(db, 'projects'), (snapshot) => {
+            const updatedProjects = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+                updated: doc.data().updated || false
+            }))
+            setProjects(updatedProjects)
+        })
+
+        return () => unsubscribe()
     }, [])
 
     const handleCreateNewProject = () => {
-        const newProject = createNewProject(`Project ${projects.length + 1}`)
-        setProjects(getAllProjects())
-        navigate(`/project/${newProject.id}`)
+        navigate('/')
+        onNewProject()
     }
 
-    const handleRename = (id, newName) => {
-        renameProject(id, newName)
-        setProjects(getAllProjects())
+    const handleRename = async (id, newName) => {
+        const projectRef = doc(db, 'projects', id)
+        await updateDoc(projectRef, { name: newName })
         setEditingId(null)
     }
 
-    const handleDelete = (id) => {
-        deleteProject(id)
-        setProjects(getAllProjects())
+    const handleDelete = async (id) => {
+        const projectRef = doc(db, 'projects', id)
+        await deleteDoc(projectRef)
         if (location.pathname === `/project/${id}`) {
-            navigate('/new')
+            navigate('/')
         }
     }
 
@@ -45,6 +54,9 @@ const Sidebar = () => {
                 <div className='projects'>
                     {projects.map((project) => (
                         <div key={project.id} className={`project-item ${location.pathname === `/project/${project.id}` ? 'active' : ''}`}>
+                            <div className='project_updated_icon'>
+                                {project.updated && <div className="glowing-indicator"></div>}
+                            </div>
                             {editingId === project.id ? (
                                 <input
                                     type="text"
@@ -58,10 +70,7 @@ const Sidebar = () => {
                                     autoFocus
                                 />
                             ) : (
-                                <Link 
-                                    to={`/project/${project.id}`} 
-                                    className="project-link"
-                                >
+                                <Link to={`/project/${project.id}`} className="project-link">
                                     <span className="project-name">{project.name}</span>
                                 </Link>
                             )}
@@ -77,6 +86,9 @@ const Sidebar = () => {
                             </div>
                         </div>
                     ))}
+                    {projects.length === 0 && (
+                        <div className="no_projects">No projects yet!</div>
+                    )}
                 </div>
             </div>
         </div>

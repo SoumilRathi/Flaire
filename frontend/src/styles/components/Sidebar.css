@@ -1,5 +1,5 @@
 .sidebar {
-  width: 200px;
+  width: 13.5rem;
   background-color: var(--primary5);
   /* padding: 20px; */
   display: flex;
@@ -46,7 +46,6 @@
 .projects {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .project-item {
@@ -116,4 +115,24 @@ input[type="text"] {
 
 .new-project:hover {
     background-color: var(--primary80);
+}
+
+.no_projects {
+    text-align: center;
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.project_updated_icon {
+    width: 10px;
+    margin-right: 10px;
+}
+
+.glowing-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(8, 154, 8, 0.8);
+    box-shadow: 0 0 15px rgb(8, 154, 8);
 }
