@@ -1,6 +1,0 @@
-
-p { font-family: monospace; font-size: 16px; }
-.original { color: rebeccapurple; }
-.increase-hue { color: lch(from rebeccapurple l c calc(80 + h)); }
-.increase-lightness { color: lch(from rebeccapurple calc(20 + l) c h); }
-.decrease-lightness { color: lch(from rebeccapurple calc(-10 + l) c h); }

@@ -1,5 +1,0 @@
-
-input:indeterminate + label { background: lime; }
-fieldset { padding: 1em 0.75em; }
-fieldset:first-of-type { margin-bottom: 1.5rem; }
-fieldset:not(:first-of-type) > div:not(:last-child) { margin-bottom: 0.5rem; }

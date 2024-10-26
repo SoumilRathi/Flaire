@@ -1,4 +1,0 @@
-
-@layer base {
-  .item { color: revert-layer; }
-}

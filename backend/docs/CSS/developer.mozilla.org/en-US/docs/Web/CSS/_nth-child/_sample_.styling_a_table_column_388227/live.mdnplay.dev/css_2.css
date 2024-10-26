@@ -1,5 +1,0 @@
-
-td { padding: 0.125rem 0.5rem; height: 3rem; border: 1px solid black; }
-tr :nth-child(1) { text-align: left; vertical-align: bottom; background-color: silver; }
-tbody tr :nth-child(2) { text-align: center; vertical-align: middle; }
-tbody tr :nth-child(3) { text-align: right; vertical-align: top; background-color: tomato; }

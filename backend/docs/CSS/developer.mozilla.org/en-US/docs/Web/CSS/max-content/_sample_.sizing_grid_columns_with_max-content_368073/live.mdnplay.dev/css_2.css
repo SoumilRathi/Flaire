@@ -1,3 +1,0 @@
-
-#container { display: grid; grid-template-columns: max-content max-content 1fr; gap: 5px; box-sizing: border-box; height: 200px; width: 100%; background-color: rgb(140, 255, 160); padding: 10px; }
-#container > div { background-color: rgb(140, 160, 255); padding: 5px; }

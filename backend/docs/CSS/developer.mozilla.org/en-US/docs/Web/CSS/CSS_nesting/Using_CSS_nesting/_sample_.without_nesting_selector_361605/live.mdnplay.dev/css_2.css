@@ -1,7 +1,0 @@
-
-form, label { display: flex; flex-direction: column; gap: 0.5rem; }
-input { border: 2px solid tomato; }
-label {
-  font-family: system-ui; font-size: 1.25rem;
-  & input { border: 2px dashed blue; }
-}

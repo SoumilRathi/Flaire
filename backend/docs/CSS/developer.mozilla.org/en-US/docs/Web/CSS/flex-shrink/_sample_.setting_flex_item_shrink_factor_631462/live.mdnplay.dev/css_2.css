@@ -1,8 +1,0 @@
-
-#content { display: flex; width: 500px; }
-#content div { width: 200px; }
-.box { flex-shrink: 1; }
-.box4 { flex-shrink: 1.5; }
-.box5 { flex-shrink: 2; }
-#content { margin: 5px; }
-div { font-family: monospace; outline: solid 1px; line-height: 4em; text-align: center; }

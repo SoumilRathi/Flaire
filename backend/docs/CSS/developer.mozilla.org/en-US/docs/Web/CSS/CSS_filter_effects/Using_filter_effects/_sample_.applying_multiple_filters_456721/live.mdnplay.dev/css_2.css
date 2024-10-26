@@ -1,5 +1,0 @@
-
-.container { background: url("../image.jpg/index.html.jpg") left center / contain no-repeat goldenrod; }
-p { backdrop-filter: hue-rotate(240deg) blur(5px); background-color: rgba(255, 255, 255, 0.1); text-shadow: black 2px 2px; }
-.container { padding: 3rem; width: 30rem; }
-p { padding: 0.5rem; color: rgb(255, 255, 255); font-size: 2rem; font-family: sans-serif; }

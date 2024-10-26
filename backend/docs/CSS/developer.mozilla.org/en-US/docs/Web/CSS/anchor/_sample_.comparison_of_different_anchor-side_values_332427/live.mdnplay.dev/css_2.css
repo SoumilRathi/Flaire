@@ -1,9 +1,0 @@
-
-.anchor { font-size: 2rem; color: white; text-shadow: black 1px 1px 1px; background-color: rgb(128, 128, 255); width: 100px; height: 100px; text-align: center; line-height: 100px; border-radius: 10px; border: 1px solid black; padding: 3px; }
-body { width: 80%; margin: 0px auto; }
-form { background: white; border: 1px solid black; padding: 5px; position: fixed; top: 0px; right: 2px; }
-select { display: block; margin-top: 5px; }
-form div:last-child { margin-top: 10px; }
-.infobox { color: darkblue; background-color: azure; border: 1px solid rgb(221, 221, 221); padding: 10px; border-radius: 10px; font-size: 1rem; }
-.anchor { }
-.infobox { position: fixed; }

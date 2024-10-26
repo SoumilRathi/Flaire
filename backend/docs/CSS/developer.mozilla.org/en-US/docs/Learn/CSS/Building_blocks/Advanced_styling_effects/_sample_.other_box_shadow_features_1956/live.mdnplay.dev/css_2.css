@@ -1,4 +1,0 @@
-
-button { width: 150px; font-size: 1.1rem; line-height: 2; border-radius: 10px; border: medium; background-image: linear-gradient(to right bottom, rgb(119, 119, 119), rgb(221, 221, 221)); box-shadow: black 1px 1px 1px, rgba(0, 0, 0, 0.3) 2px 3px 5px inset, rgba(255, 255, 255, 0.5) -2px -3px 5px inset; }
-button:focus, button:hover { background-image: linear-gradient(to right bottom, rgb(136, 136, 136), rgb(238, 238, 238)); }
-button:active { box-shadow: black 2px 2px 1px inset, rgba(0, 0, 0, 0.3) 2px 3px 5px inset, rgba(255, 255, 255, 0.5) -2px -3px 5px inset; }

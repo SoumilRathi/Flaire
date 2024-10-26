@@ -1,4 +1,0 @@
-
-input, button { margin: 10px; }
-.focus-only:focus { outline: black solid 2px; }
-.focus-visible-only:focus-visible { outline: darkorange dashed 4px; }

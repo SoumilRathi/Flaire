@@ -1,5 +1,0 @@
-
-html { height: 100vh; }
-button { font-size: 1.4rem; padding: 10px 20px; border: 1px solid rgb(204, 204, 204); border-radius: 10px; outline: currentcolor; }
-.target { transition-property: background-color; transition-duration: 1s; background-color: rgb(204, 204, 204); }
-.target:hover, .target:focus { background-color: rgb(238, 238, 238); }

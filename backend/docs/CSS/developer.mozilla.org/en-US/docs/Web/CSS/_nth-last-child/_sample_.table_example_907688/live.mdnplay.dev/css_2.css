@@ -1,5 +1,0 @@
-
-table { border: 1px solid blue; }
-tr:nth-last-child(-n+3) { background-color: pink; }
-tr:nth-last-child(n+2) { color: blue; }
-tr:nth-last-child(2) { font-weight: 600; }

@@ -1,6 +1,0 @@
-
-#container { display: flex; justify-content: space-around; background-color: darkslateblue; padding: 20px; }
-#container > div { height: 100px; width: 100px; margin: 3px; border: 2px solid black; }
-#one { background-color: red; }
-#two { background-color: lavender; }
-#three { background-color: transparent; }

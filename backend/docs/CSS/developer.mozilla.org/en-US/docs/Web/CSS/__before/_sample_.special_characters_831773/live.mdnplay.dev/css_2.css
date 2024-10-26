@@ -1,4 +1,0 @@
-
-li { padding: 0.5em; }
-li[aria-current="step"] { font-weight: bold; }
-li[aria-current="step"]::after { content: " ⇦"; display: inline; }

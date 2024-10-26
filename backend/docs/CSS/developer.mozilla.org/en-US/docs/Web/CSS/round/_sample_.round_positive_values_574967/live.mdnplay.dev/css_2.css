@@ -1,7 +1,0 @@
-
-body { height: 100vh; display: flex; justify-content: center; align-items: center; gap: 50px; }
-div.box { width: 100px; height: 100px; background: lightblue; padding: 5px; --rounding-interval: 25px; }
-div.box-2 { height: round(up, 101px, var(--rounding-interval)); }
-div.box-3 { height: round(down, 122px, var(--rounding-interval)); }
-div.box-4 { height: round(to-zero, 120px, var(--rounding-interval)); }
-div.box-5 { height: calc(125px); }

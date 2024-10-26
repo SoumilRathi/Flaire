@@ -1,4 +1,0 @@
-
-svg { width: 500px; }
-svg rect { transform: scale(2.3); }
-svg rect.thinned { vector-effect: non-scaling-stroke; }

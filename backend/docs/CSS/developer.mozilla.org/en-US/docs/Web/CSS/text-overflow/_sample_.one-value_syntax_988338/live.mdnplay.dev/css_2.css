@@ -1,8 +1,0 @@
-
-p { width: 200px; border: 1px solid; padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-.overflow-clip { text-overflow: clip; }
-.overflow-ellipsis { text-overflow: ellipsis; }
-.overflow-string { }
-body { display: flex; justify-content: space-around; }
-.ltr > p { direction: ltr; }
-.rtl > p { direction: rtl; }

@@ -1,5 +1,0 @@
-
-p { color: rebeccapurple; }
-@layer type {
-  .box p { font-weight: bold; font-size: 1.3em; color: green; }
-}

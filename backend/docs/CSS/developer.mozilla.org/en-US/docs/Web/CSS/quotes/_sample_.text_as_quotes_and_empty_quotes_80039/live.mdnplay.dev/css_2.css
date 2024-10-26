@@ -1,6 +1,0 @@
-
-[data-speaker="karen" i] { quotes: "She said: " ""; }
-[data-speaker="chad" i] { quotes: "He said: " ""; }
-[data-speaker="pat" i] { quotes: "They said: " ""; }
-[data-speaker] q { quotes: auto; }
-li { padding: 0.5em 0px; }

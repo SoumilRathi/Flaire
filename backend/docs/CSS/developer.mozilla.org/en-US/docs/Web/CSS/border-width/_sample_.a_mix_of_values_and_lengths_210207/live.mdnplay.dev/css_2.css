@@ -1,6 +1,0 @@
-
-#one-value { border: 6px ridge rgb(204, 204, 204); }
-#two-values { border-style: solid; border-color: red; border-image: none; border-width: 2px 10px; }
-#three-values { border-style: dotted; border-color: orange; border-image: none; border-width: 0.3em 0px 9px; }
-#four-values { border-style: solid; border-color: lightgreen; border-image: none; border-width: thin medium thick 1em; }
-p { width: auto; margin: 0.25em; padding: 0.25em; }

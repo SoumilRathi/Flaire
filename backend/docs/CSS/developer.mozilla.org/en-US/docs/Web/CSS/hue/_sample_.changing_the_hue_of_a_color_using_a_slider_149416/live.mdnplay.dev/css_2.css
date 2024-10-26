@@ -1,6 +1,0 @@
-
-div { width: 100px; height: 100px; margin: 10px; border: 1px solid black; }
-p { font-family: sans-serif; }
-span { font-family: monospace; background: rgba(0, 0, 0, 0.1); padding: 3px; }
-#hue-slider { width: 90%; }
-#box { background-color: rgb(255, 0, 0); }

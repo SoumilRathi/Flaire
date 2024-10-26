@@ -1,5 +1,0 @@
-
-h1 { color: midnightblue; }
-#hueFirst { filter: hue-rotate(180deg) drop-shadow(magenta 3px 3px); }
-#shadowFirst { filter: drop-shadow(magenta 3px 3px) hue-rotate(180deg); }
-h1 { font-family: sans-serif; font-size: 2rem; }

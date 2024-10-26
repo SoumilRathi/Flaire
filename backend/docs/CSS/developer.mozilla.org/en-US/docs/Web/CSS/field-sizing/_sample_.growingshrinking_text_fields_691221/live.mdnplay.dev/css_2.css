@@ -1,5 +1,0 @@
-
-body { box-sizing: border-box; padding: 20px; }
-div { margin-bottom: 20px; display: flex; }
-input, textarea { min-width: 50px; max-width: 350px; }
-label { width: 150px; margin-right: 20px; text-align: right; }

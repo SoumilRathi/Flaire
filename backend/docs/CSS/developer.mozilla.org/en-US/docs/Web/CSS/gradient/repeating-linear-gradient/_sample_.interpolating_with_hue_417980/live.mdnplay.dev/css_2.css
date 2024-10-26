@@ -1,4 +1,0 @@
-
-div { height: 50vh; color: rgb(51, 51, 0); font-weight: bolder; padding-left: 1.5rem; }
-.shorter { background: repeating-linear-gradient(90deg in hsl, red, blue 300px); }
-.longer { background: repeating-linear-gradient(90deg in hsl longer hue, red, blue 300px); }

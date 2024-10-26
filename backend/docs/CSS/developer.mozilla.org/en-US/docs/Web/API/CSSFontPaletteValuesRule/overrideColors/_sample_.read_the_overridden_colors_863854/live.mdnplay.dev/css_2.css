@@ -1,6 +1,0 @@
-
-@font-face { font-family: "Noto Color Emoji"; font-style: normal; font-weight: 400; src: url("../fonts.gstatic.com/l/font") format("woff2"); }
-.emoji { font-family: "Noto Color Emoji"; font-size: 3rem; }
-@font-palette-values --blue { font-family: "Noto Color Emoji"; override-colors: 3 rgb(1, 28, 193), 4 rgb(60, 124, 230); }
-@font-palette-values --green { font-family: "Noto Color Emoji"; override-colors: 3 rgb(28, 193, 1), 4 rgb(34, 230, 1); }
-.colored-hat { font-palette: --blue; }

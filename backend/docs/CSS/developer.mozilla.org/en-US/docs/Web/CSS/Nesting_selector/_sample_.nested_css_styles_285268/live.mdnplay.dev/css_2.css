@@ -1,8 +1,0 @@
-
-.example {
-  font-family: system-ui; font-size: 1.2rem;
-  & > a {
-  color: tomato;
-  &:hover, &:focus { color: ivory; background-color: tomato; }
-}
-}

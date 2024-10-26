@@ -1,8 +1,0 @@
-
-body { height: 100vh; display: flex; justify-content: center; align-items: center; gap: 50px; }
-div.box { width: 100px; height: 100px; background: linear-gradient(orange, red); }
-div.box-1 { transform: rotate(calc(90deg)); }
-div.box-2 { transform: rotate(calc(30deg)); }
-div.box-3 { transform: rotate(calc(0deg)); }
-div.box-4 { transform: rotate(calc(-30deg)); }
-div.box-5 { transform: rotate(calc(-90deg)); }

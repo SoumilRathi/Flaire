@@ -1,4 +1,0 @@
-
-body { font-family: monospace; }
-.safari meter { appearance: none; }
-#styled::-webkit-meter-inner-element { appearance: inherit; box-sizing: inherit; border: 1px dashed rgb(170, 170, 170); }

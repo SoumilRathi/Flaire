@@ -1,6 +1,0 @@
-
-body { display: flex; align-items: center; justify-content: space-around; height: 100vh; }
-.small { zoom: 75%; }
-.normal { zoom: normal; }
-.big { zoom: 2.5; }
-p:hover { zoom: unset; }

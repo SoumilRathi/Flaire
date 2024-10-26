@@ -1,6 +1,0 @@
-
-* { box-sizing: border-box; }
-section { font-family: Arial, Helvetica, sans-serif; border: 1px solid black; }
-h2 { margin: 0px; font-weight: 400; font-size: 1.1rem; text-align: center; letter-spacing: 1px; }
-p { font-size: 0.8rem; }
-section { display: flex; flex-direction: column; justify-content: center; align-items: center; }

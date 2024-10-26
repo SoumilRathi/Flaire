@@ -1,4 +1,0 @@
-
-meter { height: 30px; width: 200px; vertical-align: -0.8rem; }
-.safari meter { appearance: none; }
-#styled::-webkit-meter-bar { background: lime; box-shadow: grey 0px 10px 20px inset; border-radius: 10px; }

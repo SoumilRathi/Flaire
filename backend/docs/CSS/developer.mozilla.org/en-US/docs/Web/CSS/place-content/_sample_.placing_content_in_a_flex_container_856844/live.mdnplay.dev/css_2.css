@@ -1,5 +1,0 @@
-
-#container { display: flex; height: 240px; width: 240px; flex-wrap: wrap; background-color: rgb(140, 140, 140); writing-mode: horizontal-tb; direction: ltr; align-content: flex-end; justify-content: center; }
-div > div { border: 2px solid rgb(140, 140, 140); width: 50px; background-color: rgb(160, 200, 255); }
-.small { font-size: 12px; height: 40px; }
-.large { font-size: 14px; height: 50px; }

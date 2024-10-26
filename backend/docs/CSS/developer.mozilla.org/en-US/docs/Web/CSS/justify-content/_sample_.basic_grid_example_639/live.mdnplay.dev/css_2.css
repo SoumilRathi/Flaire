@@ -1,7 +1,0 @@
-
-.container { margin: 5px; border: 1px solid; box-sizing: border-box; }
-div { line-height: 2em; border: 1px solid; box-sizing: border-box; text-align: center; }
-.container { display: grid; grid: none / repeat(3, 80px); width: 500px; justify-content: space-evenly; }
-div { background-color: pink; width: 80px; }
-div:nth-of-type(n+9) { width: 35px; background-color: lightgreen; }
-div:nth-last-of-type(3) { width: 250px; background-color: lightblue; }

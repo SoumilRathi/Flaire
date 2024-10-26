@@ -1,4 +1,0 @@
-
-p:first-of-type { filter: brightness(50%); }
-p:last-of-type { filter: brightness(200%); }
-p { text-shadow: blue 2px 2px; background-color: magenta; color: palegoldenrod; border: 1em solid rebeccapurple; box-shadow: red -5px -5px inset, yellow 5px 5px; padding: 0.25rem; font-size: 1.25rem; font-family: sans-serif; width: 85vw; }

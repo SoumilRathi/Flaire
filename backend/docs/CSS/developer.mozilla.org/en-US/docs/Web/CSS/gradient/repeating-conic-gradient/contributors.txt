@@ -1,9 +1,0 @@
-# Contributors by commit history
-https://github.com/mdn/content/commits/main/files/en-us/web/css/gradient/repeating-conic-gradient/index.md
-
-# Original Wiki contributors
-chrisdavidmills
-ramiy
-wbamberg
-SphinxKnight
-estelle

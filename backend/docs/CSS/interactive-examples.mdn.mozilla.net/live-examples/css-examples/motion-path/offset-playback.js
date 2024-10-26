@@ -1,1 +1,0 @@
-window.addEventListener("load",()=>{const e=document.getElementById("example-element"),n=document.getElementById("playback");n.addEventListener("click",()=>{e.classList.contains("running")?(e.classList.remove("running"),n.textContent="Play"):(e.classList.add("running"),n.textContent="Pause")})});

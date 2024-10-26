@@ -1,7 +1,0 @@
-
-#controls { padding: 1rem; outline: black dashed 2px; }
-body { margin: 10px; font-family: sans-serif; }
-div, p { outline: black solid 2px; background-color: cornflowerblue; display: block; margin-bottom: 2rem; }
-#parent { background-color: oldlace; min-height: 2rem; }
-#child { margin-top: 4rem; outline: red dashed 2px; }
-#sibling { background-color: lavender; }

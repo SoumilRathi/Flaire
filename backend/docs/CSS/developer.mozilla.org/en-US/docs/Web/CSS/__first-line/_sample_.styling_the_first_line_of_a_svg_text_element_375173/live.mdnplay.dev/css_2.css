@@ -1,4 +1,0 @@
-
-text { font-size: 20px; font-family: sans-serif; }
-text { white-space: break-spaces; }
-text::first-line { fill: blue; font-weight: bold; }

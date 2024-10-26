@@ -1,3 +1,0 @@
-
-@counter-style fallback-example { system: fixed 1; symbols: "Ⓐ" "Ⓑ" "Ⓒ"; fallback: upper-alpha; }
-.list { list-style: fallback-example; }

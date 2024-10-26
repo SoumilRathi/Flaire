@@ -1,5 +1,0 @@
-
-.gradient { height: 50px; width: 100%; }
-.srgb { background-image: linear-gradient(to right, blue, red); }
-.oklab { background-image: linear-gradient(to right in oklab, blue, red); }
-.oklch-longer { background-image: linear-gradient(to right in oklch longer hue, blue, red); }

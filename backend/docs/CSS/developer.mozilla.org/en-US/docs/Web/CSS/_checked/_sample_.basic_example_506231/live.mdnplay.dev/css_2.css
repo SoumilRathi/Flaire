@@ -1,6 +1,0 @@
-
-div, select { margin: 8px; }
-input:checked + label { color: red; }
-input[type="radio"]:checked { box-shadow: orange 0px 0px 0px 3px; }
-input[type="checkbox"]:checked { box-shadow: hotpink 0px 0px 0px 3px; }
-option:checked { box-shadow: lime 0px 0px 0px 3px; color: red; }

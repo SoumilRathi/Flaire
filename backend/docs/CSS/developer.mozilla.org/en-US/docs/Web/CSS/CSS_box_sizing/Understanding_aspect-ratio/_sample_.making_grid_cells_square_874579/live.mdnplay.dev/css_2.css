@@ -1,9 +1,0 @@
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); }
-.item { aspect-ratio: 1 / 1; }
-div { gap: 20px; }
-div div { background-color: rgb(204, 204, 204); aspect-ratio: 1 / 1; counter-increment: items 1; }
-div div::after { content: counter(items); }
-.item::after { position: absolute; color: transparent; }
-.item { min-height: 0px; overflow: auto; }
-.item > * { max-height: 100%; }

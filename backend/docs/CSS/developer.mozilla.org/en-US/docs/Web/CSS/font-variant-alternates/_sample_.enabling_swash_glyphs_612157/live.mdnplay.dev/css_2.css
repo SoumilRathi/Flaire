@@ -1,5 +1,0 @@
-
-@font-face { font-family: MonteCarlo; src: url("../montecarlo-regular.woff2/index.html.woff2"); }
-@font-feature-values MonteCarlo { @swash { fancy: 1; } }
-p { font-family: MonteCarlo; font-size: 3rem; margin: 0.7rem 3rem; }
-.variant { font-variant-alternates: swash(fancy); }

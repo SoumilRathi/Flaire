@@ -1,5 +1,0 @@
-# Contributors by commit history
-https://github.com/mdn/content/commits/main/files/en-us/web/api/css/factory_functions_static/index.md
-
-# Original Wiki contributors
-estelle

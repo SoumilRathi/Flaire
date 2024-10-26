@@ -1,5 +1,0 @@
-
-div { width: 50px; height: 50px; padding: 5px; margin: 5px; display: inline-block; border: 1px solid black; }
-[data-color="red"] { background-color: color(xyz-d65 45 20 0); }
-[data-color="green"] { background-color: color(xyz-d50 0.3 80 0.3); }
-[data-color="blue"] { background-color: color(xyz-d65 5 0 50); }

@@ -1,5 +1,0 @@
-
-q { color: rgb(0, 0, 255); }
-q::before, q::after { font-size: larger; color: rgb(255, 0, 0); background: rgb(204, 204, 204); }
-q::before { content: open-quote; }
-q::after { content: close-quote; }

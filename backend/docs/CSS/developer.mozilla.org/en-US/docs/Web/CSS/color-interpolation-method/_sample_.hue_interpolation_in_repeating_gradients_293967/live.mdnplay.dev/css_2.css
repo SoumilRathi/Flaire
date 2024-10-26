@@ -1,5 +1,0 @@
-
-.gradient { height: 200px; width: 200px; display: inline-block; font-family: monospace; margin: 10px; font-size: 16px; }
-.conic { background-image: repeating-conic-gradient(in lab, burlywood, blueviolet 120deg); }
-.linear { background-image: repeating-linear-gradient(in oklch, burlywood, blueviolet 75px); }
-.radial { background-image: repeating-radial-gradient(in oklch longer hue, blueviolet 50px, burlywood 100px); }

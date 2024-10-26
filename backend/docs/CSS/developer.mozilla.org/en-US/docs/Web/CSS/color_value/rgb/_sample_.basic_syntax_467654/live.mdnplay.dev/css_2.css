@@ -1,7 +1,0 @@
-
-div { display: flex; gap: 20px; height: 50px; flex: 1 1 0%; }
-body { height: calc(-20px + 100vh); }
-body { background: repeating-linear-gradient(-45deg, rgb(238, 238, 238) 0px, rgb(238, 238, 238) 2px, rgb(255, 255, 255) 2px, rgb(255, 255, 255) 6px); padding: 10px; }
-#integer { background-color: rgb(189, 85, 218); }
-#percent { background-color: rgb(189, 84, 217); }
-#alpha { background-color: rgba(189, 85, 218, 0.25); }

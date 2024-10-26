@@ -1,4 +1,0 @@
-
-.flexbox { display: flex; flex-flow: wrap; height: 100px; column-gap: 20px; }
-.flexbox > div { border: 1px solid green; background-color: lime; flex: 1 1 200px; }
-div:nth-of-type(3n) { flex: 1 1 300px; }

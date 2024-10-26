@@ -1,6 +1,0 @@
-
-body { margin: 0px; display: grid; grid-template-columns: 1fr 1fr; padding: 24px; gap: 24px; background-color: floralwhite; font-family: sans-serif; }
-@supports not (height: 1lh) {
-  body::before { grid-column-start: 1; grid-column-end: -1; padding: 8px; border-radius: 4px; background-color: tomato; color: white; content: "You browser doesn't support lh unit just yet"; }
-}
-p { margin: 0px; background-image: repeating-linear-gradient(to top, lightskyblue 0px, lightskyblue 2px, transparent 2px, transparent 1lh); }

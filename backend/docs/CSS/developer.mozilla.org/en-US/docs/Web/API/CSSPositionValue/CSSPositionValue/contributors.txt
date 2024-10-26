@@ -1,8 +1,0 @@
-# Contributors by commit history
-https://github.com/mdn/content/commits/main/files/en-us/web/api/csspositionvalue/csspositionvalue/index.md
-
-# Original Wiki contributors
-sideshowbarker
-estelle
-Wuzzel
-jpmedley

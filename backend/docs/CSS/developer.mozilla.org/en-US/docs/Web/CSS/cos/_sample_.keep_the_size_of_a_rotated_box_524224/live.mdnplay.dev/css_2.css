@@ -1,5 +1,0 @@
-
-body { height: 100vh; display: flex; justify-content: center; align-items: center; gap: 50px; }
-div.original-square { width: 100px; height: 100px; background-color: blue; }
-div.rotated-diamond { width: 100px; height: 100px; background-color: red; transform: rotate(45deg); }
-div.rotated-scaled-diamond { width: calc(70.710678px); height: calc(70.710678px); margin: calc(17.67767px); transform: rotate(45deg); transform-origin: center center; background-color: green; }

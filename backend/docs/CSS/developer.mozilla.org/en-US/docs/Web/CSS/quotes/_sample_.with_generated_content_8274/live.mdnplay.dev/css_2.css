@@ -1,4 +1,0 @@
-
-.quote { quotes: "\"" "\"" "'" "'"; }
-.quote::before { content: open-quote; }
-.quote::after { content: close-quote; }

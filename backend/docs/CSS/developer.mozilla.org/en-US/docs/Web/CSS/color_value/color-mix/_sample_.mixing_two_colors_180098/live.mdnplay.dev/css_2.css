@@ -1,9 +1,0 @@
-
-ul { display: flex; list-style-type: none; font-size: 150%; gap: 10px; border: 2px solid; padding: 10px; }
-li { padding: 10px; flex: 1 1 0%; box-sizing: border-box; font-family: monospace; outline: rgb(167, 30, 20) solid 3px; text-align: center; }
-li:nth-child(1) { background-color: color-mix(in oklab, rgb(167, 30, 20) 0%, white); }
-li:nth-child(2) { background-color: color-mix(in oklab, rgb(167, 30, 20) 25%, white); }
-li:nth-child(3) { background-color: color-mix(in oklab, rgb(167, 30, 20), white); }
-li:nth-child(4) { background-color: color-mix(in oklab, rgb(167, 30, 20) 75%, white); }
-li:nth-child(5) { background-color: color-mix(in oklab, rgb(167, 30, 20) 100%, white); }
-li:nth-child(6) { background-color: color-mix(in oklab, rgb(167, 30, 20), white); }

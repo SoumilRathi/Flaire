@@ -1,5 +1,0 @@
-
-.bold { font-family: Arial; font-size: 12px; font-weight: bold; }
-#div1, #div3 { height: 80px; position: relative; border: 1px dashed rgb(102, 153, 102); background-color: rgb(204, 255, 204); padding-left: 5px; }
-#div2 { opacity: 0.8; z-index: 1; position: absolute; width: 150px; height: 200px; top: 20px; left: 170px; border: 1px dashed rgb(153, 0, 0); background-color: rgb(255, 221, 221); text-align: center; }
-#div4 { opacity: 0.8; z-index: 2; position: absolute; width: 200px; height: 80px; top: 65px; left: 50px; border: 1px dashed rgb(0, 0, 153); background-color: rgb(221, 221, 255); text-align: left; padding-left: 10px; }

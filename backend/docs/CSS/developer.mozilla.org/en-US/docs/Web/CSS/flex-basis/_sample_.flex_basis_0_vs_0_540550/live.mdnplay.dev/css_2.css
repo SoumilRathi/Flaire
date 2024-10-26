@@ -1,6 +1,0 @@
-
-.container { width: 40vw; padding: 1rem; border: 1px dashed blue; display: inline-flex; flex-direction: column; }
-section { border: 1px solid red; overflow: auto; min-height: 200px; }
-.content { background: wheat; height: 300px; }
-.container.basis-0 > * { flex-basis: 0px; }
-.container.basis-0-percent > * { flex-basis: 0%; }

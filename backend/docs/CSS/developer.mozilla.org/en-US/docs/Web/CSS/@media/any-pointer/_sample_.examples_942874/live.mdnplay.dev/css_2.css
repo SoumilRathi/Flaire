@@ -1,8 +1,0 @@
-
-input[type="checkbox"]:checked { background: gray; }
-@media (any-pointer: fine) {
-  input[type="checkbox"] { appearance: none; width: 15px; height: 15px; border: 1px solid blue; }
-}
-@media (any-pointer: coarse) {
-  input[type="checkbox"] { appearance: none; width: 30px; height: 30px; border: 2px solid red; }
-}

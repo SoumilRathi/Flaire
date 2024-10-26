@@ -1,7 +1,0 @@
-
-a { color: blue; }
-a[href^="#"] { background-color: gold; }
-a[href*="example"] { background-color: silver; }
-a[href*="insensitive" i] { color: cyan; }
-a[href$=".org"] { color: red; }
-a[href^="https://"][href$=".org"] { color: green; }

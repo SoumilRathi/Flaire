@@ -1,7 +1,0 @@
-
-.fancy { text-shadow: gold 2px 2px 3px; }
-p:not(.fancy) { color: green; }
-body :not(p) { text-decoration: underline; }
-body :not(div):not(.fancy) { font-weight: bold; }
-body :not(div, .fancy) { text-decoration: overline underline; }
-h2 :not(span.foo) { color: red; }

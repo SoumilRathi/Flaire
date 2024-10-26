@@ -1,4 +1,0 @@
-
-li { --boxColor: hsl(55 90% 60% / 100%); }
-li:nth-of-type(3n) { --boxColor: hsl(155 90% 60% / 100%); }
-li:nth-of-type(3n+1) { --boxColor: hsl(255 90% 60% / 100%); }

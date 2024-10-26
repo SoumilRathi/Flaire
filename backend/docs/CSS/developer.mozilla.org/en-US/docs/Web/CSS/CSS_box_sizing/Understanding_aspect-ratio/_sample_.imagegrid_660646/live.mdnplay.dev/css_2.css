@@ -1,6 +1,0 @@
-
-.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); font-size: 0px; }
-div div { aspect-ratio: 5 / 2; background-color: rgb(204, 204, 204); }
-img { height: 100%; width: 100%; }
-.cover { object-fit: cover; }
-.contain { object-fit: contain; }

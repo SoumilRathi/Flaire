@@ -1,5 +1,0 @@
-
-ol { counter-reset: listCounter 0; padding-left: 5em; }
-li { counter-increment: listCounter 1; }
-li::marker { content: "Item #" counter(listCounter) " is: "; }
-li::after { content: "[" counter(listCounter, decimal-leading-zero) "] == [" counter(listCounter, upper-roman) "]"; }

@@ -1,8 +1,0 @@
-
-.anchor { font-size: 2rem; color: white; text-shadow: black 1px 1px 1px; background-color: rgb(128, 128, 255); text-align: center; align-content: center; outline: black solid 1px; }
-body { width: 80%; margin: 0px auto; }
-.infobox { align-content: center; color: darkblue; background-color: azure; outline: rgb(221, 221, 221) solid 1px; font-size: 1rem; text-align: center; }
-.anchor { width: 100px; height: 100px; }
-.infobox { position: fixed; }
-#infobox1 { margin-left: 5px; }
-#infobox2 { margin-bottom: 5px; }

@@ -1,6 +1,0 @@
-
-#motion-demo { offset-path: path("M 20 20 C 20 100 200 0 200 100"); animation: 3000ms ease-in-out infinite alternate move; width: 40px; height: 40px; background: cyan; }
-@keyframes move { 
-  0% { offset-distance: 0%; }
-  100% { offset-distance: 100%; }
-}

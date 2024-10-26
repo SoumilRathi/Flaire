@@ -1,5 +1,0 @@
-
-ul { border: 1px dashed blue; }
-li { border: 1px dashed red; list-style-type: none; }
-body { width: 15em; }
-ul { display: block; list-style-type: disc; margin-block: 1em; padding-inline-start: 40px; }

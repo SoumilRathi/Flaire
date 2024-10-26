@@ -1,9 +1,0 @@
-
-div { height: 50px; padding: 5px; margin: 5px; border: 1px solid black; display: flex; justify-content: space-between; align-items: center; }
-span { background-color: rgba(255, 255, 255, 0.8); padding: 3px; }
-[data-color="redtogreen-yellow"] { background-image: linear-gradient(to right, lab(50 125 125), lab(50 -125 125)); }
-[data-color="redtogreen-zero"] { background-image: linear-gradient(to right, lab(50 125 0), lab(50 -125 0)); }
-[data-color="redtogreen-blue"] { background-image: linear-gradient(to right, lab(50 125 -125), lab(50 -125 -125)); }
-[data-color="yellowtoblue-red"] { background-image: linear-gradient(to right, lab(50 125 125), lab(50 125 -125)); }
-[data-color="yellowtoblue-zero"] { background-image: linear-gradient(to right, lab(50 0 125), lab(50 0 -125)); }
-[data-color="yellowtoblue-green"] { background-image: linear-gradient(to right, lab(50 -125 125), lab(50 -125 -125)); }

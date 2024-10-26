@@ -1,8 +1,0 @@
-
-#wrap { width: 700px; margin: 0px auto; background: rgb(92, 92, 92); }
-pre { white-space: pre-line; overflow-wrap: break-word; }
-#example_1 { width: 200px; height: 200px; position: absolute; left: 20px; top: 20px; background-color: rgb(216, 245, 255); }
-#example_2 { width: 200px; height: 200px; position: relative; top: 0px; right: 0px; background-color: rgb(193, 255, 219); }
-#example_3 { width: 600px; height: 400px; position: relative; top: 20px; left: 20px; background-color: rgb(255, 215, 194); }
-#example_4 { width: 200px; height: 200px; position: absolute; bottom: 10px; right: 20px; background-color: rgb(255, 199, 228); }
-#example_5 { position: absolute; right: 0px; left: 0px; top: 100px; background-color: rgb(215, 255, 194); }

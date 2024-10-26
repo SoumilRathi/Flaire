@@ -1,9 +1,0 @@
-
-* { box-sizing: border-box; }
-.wrapper { border: 2px solid rgb(247, 103, 7); border-radius: 5px; background-color: rgb(255, 244, 230); }
-.wrapper > div { border: 2px solid rgb(255, 169, 77); border-radius: 5px; background-color: rgb(255, 216, 168); padding: 1em; color: rgb(217, 72, 15); }
-.wrapper { display: grid; grid-template-columns: [main-start] 1fr [content-start] 1fr [content-end] 1fr [main-end]; grid-template-rows: [main-start] 100px [content-start] 100px [content-end] 100px [main-end]; }
-.box1 { grid-column-start: main-start; grid-row-start: main-start; grid-row-end: main-end; }
-.box2 { grid-column-start: content-end; grid-row-start: main-start; grid-row-end: content-end; }
-.box3 { grid-column-start: content-start; grid-row-start: main-start; }
-.box4 { grid-column-start: content-start; grid-column-end: main-end; grid-row-start: content-end; }

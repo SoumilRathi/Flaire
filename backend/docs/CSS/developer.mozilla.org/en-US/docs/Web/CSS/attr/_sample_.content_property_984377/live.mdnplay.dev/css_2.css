@@ -1,2 +1,0 @@
-
-[data-foo]::before { content: attr(data-foo) " "; }

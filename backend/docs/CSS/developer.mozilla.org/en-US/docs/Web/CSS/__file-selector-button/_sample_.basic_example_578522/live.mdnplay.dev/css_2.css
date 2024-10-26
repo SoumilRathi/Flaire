@@ -1,4 +1,0 @@
-
-form { display: flex; gap: 1em; align-items: center; }
-input[type="file"]::file-selector-button { border: 2px solid rgb(108, 92, 231); padding: 0.2em 0.4em; border-radius: 0.2em; background-color: rgb(162, 155, 254); transition: 1s; }
-input[type="file"]::file-selector-button:hover { background-color: rgb(129, 236, 236); border: 2px solid rgb(0, 206, 201); }

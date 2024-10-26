@@ -1,5 +1,0 @@
-
-.post { container-type: inline-size; }
-@container (width < 650px) {
-  .card { width: 50%; background-color: gray; font-size: 1em; }
-}

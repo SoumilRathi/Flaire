@@ -1,5 +1,0 @@
-
-div { background-color: rgb(255, 238, 153); background-repeat: no-repeat; width: 300px; height: 80px; margin-bottom: 12px; }
-.exampleone { background: url("../startransparent.gif/index.html.gif") 2.5cm bottom no-repeat rgb(255, 238, 153); }
-.exampletwo { background: url("../startransparent.gif/index.html.gif") left 4em bottom 1em no-repeat rgb(255, 238, 153); }
-.examplethree { background-image: url("../startransparent.gif/index.html.gif"), url("../catfront.png/index.html.png"); background-position: 0px 0px, right 3em bottom 2em; }

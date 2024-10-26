@@ -1,7 +1,0 @@
-
-div { background-color: black; margin: 4px 0px; width: 100%; }
-div > code { display: block; background-color: darkblue; color: white; height: 48px; }
-.min1 > code { width: min(9999px, 50%); }
-.min2 > code { width: min(9999px, 100%); }
-.min3 > code { width: min(120px, 150px, 90%); }
-.min4 > code { width: min(80px, 90%); }

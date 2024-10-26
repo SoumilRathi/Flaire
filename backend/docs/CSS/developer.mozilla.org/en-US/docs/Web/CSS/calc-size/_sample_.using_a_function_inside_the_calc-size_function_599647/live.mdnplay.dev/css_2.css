@@ -1,8 +1,0 @@
-
-* { box-sizing: border-box; }
-body { width: 600px; margin: 0px auto; }
-form { margin-top: 20px; padding: 20px; font-family: Arial, Helvetica, sans-serif; background: rgb(238, 238, 238); border: 2px solid rgb(204, 204, 204); }
-div { display: flex; align-items: center; }
-div:not(div:last-child) { margin-bottom: 20px; }
-label { width: 100px; }
-input { }

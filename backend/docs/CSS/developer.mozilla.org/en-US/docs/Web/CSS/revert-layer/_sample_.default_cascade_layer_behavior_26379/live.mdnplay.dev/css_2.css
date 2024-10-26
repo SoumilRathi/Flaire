@@ -1,9 +1,0 @@
-
-@layer base, special;
-@layer special {
-  .item { color: red; }
-}
-@layer base {
-  .item { color: blue; }
-  .feature { color: green; }
-}

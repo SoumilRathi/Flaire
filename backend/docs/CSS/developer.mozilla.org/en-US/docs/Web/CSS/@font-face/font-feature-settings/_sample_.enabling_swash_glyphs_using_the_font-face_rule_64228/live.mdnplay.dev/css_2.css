@@ -1,6 +1,0 @@
-
-@font-face { font-family: MonteCarlo; src: url("../montecarlo-regular.woff2/index.html.woff2"); }
-@font-face { font-family: MonteCarlo2; src: url("../montecarlo-regular.woff2/index.html.woff2"); font-feature-settings: "swsh"; }
-p { font-size: 3rem; margin: 0.7rem 3rem; }
-.swashoff { font-family: MonteCarlo; }
-.swashon { font-family: MonteCarlo2; }

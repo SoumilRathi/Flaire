@@ -1,3 +1,0 @@
-
-.foo p ~ span { color: blue; }
-.foo p ~ .foo span { color: green; }

@@ -1,2 +1,0 @@
-
-li:nth-last-child(n+3), li:nth-last-child(3) ~ li { color: red; }

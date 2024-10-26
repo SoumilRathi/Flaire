@@ -1,3 +1,0 @@
-
-#replaced { content: url("../mdn.svg/index.html.svg"); }
-div::after { content: " (" attr(id) ")"; }

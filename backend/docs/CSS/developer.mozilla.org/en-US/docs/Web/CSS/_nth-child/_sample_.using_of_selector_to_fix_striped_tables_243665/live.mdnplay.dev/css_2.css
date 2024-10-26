@@ -1,5 +1,0 @@
-
-.wrapper { display: flex; justify-content: space-around; }
-td { padding: 0.125rem 0.5rem; }
-.broken > tbody > tr:nth-child(2n) { background-color: silver; }
-.fixed > tbody > tr:nth-child(2n of :not([hidden])) { background-color: silver; }

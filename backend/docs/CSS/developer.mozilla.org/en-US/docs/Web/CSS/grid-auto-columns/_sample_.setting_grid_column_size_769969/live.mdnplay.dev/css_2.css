@@ -1,3 +1,0 @@
-
-#grid { height: 100px; display: grid; grid-template-areas: "a a"; gap: 10px; grid-auto-columns: 200px; }
-#grid > div { background-color: lime; }

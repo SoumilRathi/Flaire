@@ -1,9 +1,0 @@
-
-.vertical-lr { writing-mode: vertical-lr; }
-.rotated { transform: rotate(180deg); }
-.sideways-lr { }
-.only-rotate { inline-size: fit-content; transform: rotate(-90deg); }
-table { border-collapse: collapse; }
-td, th { border: 2px solid black; padding: 4px; }
-th { background-color: lightgray; }
-span { display: inline-block; width: 1.5em; text-align: center; }

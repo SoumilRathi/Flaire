@@ -1,4 +1,0 @@
-
-body { font-family: monospace; }
-.safari meter { appearance: none; }
-#styled::-webkit-meter-suboptimum-value { background: linear-gradient(rgb(255, 255, 119), rgb(153, 153, 0) 45%, rgb(153, 153, 0) 55%, rgb(255, 255, 119)); height: 100%; box-sizing: border-box; }

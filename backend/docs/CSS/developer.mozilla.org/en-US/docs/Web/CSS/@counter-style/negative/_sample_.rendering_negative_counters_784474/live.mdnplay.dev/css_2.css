@@ -1,3 +1,0 @@
-
-@counter-style neg { system: extends decimal; negative: "(-" ")"; suffix: ": "; }
-ol { list-style: neg; }

@@ -1,5 +1,0 @@
-
-p { color: red; }
-.p1 { color: var(--invalid-color); }
-.p2 { --invalid-color: 20px; color: var(--invalid-color); }
-.p3 { }

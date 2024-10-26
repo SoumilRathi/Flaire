@@ -1,5 +1,0 @@
-
-main { display: flex; text-align: center; }
-main > article { flex: 1 1 0%; order: 2; }
-main > nav { width: 200px; order: 1; }
-main > aside { width: 200px; order: 3; }

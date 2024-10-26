@@ -1,5 +1,0 @@
-
-.container { background: url("../image.jpg/index.html.jpg") right center / contain no-repeat rgb(212, 213, 178); }
-p { backdrop-filter: brightness(150%); text-shadow: rgb(255, 255, 255) 2px 2px; }
-.container { padding: 5rem 3rem 1rem; width: 30rem; }
-p { padding: 0.5rem; color: rgb(0, 0, 0); font-size: 2rem; font-family: sans-serif; }

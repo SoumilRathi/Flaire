@@ -1,6 +1,0 @@
-
-* { font-style: italic; }
-p { color: red; }
-.myClass { text-decoration: underline; }
-#myId { font-family: monospace; }
-p.myClass#myId { font-size: 1.5rem; }

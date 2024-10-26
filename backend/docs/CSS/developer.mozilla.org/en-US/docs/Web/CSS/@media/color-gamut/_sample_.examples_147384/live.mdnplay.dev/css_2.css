@@ -1,5 +1,0 @@
-
-p { padding: 10px; border: solid; }
-@media (color-gamut: srgb) {
-  p { background: rgb(244, 174, 138); }
-}

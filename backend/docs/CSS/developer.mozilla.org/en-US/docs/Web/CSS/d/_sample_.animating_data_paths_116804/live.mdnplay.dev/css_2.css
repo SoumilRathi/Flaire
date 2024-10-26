@@ -1,4 +1,0 @@
-
-svg { border: 1px solid; }
-path { transition: 2s; fill: none; stroke: red; stroke-width: 3px; }
-svg:hover path { stroke: black; }

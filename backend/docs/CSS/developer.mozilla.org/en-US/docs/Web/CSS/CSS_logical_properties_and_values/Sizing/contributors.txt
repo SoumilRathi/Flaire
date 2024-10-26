@@ -1,7 +1,0 @@
-# Contributors by commit history
-https://github.com/mdn/content/commits/main/files/en-us/web/css/css_logical_properties_and_values/sizing/index.md
-
-# Original Wiki contributors
-chrisdavidmills
-ExE-Boss
-rachelandrew

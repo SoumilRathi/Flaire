@@ -1,5 +1,0 @@
-
-.wrapper { height: 110px; padding: 10px; display: flex; gap: 10px; text-align: center; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 28px; line-height: normal; font-family: "Marker Felt", Zapfino, cursive; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; border: 6px solid mediumturquoise; }
-div { flex: 1 1 0%; }
-.boxLeft { background-color: rgb(245, 130, 130); outline: darkred solid 2px; }
-.boxRight { background-color: rgb(191, 161, 222); outline: rgb(110, 20, 120) dashed 4px; color: rgb(255, 255, 255); text-decoration: underline; text-decoration-style: wavy; text-decoration-color: rgb(136, 255, 136); text-shadow: black 2px 2px 3px; }

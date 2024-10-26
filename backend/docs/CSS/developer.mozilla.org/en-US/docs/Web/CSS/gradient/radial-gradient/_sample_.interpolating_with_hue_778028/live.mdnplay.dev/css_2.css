@@ -1,6 +1,0 @@
-
-div { display: inline-block; margin-top: 1rem; width: 45vw; height: 80vh; }
-.shorter::before { content: "shorter hue"; display: block; margin-top: -1rem; }
-.longer::before { content: "longer hue"; display: block; margin-top: -1rem; }
-.shorter { background-image: radial-gradient(circle in hsl, red, blue); }
-.longer { background-image: radial-gradient(circle in hsl longer hue, red, blue); }

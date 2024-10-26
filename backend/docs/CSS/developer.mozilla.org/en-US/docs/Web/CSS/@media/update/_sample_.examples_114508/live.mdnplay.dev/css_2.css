@@ -1,8 +1,0 @@
-
-@keyframes jiggle { 
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(25px); }
-}
-@media (update: fast) {
-  p { animation: 1s linear infinite alternate jiggle; }
-}

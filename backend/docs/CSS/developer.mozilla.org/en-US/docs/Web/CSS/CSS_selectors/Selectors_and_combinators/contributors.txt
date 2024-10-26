@@ -1,5 +1,0 @@
-# Contributors by commit history
-https://github.com/mdn/content/commits/main/files/en-us/web/css/css_selectors/selectors_and_combinators/index.md
-
-# Original Wiki contributors
-

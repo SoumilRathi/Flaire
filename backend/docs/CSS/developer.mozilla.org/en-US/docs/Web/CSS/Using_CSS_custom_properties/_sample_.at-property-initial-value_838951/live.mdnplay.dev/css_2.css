@@ -1,7 +1,0 @@
-
-@property --box-color { syntax: "<color>"; inherits: false; initial-value: cornflowerblue; }
-.one { --box-color: aquamarine; background-color: var(--box-color); }
-.two { --box-color: aqumarine; background-color: var(--box-color); }
-.three { --box-color: 2rem; background-color: var(--box-color); }
-div { color: white; font-family: sans-serif; width: 100px; height: 100px; margin: 4px; padding: 8px; border: 2px solid black; display: inline-block; }
-.one { color: black; }

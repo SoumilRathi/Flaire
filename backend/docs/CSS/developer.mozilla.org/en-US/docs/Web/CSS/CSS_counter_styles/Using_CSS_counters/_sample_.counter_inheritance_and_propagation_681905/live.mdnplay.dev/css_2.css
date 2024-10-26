@@ -1,8 +1,0 @@
-
-.same-primary-name, .new-secondary-name, .same-secondary-name { display: inline-block; }
-@counter-style style { system: numeric; symbols: "" "1" "2" "3" "4" "5" "6" "7" "8" "9" "10"; }
-section { counter-reset: primary 3; }
-div::after { content: " ('primary' counters: " counters(primary, "-", style) ", 'secondary' counters: " counters(secondary, "-", style) ")"; color: blue; }
-.same-primary-name { counter-reset: primary 6; }
-.new-secondary-name { counter-reset: secondary 5; }
-.same-secondary-name { counter-reset: secondary 10; }

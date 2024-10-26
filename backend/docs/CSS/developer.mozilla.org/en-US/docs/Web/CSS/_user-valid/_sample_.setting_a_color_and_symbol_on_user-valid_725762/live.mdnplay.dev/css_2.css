@@ -1,3 +1,0 @@
-
-input:user-valid { border: 2px solid green; }
-input:user-valid + span::before { content: "✓"; color: green; }

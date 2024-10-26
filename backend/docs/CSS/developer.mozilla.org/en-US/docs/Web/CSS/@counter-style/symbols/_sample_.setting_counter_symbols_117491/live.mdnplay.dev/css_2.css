@@ -1,3 +1,0 @@
-
-@counter-style symbols-example { system: fixed 1; symbols: A "1" "Ⓑ" D E; }
-.list { list-style: symbols-example; }

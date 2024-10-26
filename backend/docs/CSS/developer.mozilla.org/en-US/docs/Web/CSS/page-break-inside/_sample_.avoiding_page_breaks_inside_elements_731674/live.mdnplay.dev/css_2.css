@@ -1,6 +1,0 @@
-
-.page { background-color: rgb(140, 255, 160); height: 90px; width: 200px; column-count: 1; column-width: 100px; }
-.list, ol, ul, p { break-inside: avoid; }
-p { background-color: rgb(140, 160, 255); }
-ol, ul, .list { margin: 0.5em 0px; display: block; background-color: orange; }
-p:first-child { margin-top: 0px; }

@@ -1,7 +1,0 @@
-
-div[lang] { font-weight: bold; }
-div:not([lang]) { font-style: italic; }
-div[lang~="en-us"] { color: blue; }
-div[lang="pt"] { color: green; }
-div[lang|="zh"] { color: red; }
-div[data-lang="zh-Hant-TW"] { color: purple; }

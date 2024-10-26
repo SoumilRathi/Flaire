@@ -1,2 +1,0 @@
-
-a[href^="https://"]::after { content: " (URL: " attr(href) ")"; color: darkgreen; }

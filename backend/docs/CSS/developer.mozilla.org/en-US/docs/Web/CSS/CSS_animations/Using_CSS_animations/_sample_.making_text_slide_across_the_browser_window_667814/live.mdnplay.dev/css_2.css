@@ -1,6 +1,0 @@
-
-p { animation-duration: 3s; animation-name: slidein; }
-@keyframes slidein { 
-  0% { translate: 150vw; scale: 2 1; }
-  100% { translate: 0px; scale: 1; }
-}

@@ -1,4 +1,0 @@
-
-form { border: 1px solid; color: gray; padding: 4px; }
-form:focus-within { background: rgb(255, 255, 136); color: black; }
-input { margin: 4px; }

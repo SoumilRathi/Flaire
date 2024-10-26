@@ -1,4 +1,0 @@
-
-div { width: 80px; height: 80px; background-color: skyblue; }
-.perspective { transform: perspective(400px) translateZ(-100px); background-color: limegreen; }
-.scaled-translated { transform: perspective(400px) scaleZ(2) translateZ(-100px); background-color: pink; }

@@ -1,7 +1,0 @@
-
-* { box-sizing: border-box; }
-.wrapper { background-color: palegoldenrod; padding: 10px; max-width: 400px; display: grid; grid-template-columns: repeat(3, 1fr); }
-.item { border-radius: 5px; background-color: rgb(207, 232, 220); }
-@supports (grid-template-rows: subgrid) {
-  .wrapper { grid-template-rows: subgrid; gap: 10px; background-color: lightblue; text-align: center; }
-}

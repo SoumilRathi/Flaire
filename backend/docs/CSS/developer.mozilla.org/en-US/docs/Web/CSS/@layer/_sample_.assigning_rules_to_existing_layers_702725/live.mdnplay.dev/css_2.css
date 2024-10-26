@@ -1,8 +1,0 @@
-
-@layer base, special;
-@layer special {
-  .item { color: rebeccapurple; }
-}
-@layer base {
-  .item { color: green; border: 5px solid green; font-size: 1.3em; padding: 0.5em; }
-}

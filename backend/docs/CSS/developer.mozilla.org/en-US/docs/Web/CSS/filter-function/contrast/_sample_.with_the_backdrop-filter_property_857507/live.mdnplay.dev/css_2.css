@@ -1,6 +1,0 @@
-
-.container { background: url("../image.jpg/index.html.jpg") center center / contain no-repeat rgb(51, 51, 153); }
-p { backdrop-filter: contrast(0.5); }
-code { backdrop-filter: contrast(0.15); }
-.container { padding: 3rem; width: 30rem; }
-p { padding: 0.5rem; color: rgb(255, 255, 255); font-family: sans-serif; }
