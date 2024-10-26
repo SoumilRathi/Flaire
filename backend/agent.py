@@ -7,11 +7,10 @@ from openai import OpenAI
 from memory.working_memory import WorkingMemory
 from memory.lt_memory import LongTermMemory
 from helper_functions import sort_actions_by_priority, actions_instructions, use_claude
-from actions.styling.promptStrings import componentPrompt, instructionPrompt, stylePrompt
+from promptStrings import componentPrompt, instructionPrompt, stylePrompt, memoryPrompt
 import threading
 import os
 from dotenv import load_dotenv
-from actions.styling.styleAction import style_code as style_action
 
 # Load environment variables from .env file
 load_dotenv()
@@ -27,6 +26,7 @@ class Agent:
         self.working_memory = WorkingMemory()
         self.long_term_memory = LongTermMemory()
         self.client_sid = None
+        self.project_id = None
         # self.actions_instructions = self.load_actions_from_file("actions.txt")
         self.decision_loop_running = False
         self.decision_thread = None
@@ -38,11 +38,6 @@ class Agent:
 
         componentsResponse = use_claude(component_prompt)
 
-        # we can then convert these components into memory. 
-        # the intricacies here have not been decided LMAO.
-        # TODO: Decide on how to convert components into memory.
-
-        # Extract components from the Claude response
         components_start = componentsResponse.find('<final_output>')
         components_end = componentsResponse.find('</final_output>')
         if components_start != -1 and components_end != -1:
@@ -56,7 +51,7 @@ class Agent:
         components_string = ', '.join([component['name'] for component in components])
 
         best_practices = self.long_term_memory.get_best_practices(components_string)
-        project_preferences = self.long_term_memory.get_project_preferences(components)
+        project_preferences = self.long_term_memory.get_project_preferences(components, self.project_id)
 
         self.working_memory.store_best_practices(best_practices)
         self.working_memory.store_project_preferences(project_preferences)
@@ -76,7 +71,7 @@ class Agent:
         self.working_memory.css_code = css_code;
 
         if self.style_callback:
-            self.style_callback(css_code, self.client_sid);
+            self.style_callback(css_code, self.client_sid, self.project_id);
 
         return;
 
@@ -124,6 +119,7 @@ class Agent:
         if "<execute>" in response:
             return best_action
         else:
+            print(response);
             return None
     
     def evaluate_actions(self, actions): 
@@ -241,7 +237,23 @@ class Agent:
         print("PROPOSED ACTIONS: ", proposed_actions)
         return proposed_actions
 
-        
+    def learn(self):
+        """Learns from the working memory and updates the long term memory"""
+        prompt = memoryPrompt(self.working_memory)
+        response = use_claude(prompt)
+
+        # Extract the memory updates from the response
+        start = response.find('<memory_update>')
+        end = response.find('</memory_update>')
+        if start != -1 and end != -1:
+            memory_update_json = response[start + len('<memory_update>'):end].strip()
+            memory_updates = json.loads(memory_update_json)["memory_update"]
+            self.long_term_memory.add_project_preferences(memory_updates, self.project_id)
+            print("Memory updates:", memory_updates)
+        else:
+            print("No memory updates found in the response.")
+        print("MEMORY UPDATE: ", response)
+        return;
     
     def execute_action(self, action):
         """Executes the selected action. This will simply do whatever the action is supposed to do, and then store the action in the working memory"""
@@ -257,15 +269,12 @@ class Agent:
 
         elif action_name == "record":
             self.working_memory.observations.append(action[6:])
-            isFinal = True
 
         elif action_name == "screenshot":
             self.screenshot_callback()
 
         elif action_name == "finish":
-
-            # TODO: Implement the learning process here
-
+            self.learn()
             isFinal = True
 
         print(f"Executing action: {action}")
@@ -304,7 +313,7 @@ class Agent:
             
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
-    def receive_input(self, html_code, css_code, user_input, client_sid):
+    def receive_input(self, html_code, css_code, user_input, client_sid, project_id):
         """Receive HTML code from the user"""
         self.working_memory.html_code = html_code
         self.working_memory.css_code = css_code
@@ -316,6 +325,7 @@ class Agent:
             self.working_memory.observations.append(user_input)
         
         self.client_sid = client_sid
+        self.project_id = project_id
         if not self.decision_loop_running:
             self.decision_thread = threading.Thread(target=self.make_decision)
             self.decision_thread.start()

@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, make_response
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
+from firebase import db
 from agent import Agent
 
 app = Flask(__name__)
@@ -41,7 +42,20 @@ def agent_reply_handler(message, client_sid):
     socketio.emit('agent_response', {"message": message}, room=client_sid)
     print(f"Message emitted: {message}")
 
-def style_callback(code, client_sid):
+def style_callback(code, client_sid, project_id):
+
+    # Get a reference to the specific document
+    doc_ref = db.collection('projects').document(project_id)
+    
+    # Update the document
+    doc_ref.update({
+        "updated": True,
+        'cssCode': code,
+    })
+
+    print("HEY THERE!!")
+    print("updated the docfile", project_id, code);
+    
     socketio.emit('styled_code', {"code": code}, room=client_sid)
 
 def screenshot_callback(screenshot, client_sid):
@@ -73,12 +87,13 @@ def handle_style_code(data):
     css_code = data.get('cssCode')
     css_type = data.get('cssType')
     user_input = data.get('messages')
+    project_id = data.get('id')
     client_sid = request.sid
     edit_classes = data.get('editClasses')
 
     print("STYLING CODE", html_code, css_code, css_type, edit_classes)
     
-    styled_code = agent.receive_input(html_code, css_code, user_input, client_sid)
+    styled_code = agent.receive_input(html_code, css_code, user_input, client_sid, project_id)
     
     emit('styled_code', styled_code)
 

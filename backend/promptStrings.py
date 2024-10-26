@@ -158,3 +158,45 @@ def stylePrompt(components, working_memory):
 
 
     return prompt;
+
+def memoryPrompt(working_memory):
+    """Returns a prompt for the working memory"""
+    prompt = f"""
+    You are an intelligent agent specializing in frontend web development. Your task was to analyze HTML code and separate it into distinct UI components. 
+    This process is crucial for organizing and styling web pages effectively.
+
+    As of now, you have completed your task, and it is time for you to reflect on what you have done and learned from this task.
+
+    You have the ability to update your long term memory so that you can use these learned experiences to guide your future actions.
+
+    Note that if you do not think that you have learned anything from this task, you do not need to update your memory. In this case, just output an empty list where you are required to output the memory updates.
+
+    Please note that these memories and updates are primarily intended as references for the project preferences. This would include things like colors, fonts, styles, etc.
+
+    Eg.
+    "Primary colors should be blue"
+    "Buttons should have a border radius of 5px"
+    etc.
+    
+    Here is your working memory:
+    <working_memory>
+    {working_memory.print()}
+    </working_memory>
+
+    Instructions:
+    1. Carefully examine your working memory.
+    2. Reflect on what you have done and learned from this task.
+    3. Update your long term memory so that you can use these learned experiences to guide your future actions.
+
+    Once you are ready, output the updates to the memory in the following format:
+
+    <memory_update>
+    {{
+        "memory_update": ["Update 1", "Update 2", "Update 3"]
+    }}
+    </memory_update>
+
+    Ensure that your updates are concise and to the point. Ensure that they are not redundant and that they are not contradictory to each other. Ensure that you output them in a list format within the <memory_update> tag.
+    """ 
+
+    return prompt
