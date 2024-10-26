@@ -1,0 +1,21 @@
+
+h2 + p ~ p { font-style: italic; }
+h2 + p + p { color: red; }
+.myClass + p { text-decoration: underline; }
+#myId > .myClass { outline: red dashed 3px; }
+* > p { font-size: 1.1rem; }
+h2 {
+  & + p {
+  & ~ p { font-style: italic; }
+  & + p { color: red; }
+}
+}
+.myClass {
+  & + p { text-decoration: underline; }
+}
+#myId {
+  & > .myClass { outline: red dashed 3px; }
+}
+* {
+  & > p { font-size: 1.1rem; }
+}

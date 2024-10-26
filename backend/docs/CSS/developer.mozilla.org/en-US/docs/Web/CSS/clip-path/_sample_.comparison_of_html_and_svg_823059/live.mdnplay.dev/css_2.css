@@ -1,0 +1,32 @@
+
+html, body { height: 100%; box-sizing: border-box; background: rgb(238, 238, 238); }
+.grid { width: 100%; height: 100%; display: flex; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: normal; font-family: monospace; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; }
+.row { display: flex; flex: 1 1 auto; flex-flow: wrap; }
+.col { flex: 1 1 auto; }
+.cell { margin: 0.5em; padding: 0.5em; background-color: rgb(255, 255, 255); overflow: hidden; text-align: center; flex: 1 1 0%; }
+.note { background: rgb(255, 243, 212); padding: 1em; margin: 0.5em 0.5em 0px; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 0.8em; line-height: normal; font-family: sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; text-align: left; white-space: nowrap; }
+.note + .row .cell { margin-top: 0px; }
+.container { display: inline-block; border: 1px dotted grey; position: relative; }
+.container::before { content: "margin"; position: absolute; top: 2px; left: 2px; font-style: italic; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 0.6em; line-height: normal; font-family: sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; }
+.view-box { box-shadow: rgb(239, 239, 239) 1rem 1rem 0px inset, rgb(239, 239, 239) -1rem -1rem 0px inset; }
+.container.view-box::after { content: "view-box"; position: absolute; left: 1.1rem; top: 1.1rem; font-style: italic; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 0.6em; line-height: normal; font-family: sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; }
+.cell span { display: block; margin-bottom: 0.5em; }
+p { font-family: sans-serif; background: rgb(0, 0, 0); color: pink; margin: 2em; padding: 3em 1em; border: 1em solid pink; width: 6em; }
+.none { clip-path: none; }
+.svg { clip-path: url("../%23myPath/index.html"); }
+.svg2 { clip-path: path("M 15 45 A 30 30 0 0 1 75 45 A 30 30 0 0 1 135 45 Q 135 90 75 130 Q 15 90 15 45 Z"); }
+.shape1 { clip-path: circle(25%); }
+.shape2 { clip-path: circle(25% at 25% 25%); }
+.shape3 { clip-path: circle(25% at 25% 25%) fill-box; }
+.shape4 { clip-path: circle(25% at 25% 25%) stroke-box; }
+.shape5 { clip-path: circle(25% at 25% 25%) view-box; }
+.shape6 { clip-path: circle(25% at 25% 25%) margin-box; }
+.shape7 { clip-path: circle(25% at 25% 25%); }
+.shape8 { clip-path: circle(25% at 25% 25%) padding-box; }
+.shape9 { clip-path: circle(25% at 25% 25%) content-box; }
+.defs { width: 0px; height: 0px; margin: 0px; }
+pre { margin-bottom: 0px; }
+svg { margin: 1em; font-family: sans-serif; width: 192px; height: 192px; }
+svg rect { stroke: pink; stroke-width: 16px; }
+svg text { fill: pink; text-anchor: middle; }
+svg text.em { font-style: italic; }

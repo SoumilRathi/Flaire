@@ -1,0 +1,2 @@
+
+div { width: 100px; height: 100px; background: conic-gradient(rgb(255, 0, 0), rgb(255, 0, 191), rgb(128, 0, 255), rgb(0, 64, 255), rgb(0, 255, 255), rgb(0, 255, 64), rgb(128, 255, 0), rgb(255, 191, 0), rgb(255, 0, 0)); clip-path: circle(); }

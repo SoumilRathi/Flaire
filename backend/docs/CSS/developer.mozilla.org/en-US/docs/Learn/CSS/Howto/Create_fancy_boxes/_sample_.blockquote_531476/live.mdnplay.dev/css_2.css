@@ -1,0 +1,8 @@
+
+blockquote { min-height: 5em; padding: 1em 4em; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 1em; line-height: 150%; font-family: sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; position: relative; background-color: lightgoldenrodyellow; }
+blockquote::before, blockquote::after { position: absolute; height: 3rem; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 6rem; line-height: 100%; font-family: Georgia, "Times New Roman", Times, serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; }
+blockquote::before { content: "“"; top: 0.3rem; left: 0.9rem; }
+blockquote::after { content: "”"; bottom: 0.3rem; right: 0.8rem; }
+blockquote:lang(fr)::before { content: "«"; top: -1.5rem; left: 0.5rem; }
+blockquote:lang(fr)::after { content: "»"; bottom: 2.6rem; right: 0.5rem; }
+blockquote i { display: block; font-size: 0.8em; margin-top: 1rem; text-align: right; }

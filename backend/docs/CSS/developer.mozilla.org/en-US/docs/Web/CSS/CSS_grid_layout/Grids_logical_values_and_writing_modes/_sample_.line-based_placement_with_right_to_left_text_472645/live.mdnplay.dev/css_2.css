@@ -1,0 +1,8 @@
+
+* { box-sizing: border-box; }
+.wrapper { border: 2px solid rgb(247, 103, 7); border-radius: 5px; background-color: rgb(255, 244, 230); }
+.wrapper > div { border: 2px solid rgb(255, 169, 77); border-radius: 5px; background-color: rgb(255, 216, 168); padding: 1em; color: rgb(217, 72, 15); }
+.wrapper { direction: rtl; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 100px); gap: 10px; }
+.item1 { grid-column-start: 1; grid-column-end: auto; }
+.item2 { grid-column-start: -1; grid-column-end: -3; }
+.item3 { grid-column-start: 1; grid-column-end: 3; grid-row-start: 2; grid-row-end: auto; }

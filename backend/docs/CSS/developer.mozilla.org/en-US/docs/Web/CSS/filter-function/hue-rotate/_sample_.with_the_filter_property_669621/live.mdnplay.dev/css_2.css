@@ -1,0 +1,3 @@
+
+p { filter: hue-rotate(-60deg); text-shadow: blue 2px 2px; background-color: magenta; color: goldenrod; border: 1em solid rebeccapurple; box-shadow: red -5px -5px inset, yellow 5px 5px; }
+p { padding: 0.5rem; font-size: 2rem; font-family: sans-serif; width: 85vw; }

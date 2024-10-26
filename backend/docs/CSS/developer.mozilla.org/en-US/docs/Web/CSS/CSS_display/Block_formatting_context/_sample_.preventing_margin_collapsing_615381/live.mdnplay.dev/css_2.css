@@ -1,0 +1,5 @@
+
+.blue, .red { height: 50px; margin: 10px 0px; }
+.blue { background: blue; }
+.red { background: red; }
+.outer { overflow: hidden; background: none; }

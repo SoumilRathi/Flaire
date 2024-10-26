@@ -1,0 +1,7 @@
+
+table { border-collapse: collapse; border: 1px solid black; width: 250px; height: 150px; }
+td { border: 1px solid black; }
+#r1 { background-color: lightblue; }
+#c12 { background-color: cyan; }
+#r2 { background-color: grey; }
+#r3 { background-color: olive; }

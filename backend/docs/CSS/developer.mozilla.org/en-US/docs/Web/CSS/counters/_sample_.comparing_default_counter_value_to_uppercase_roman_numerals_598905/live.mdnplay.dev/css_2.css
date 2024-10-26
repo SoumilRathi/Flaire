@@ -1,0 +1,5 @@
+
+ol { counter-reset: listCounter 0; }
+li { counter-increment: listCounter 1; }
+li::marker { content: counters(listCounter, ".", upper-roman) ") "; }
+li::before { content: counters(listCounter, ".") " == " counters(listCounter, ".", lower-roman); }

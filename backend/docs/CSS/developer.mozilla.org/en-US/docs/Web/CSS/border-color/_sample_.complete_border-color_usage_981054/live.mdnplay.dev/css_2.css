@@ -1,0 +1,7 @@
+
+#justone { border-color: red; }
+#horzvert { border-color: gold red; }
+#topvertbott { border-color: red cyan gold; }
+#trbl { border-color: red cyan black gold; }
+div { border: 0.3em solid; width: auto; margin: 0.5em; padding: 0.5em; }
+ul { margin: 0px; list-style: none; }

@@ -1,0 +1,4 @@
+
+.standard-box { padding: 4px; background-color: rgb(171, 205, 239); color: rgb(0, 0, 0); font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: "Open Sans", Helvetica, Arial, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; max-block-size: 160px; min-block-size: 100px; }
+.horizontal { writing-mode: horizontal-tb; }
+.vertical { writing-mode: vertical-rl; }

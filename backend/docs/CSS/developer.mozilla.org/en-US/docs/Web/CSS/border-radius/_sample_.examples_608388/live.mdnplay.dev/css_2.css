@@ -1,0 +1,9 @@
+
+pre { margin: 20px; padding: 20px; width: 80%; height: 80px; }
+pre#example-1 { border: 10px solid; border-radius: 10px 40px 40px 10px; }
+pre#example-2 { border: 1em groove red; border-radius: 2em; }
+pre#example-3 { background: gold; border: ridge gold; border-radius: 13em / 3em; }
+pre#example-4 { border: medium; border-radius: 40px 10px; background: gold; }
+pre#example-5 { border: medium; border-radius: 50%; background: burlywood; }
+pre#example-6 { border-style: dotted; border-color: currentcolor; border-image: none; border-width: 10px 4px; border-radius: 10px 40px; }
+pre#example-7 { border-style: dashed; border-color: currentcolor; border-image: none; border-width: 2px 4px; border-radius: 40px; }

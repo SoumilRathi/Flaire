@@ -1,0 +1,5 @@
+
+.scissorHalf { offset-path: path("M 900 190 L 993 245 V 201 A 11 11 0 0 1 1004 190 H 1075 A 11 11 0 0 1 1086 201 V 300 L 1294 423 H 1216 A 11 11 0 0 0 1205 434 V 789 A 11 11 0 0 1 1194 800 H 606 A 11 11 0 0 1 595 789 V 434 A 11 11 0 0 0 584 423 H 506 L 900 190"); animation: 4s linear infinite follow-path; }
+@keyframes follow-path { 
+  100% { offset-distance: 100%; }
+}

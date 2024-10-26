@@ -1,0 +1,8 @@
+
+body { display: flex; justify-content: space-evenly; font-family: monospace; }
+div { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+[class] { width: 40px; height: 40px; }
+.c1 { background: rgb(255, 0, 153); }
+.c2 { background: rgba(255, 0, 153, 0.667); }
+.c3 { background: rgb(255, 0, 153); }
+.c4 { background: rgba(255, 0, 153, 0.667); }

@@ -1,0 +1,5 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/css_scroll_snap/using_scroll_snap_events/index.md
+
+# Original Wiki contributors
+

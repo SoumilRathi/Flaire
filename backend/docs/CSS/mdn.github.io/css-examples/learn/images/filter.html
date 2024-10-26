@@ -1,0 +1,89 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/images/filter.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:15:49 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <title>Images and other unusual elements: filters</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .wrapper > * {
+        margin: 20px;
+        flex: 1;
+      }
+
+      .box {
+        border: 5px solid darkblue;
+      }
+    </style>
+
+    <style class="editable">
+      .box {
+        width: 300px;
+        height: 200px;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .blur {
+        filter: blur(10px);
+      }
+
+      .grayscale {
+        filter: grayscale(60%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="wrapper">
+        <div class="box">
+          <img src="balloons.jpg" alt="balloons" class="blur">
+        </div>
+        <div class="box">
+          <img src="balloons.jpg" alt="balloons" class="grayscale">
+        </div>
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 320px">img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+.grayscale {
+  filter: grayscale(60%);
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 120px">&lt;div class="wrapper"&gt;
+  &lt;div class="box"&gt;&lt;img src="balloons.jpg" alt="balloons" class="blur"&gt;&lt;/div&gt;
+  &lt;div class="box"&gt;&lt;img src="balloons.jpg" alt="balloons" class="grayscale"&gt;&lt;/div&gt;
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/images/filter.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:15:49 GMT -->
+
+</body></html>

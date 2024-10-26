@@ -1,0 +1,13 @@
+
+.container { display: grid; font-family: sans-serif; color: white; gap: 0.5rem; grid-template-columns: repeat(4, 1fr); margin-bottom: 1rem; }
+.container div { border-radius: 0.5rem; padding: 1rem; }
+input { width: 100%; margin: 0px; }
+:root { --hue: 0; }
+#color-1 { background-color: hsl(var(--hue) 50% 50%); }
+#color-2 { background-color: hsl(calc(var(--hue) + 10) 50% 50%); }
+#color-3 { background-color: hsl(calc(var(--hue) + 20) 50% 50%); }
+#color-4 { background-color: hsl(calc(var(--hue) + 30) 50% 50%); }
+#color-5 { background-color: hsl(calc(var(--hue) + 40) 50% 50%); }
+#color-6 { background-color: hsl(calc(var(--hue) + 50) 50% 50%); }
+#color-7 { background-color: hsl(calc(var(--hue) + 60) 50% 50%); }
+#color-8 { background-color: hsl(calc(var(--hue) + 70) 50% 50%); }

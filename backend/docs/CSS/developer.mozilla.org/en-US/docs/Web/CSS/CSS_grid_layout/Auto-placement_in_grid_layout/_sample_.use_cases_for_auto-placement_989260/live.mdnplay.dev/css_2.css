@@ -1,0 +1,6 @@
+
+* { box-sizing: border-box; }
+.wrapper { border: 2px solid rgb(247, 103, 7); border-radius: 5px; background-color: rgb(255, 244, 230); }
+dl { display: grid; grid-template-columns: auto 1fr; max-width: 300px; margin: 1em; line-height: 1.4; }
+dt { grid-column-start: 1; grid-column-end: auto; font-weight: bold; }
+dd { grid-column-start: 2; grid-column-end: auto; }

@@ -1,0 +1,6 @@
+
+@property --item-size { syntax: "<percentage>"; inherits: true; initial-value: 40%; }
+.container { display: flex; height: 200px; border: 1px dashed black; --item-size: 20%; --item-color: orange; }
+.item { width: var(--item-size); height: var(--item-size); background-color: var(--item-color); }
+.two { --item-size: initial; --item-color: inherit; }
+.three { --item-size: 1000px; --item-color: xyz; }

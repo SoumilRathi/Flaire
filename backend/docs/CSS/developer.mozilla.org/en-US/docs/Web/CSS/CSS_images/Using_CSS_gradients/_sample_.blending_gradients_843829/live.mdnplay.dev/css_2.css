@@ -1,0 +1,6 @@
+
+div { width: 120px; height: 120px; float: left; margin-right: 10px; box-sizing: border-box; }
+div { background: linear-gradient(to top, red, blue), linear-gradient(to right, rgb(85, 0, 255), rgb(0, 255, 85)); }
+.screen { background-blend-mode: screen; }
+.overlay { background-blend-mode: overlay; }
+.difference { background-blend-mode: difference; }

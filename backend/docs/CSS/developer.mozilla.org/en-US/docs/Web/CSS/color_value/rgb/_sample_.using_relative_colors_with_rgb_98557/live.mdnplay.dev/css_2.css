@@ -1,0 +1,11 @@
+
+#container { display: flex; width: 100vw; height: 100vh; box-sizing: border-box; }
+.item { flex: 1 1 0%; margin: 20px; }
+:root { --base-color: orange; }
+#one { background-color: var(--base-color); }
+#two { background-color: rgb(from var(--base-color) calc(r - 76.5) g calc(b + 76.5)); }
+#three { background-color: rgb(from var(--base-color) calc(r - 153) g calc(b + 153)); }
+@supports (color: rgb(from red r g calc(b + 30%))) {
+  #two { background-color: rgb(from var(--base-color) calc(r - 30%) g calc(b + 30%)); }
+  #three { background-color: rgb(from var(--base-color) calc(r - 60%) g calc(b + 60%)); }
+}

@@ -1,0 +1,4 @@
+
+body { display: flex; justify-content: space-around; }
+.box { background: pink; height: 80px; width: 80px; }
+.box:empty { background: lime; }

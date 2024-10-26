@@ -1,0 +1,41 @@
+<html><!-- Online page at https://live.mdnplay.dev/en-US/docs/Web/CSS/filter-function/blur/_sample_.blur.html --><head><meta charset="utf-8"><title>blur() - blur - code sample</title><link rel="stylesheet" href="../../../../../../css_1.css" type="text/css"><link rel="stylesheet" href="../../../../../../css_2.css" type="text/css"></head><body>
+        
+            <svg role="img" aria-label="Flag">
+  <filter id="blur">
+    <feGaussianBlur stdDeviation="3.5" edgeMode="duplicate"></feGaussianBlur>
+  </filter>
+  <image href="https://mdn.github.io/shared-assets/images/examples/progress-pride-flag.jpg" xlink:href="https://mdn.github.io/shared-assets/images/examples/progress-pride-flag.jpg" filter="url(#blur)"></image>
+</svg>
+
+<table cellpadding="5">
+  <thead>
+    <tr>
+      <th>Live example</th>
+      <th>SVG Equivalent</th>
+      <th>Original image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img alt="Pride flag" src="../../../../../../../mdn.github.io/shared-assets/images/examples/progress-pride-flag.jpg" class="filter"></img>
+      </td>
+      <td>
+        <svg id="svg" height="220" width="220" style="overflow: visible">
+          <filter id="svgBlur">
+            <feGaussianBlur stdDeviation="3.5"></feGaussianBlur>
+          </filter>
+          <image href="https://mdn.github.io/shared-assets/images/examples/progress-pride-flag.jpg" xlink:href="https://mdn.github.io/shared-assets/images/examples/progress-pride-flag.jpg" filter="url(#svgBlur)"></image>
+        </svg>
+      </td>
+      <td>
+        <img alt="Pride flag" src="../../../../../../../mdn.github.io/shared-assets/images/examples/progress-pride-flag.jpg"></img>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+        
+        
+    
+</body></html>

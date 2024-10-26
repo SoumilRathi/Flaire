@@ -1,0 +1,96 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/logical/border-longhands.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:32 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Border Properties</title>
+    <link rel="stylesheet" href="../css-cookbook/styles.css">
+    <style>
+      .container {
+        display: flex;
+      }
+      .box {
+        border-radius: 5px;
+        background-color: rgb(96 139 168 / 0.2);
+        margin: 10px;
+        width: 220px;
+        height: 220px;
+      }
+    </style>
+
+    <style class="editable">
+      .box {
+        writing-mode: horizontal-tb;
+        direction: ltr;
+      }
+
+      .physical {
+        border-top: 2px solid hotpink;
+        border-right-style: dotted;
+        border-right-color: goldenrod;
+        border-right-width: 5px;
+        border-bottom: 4px double black;
+        border-left: none;
+      }
+
+      .logical {
+        border-block-start: 2px solid hotpink;
+        border-inline-end-style: dotted;
+        border-inline-end-color: goldenrod;
+        border-inline-end-width: 5px;
+        border-block-end: 4px double black;
+        border-inline-start: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="container">
+        <div class="physical box">Borders use physical properties.</div>
+
+        <div class="logical box">Borders use logical properties.</div>
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 30px">.box {
+  writing-mode: horizontal-tb;
+  direction: ltr;
+}
+
+.physical {
+  border-top: 2px solid hotpink;
+  border-right-style: dotted;
+  border-right-color: goldenrod;
+  border-right-width: 5px;
+  border-bottom: 4px double black;
+  border-left: none;
+}
+
+.logical {
+  border-block-start: 2px solid hotpink;
+  border-inline-end-style: dotted;
+  border-inline-end-color: goldenrod;
+  border-inline-end-width: 5px;
+  border-block-end: 4px double black;
+  border-inline-start: none;
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 180px">&lt;div class="container"&gt;
+  &lt;div class="physical box"&gt;
+        Borders use physical properties.
+  &lt;/div&gt;
+
+  &lt;div class="logical box"&gt;
+    Borders use logical properties.
+  &lt;/div&gt;
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../css-cookbook/playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/logical/border-longhands.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:32 GMT -->
+
+</body></html>

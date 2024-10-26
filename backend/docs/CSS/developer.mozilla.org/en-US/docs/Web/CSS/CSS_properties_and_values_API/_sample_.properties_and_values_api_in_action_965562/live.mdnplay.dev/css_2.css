@@ -1,0 +1,4 @@
+
+.box { padding: 1rem; width: 90%; height: 4rem; font-family: sans-serif; font-size: large; color: white; border-radius: 0.5rem; }
+.box { background: linear-gradient(to right, var(--stop-color), lavenderblush); transition: --stop-color 2s; }
+.box:hover { --stop-color: aquamarine; }

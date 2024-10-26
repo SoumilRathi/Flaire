@@ -1,0 +1,13 @@
+
+* { margin: 0px; }
+html { padding: 20px; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: 20px; font-family: Arial, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; }
+div { opacity: 0.7; position: relative; }
+h1 { font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; font-weight: bold; }
+#div1, #div2 { border: 1px dashed rgb(102, 153, 102); padding: 10px; background-color: rgb(204, 255, 204); }
+#div1 { z-index: 5; margin-bottom: 190px; }
+#div2 { z-index: 2; }
+#div3 { z-index: 4; opacity: 1; position: absolute; top: 40px; left: 180px; width: 330px; border: 1px dashed rgb(153, 0, 0); background-color: rgb(255, 221, 221); padding: 40px 20px 20px; }
+#div4, #div5 { border: 1px dashed rgb(153, 153, 102); background-color: rgb(255, 255, 204); }
+#div4 { z-index: 6; margin-bottom: 15px; padding: 25px 10px 5px; }
+#div5 { z-index: 1; margin-top: 15px; padding: 5px 10px; }
+#div6 { z-index: 3; position: absolute; top: 20px; left: 180px; width: 150px; height: 125px; border: 1px dashed rgb(0, 0, 153); padding-top: 125px; background-color: rgb(221, 221, 255); text-align: center; }

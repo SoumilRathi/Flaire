@@ -1,0 +1,81 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/tasks/grid/grid2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:16:44 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Grid: task 2</title>
+
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+      .grid > * {
+        border-radius: 0.5em;
+        color: #fff;
+        padding: 0.5em;
+      }
+
+      .item1 {
+        background-color: rgb(74 102 112 / 70%);
+        border: 5px solid rgb(74 102 112 / 100%);
+      }
+
+      .item2 {
+        background-color: rgb(214 162 173 / 70%);
+        border: 5px solid rgb(214 162 173 / 100%);
+      }
+    </style>
+
+    <style class="editable">
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px 100px;
+        gap: 10px;
+      }
+
+      .item1 {
+      }
+
+      .item2 {
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="grid">
+        <div class="item1">One</div>
+        <div class="item2">Two</div>
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="min-height: 220px">.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
+  gap: 10px;
+}
+
+.item1 {
+
+}
+
+.item2 {
+
+}
+</textarea>
+
+    <textarea class="playable playable-html">&lt;div class="grid"&gt;
+  &lt;div class="item1"&gt;One&lt;/div&gt;
+  &lt;div class="item2"&gt;Two&lt;/div&gt;
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/tasks/grid/grid2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:16:44 GMT -->
+
+</body></html>

@@ -1,0 +1,4 @@
+
+div { width: 120px; height: 120px; float: left; margin-right: 10px; }
+.color-hint { background: linear-gradient(blue, 10%, pink); }
+.simple-linear { background: linear-gradient(blue, pink); }

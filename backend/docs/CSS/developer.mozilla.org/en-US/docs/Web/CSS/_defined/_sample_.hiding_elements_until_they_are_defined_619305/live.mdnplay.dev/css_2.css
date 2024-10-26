@@ -1,0 +1,8 @@
+
+custom-element { display: block; border: 5px dashed grey; border-radius: 1rem; height: 100px; width: 400px; padding: 1rem; position: relative; }
+code { background: rgb(204, 204, 204); }
+#btn { margin-top: 1rem; cursor: pointer; }
+custom-element:not(:defined) { border-color: grey; color: grey; }
+custom-element:defined { background-color: wheat; border-color: black; color: black; }
+custom-element:not(:defined)::before { content: "Loading..."; position: absolute; inset: 0px; align-content: center; text-align: center; font-size: 2rem; background-color: white; border-radius: 1rem; }
+custom-element:defined::before { content: ""; }

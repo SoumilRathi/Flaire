@@ -1,0 +1,4 @@
+
+.normal::first-letter { -webkit-initial-letter: normal; }
+.onefive::first-letter { -webkit-initial-letter: 1.5; }
+.three::first-letter { -webkit-initial-letter: 3; }

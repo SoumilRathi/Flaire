@@ -1,0 +1,70 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/logical/intro-grid-example.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:31 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid and writing modes example</title>
+    <link rel="stylesheet" href="../css-cookbook/styles.css">
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        border: 2px solid rgb(96 139 168);
+        border-radius: 5px;
+      }
+
+      .grid > * {
+        border-radius: 5px;
+        border: 2px solid rgb(96 139 168 / 0.4);
+        background-color: rgb(96 139 168 / 0.2);
+        padding: 10px;
+      }
+
+      .grid :nth-child(1) {
+        align-self: start;
+      }
+
+      .grid :nth-child(2) {
+        justify-self: end;
+      }
+    </style>
+
+    <style class="editable">
+      .grid {
+        writing-mode: vertical-rl;
+        inline-size: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="grid">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 170px">.grid {
+  writing-mode: vertical-rl;
+  inline-size: 400px;
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 140px">&lt;div class="grid"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+  &lt;div&gt;Four&lt;/div&gt;
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../css-cookbook/playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/logical/intro-grid-example.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:31 GMT -->
+
+</body></html>

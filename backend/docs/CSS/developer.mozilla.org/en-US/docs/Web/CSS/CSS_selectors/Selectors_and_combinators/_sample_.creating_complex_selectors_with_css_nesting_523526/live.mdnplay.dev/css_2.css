@@ -1,0 +1,16 @@
+
+h2 {
+  & + p {
+  & ~ p { font-style: italic; }
+  & + p { color: red; }
+}
+}
+.myClass {
+  & + p { text-decoration: underline; }
+}
+#myId {
+  & > .myClass { outline: red dashed 3px; }
+}
+* {
+  & > p { font-size: 1.1rem; }
+}

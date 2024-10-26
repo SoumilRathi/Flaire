@@ -1,0 +1,20 @@
+
+div, p { padding: 1rem; margin-bottom: 1rem; font-size: 2rem; font-family: sans-serif; }
+code { background-color: lightgray; padding: 0.25rem; border-radius: 0.25rem; }
+#container { width: 90%; height: 80%; }
+.auto-length, .auto-length.none { display: none; }
+#auto-length-note, #auto-none-note { display: block; padding: 0px; }
+#auto-length-note p, #auto-none-note p { padding: 0.5rem; width: 100%; height: max-content; font-size: 1rem; line-height: 1.5rem; background-color: tomato; }
+@supports (contain-intrinsic-size: auto none) {
+  .auto-length.none { display: block; }
+  #auto-none-note { display: none; }
+}
+@supports (contain-intrinsic-size: auto 500px) {
+  .auto-length { display: block; }
+  #auto-length-note { display: none; }
+}
+p { height: 500px; width: 500px; border: 4px dotted; background: lightblue; }
+.auto-length { content-visibility: auto; contain-intrinsic-size: auto 500px; background-color: linen; outline: blue dotted 4px; }
+.large-intrinsic-size { contain-intrinsic-size: auto 5000px; background-color: lightgray; outline: red dotted 4px; }
+.small { height: 100px; width: 100px; }
+.none { background-color: papayawhip; contain-intrinsic-size: auto none; outline: red dotted 4px; }

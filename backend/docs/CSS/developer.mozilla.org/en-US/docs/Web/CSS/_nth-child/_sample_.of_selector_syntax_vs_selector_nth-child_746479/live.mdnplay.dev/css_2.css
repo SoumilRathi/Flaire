@@ -1,0 +1,8 @@
+
+* { font-family: sans-serif; }
+ul { display: flex; flex-wrap: wrap; list-style: none; font-size: 1.2rem; padding-left: 0px; }
+li { margin: 0.125rem; padding: 0.25rem; }
+li { border: 1px solid tomato; }
+.noted { border-bottom-width: 5px; border-bottom-style: solid; border-bottom-color: tomato; }
+ul.one > li:nth-child(-n+3 of .noted) { background-color: tomato; border-bottom-color: seagreen; }
+ul.two > li.noted:nth-child(-n+3) { background-color: tomato; border-bottom-color: seagreen; }

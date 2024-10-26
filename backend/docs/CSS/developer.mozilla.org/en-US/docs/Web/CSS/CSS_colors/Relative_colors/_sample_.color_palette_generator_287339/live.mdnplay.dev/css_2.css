@@ -1,0 +1,37 @@
+
+html { font-family: sans-serif; }
+body { margin: 0px; }
+h1 { margin-left: 16px; }
+#color-picker { margin-left: 16px; margin-bottom: 20px; }
+#color-picker label, legend { display: block; font-size: 0.8rem; margin-bottom: 10px; }
+input[type="color"] { width: 200px; display: block; }
+fieldset { display: flex; gap: 20px; border: 0px; }
+#container { display: flex; width: 100vw; height: 250px; box-sizing: border-box; }
+#container div { flex: 1 1 0%; }
+.comp :nth-child(1) { background-color: var(--base-color); }
+.comp :nth-child(2) { background-color: lch(from var(--base-color) l c calc(h + 180)); }
+@supports (color: lch(from red l c calc(h + 180deg))) {
+  .comp :nth-child(2) { background-color: lch(from var(--base-color) l c calc(h + 180deg)); }
+}
+.triadic :nth-child(1) { background-color: var(--base-color); }
+.triadic :nth-child(2) { background-color: lch(from var(--base-color) l c calc(h - 120)); }
+.triadic :nth-child(3) { background-color: lch(from var(--base-color) l c calc(h + 120)); }
+@supports (color: lch(from red l c calc(h + 120deg))) {
+  .triadic :nth-child(2) { background-color: lch(from var(--base-color) l c calc(h - 120deg)); }
+  .triadic :nth-child(3) { background-color: lch(from var(--base-color) l c calc(h + 120deg)); }
+}
+.tetradic :nth-child(1) { background-color: var(--base-color); }
+.tetradic :nth-child(2) { background-color: lch(from var(--base-color) l c calc(h + 90)); }
+.tetradic :nth-child(3) { background-color: lch(from var(--base-color) l c calc(h + 180)); }
+.tetradic :nth-child(4) { background-color: lch(from var(--base-color) l c calc(h + 270)); }
+@supports (color: lch(from red l c calc(h + 90deg))) {
+  .tetradic :nth-child(2) { background-color: lch(from var(--base-color) l c calc(h + 90deg)); }
+  .tetradic :nth-child(3) { background-color: lch(from var(--base-color) l c calc(h + 180deg)); }
+  .tetradic :nth-child(4) { background-color: lch(from var(--base-color) l c calc(h + 270deg)); }
+}
+.monochrome :nth-child(1) { background-color: lch(from var(--base-color) calc(l - 20) c h); }
+.monochrome :nth-child(2) { background-color: lch(from var(--base-color) calc(l - 10) c h); }
+.monochrome :nth-child(3) { background-color: var(--base-color); }
+.monochrome :nth-child(4) { background-color: lch(from var(--base-color) calc(l + 10) c h); }
+.monochrome :nth-child(5) { background-color: lch(from var(--base-color) calc(l + 20) c h); }
+.comp :nth-child(2) ~ div, .triadic :nth-child(3) ~ div, .tetradic :nth-child(4) ~ div { display: none; }

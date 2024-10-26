@@ -1,0 +1,8 @@
+
+div { width: 100px; min-height: 50px; font-family: sans-serif; display: flex; align-items: center; justify-content: center; }
+body { display: flex; gap: 20px; }
+div.modern { background-color: rgb(128, 230, 26); }
+div.legacy { background-color: rgb(128, 230, 26); }
+div.modernWithAlpha { background-color: rgba(128, 230, 26, 0.5); }
+div.modernHSLA { background-color: rgba(128, 230, 26, 0.5); }
+div.legacyHSLA { background-color: rgba(128, 230, 26, 0.5); }

@@ -1,0 +1,13 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/url_value/index.md
+
+# Original Wiki contributors
+rachelandrew
+chrisdavidmills
+ramiy
+wbamberg
+mfuji09
+Kaiido
+paul-go
+GuyLewin
+estelle

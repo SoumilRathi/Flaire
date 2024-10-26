@@ -1,0 +1,4 @@
+
+.box { float: left; margin: 1em; width: 7em; line-height: 7em; text-align: center; transition: 0.5s ease-in-out; border: 3px dotted; }
+#box1:hover { scale: 1.25; }
+#box2:hover { scale: 1.25 0.75; }

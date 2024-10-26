@@ -1,0 +1,14 @@
+
+html { font-family: sans-serif; }
+main { width: 80vw; margin: 2rem auto; }
+h1 { text-align: center; margin: 0px; color: black; border-radius: 16px 16px 0px 0px; font-size: 3rem; letter-spacing: -1px; }
+p { line-height: 1.5; margin: 0px; padding: 1.2rem; }
+form { width: fit-content; display: flex; margin: 2rem auto; padding: 0.4rem; }
+:root { --hue: 240; --base-color: lch(from red l c var(--hue)); --bg-color: lch(from var(--base-color) calc(l + 40) c h); --complementary-color: lch(from var(--base-color) l c calc(h + 180)); background: radial-gradient(ellipse at center, white 20%, var(--base-color)); }
+@supports (color: lch(from red l c calc(h + 180deg))) {
+  body { --complementary-color: lch(from var(--base-color) l c calc(h + 180deg)); }
+}
+section { background-color: var(--bg-color); border: 3px solid var(--base-color); border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 30px; }
+h1 { background-color: var(--base-color); text-shadow: 1px 1px 1px var(--complementary-color),     -1px -1px 1px var(--complementary-color),     0 0 3px var(--complementary-color); }
+form { background-color: var(--bg-color); border: 3px solid var(--base-color); }
+input { accent-color: var(--complementary-color); }

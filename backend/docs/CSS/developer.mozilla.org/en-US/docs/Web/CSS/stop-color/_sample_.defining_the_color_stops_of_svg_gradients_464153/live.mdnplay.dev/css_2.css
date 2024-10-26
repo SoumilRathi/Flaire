@@ -1,0 +1,15 @@
+
+svg { border: 1px solid; height: calc(-20px + 100vh); margin-bottom: 10px; }
+rect { stroke: rgb(51, 51, 51); stroke-width: 1px; }
+#myGradient1 {
+  & stop:first-of-type { stop-color: rgb(102, 204, 255); }
+  & stop:last-of-type { stop-color: rgb(244, 170, 185); }
+}
+#myGradient2 {
+  & stop:first-of-type { stop-color: yellow; }
+  & stop:last-of-type { stop-color: purple; }
+}
+#myGradient3 {
+  & stop:first-of-type { stop-color: rgb(255, 0, 0); }
+  & stop:last-of-type { stop-color: rgb(255, 85, 0); }
+}

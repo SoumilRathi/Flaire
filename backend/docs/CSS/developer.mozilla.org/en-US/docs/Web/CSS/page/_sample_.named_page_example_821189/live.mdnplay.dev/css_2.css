@@ -1,0 +1,19 @@
+
+fieldset { display: flex; flex-direction: row; justify-content: space-between; gap: 1rem; width: fit-content; }
+@page toc { size: a4 portrait; }
+@page foreword { size: a4 portrait; }
+@page introduction { size: a4 portrait; }
+@page conclusion { size: a4 portrait; }
+@page chapter { size: a4 landscape; }
+@media print {
+  fieldset { display: none; }
+  section { font-size: 2rem; font-family: Roboto; }
+  .chapter { border: 2px solid tomato; }
+  [data-print="grouped"] > #toc, [data-print="paged"] > #toc { page: toc; font-family: Courier; }
+  [data-print="grouped"] > #foreword, [data-print="paged"] > #foreword { page: foreword; font-family: Courier; }
+  [data-print="grouped"] > #introduction, [data-print="paged"] > #introduction { page: introduction; font-family: Courier; }
+  [data-print="grouped"] > #conclusion, [data-print="paged"] > #conclusion { page: conclusion; font-family: Courier; }
+  [data-print="grouped"] > .chapter, [data-print="paged"] > .chapter { page: chapter; }
+  [data-print="paged"] > .chapter { border: medium; break-after: page; }
+  .chapter > ul { column-width: auto; column-count: 2; }
+}

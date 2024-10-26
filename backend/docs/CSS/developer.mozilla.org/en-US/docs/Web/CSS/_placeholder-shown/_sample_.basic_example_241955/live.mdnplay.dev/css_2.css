@@ -1,0 +1,3 @@
+
+input { border: 1px solid black; padding: 3px; }
+input:placeholder-shown { border-color: teal; color: purple; font-style: italic; }

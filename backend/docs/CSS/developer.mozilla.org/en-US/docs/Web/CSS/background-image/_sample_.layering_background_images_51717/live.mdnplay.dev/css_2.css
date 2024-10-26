@@ -1,0 +1,4 @@
+
+p { font-weight: bold; font-size: 1.5em; color: white; text-shadow: black 0.07em 0.07em 0.05em; background-image: none; background-color: transparent; }
+div { background-image: url("../mdn_logo_only_color.png/index.html.png"); }
+.catsandstars { background-image: url("../startransparent.gif/index.html.gif"), url("../catfront.png/index.html.png"); background-color: transparent; }

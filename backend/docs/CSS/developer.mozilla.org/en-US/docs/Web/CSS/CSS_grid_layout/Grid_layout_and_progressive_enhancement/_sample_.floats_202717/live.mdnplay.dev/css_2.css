@@ -1,0 +1,7 @@
+
+* { box-sizing: border-box; }
+img { max-width: 100%; display: block; }
+.media { border: 2px solid rgb(247, 103, 7); border-radius: 5px; background-color: rgb(255, 244, 230); max-width: 400px; display: grid; grid-template-columns: 1fr 2fr; grid-template-areas: "img content"; margin-bottom: 1em; }
+.media::after { content: ""; display: block; clear: both; }
+.media .text { padding: 10px; align-self: end; }
+.media .image { float: left; width: 150px; margin-right: 20px; }

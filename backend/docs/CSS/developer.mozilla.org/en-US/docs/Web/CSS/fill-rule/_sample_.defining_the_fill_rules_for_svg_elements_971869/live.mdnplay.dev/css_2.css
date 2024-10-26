@@ -1,0 +1,5 @@
+
+svg { border: 1px solid; height: calc(-2.5em + 33vh); margin-bottom: 10px; }
+p { margin: 0px; }
+svg:nth-of-type(2) > * { fill-rule: nonzero; }
+svg:nth-of-type(3) > * { fill-rule: evenodd; }

@@ -1,0 +1,63 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/images/filter-text.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:15:49 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <title>Images and other unusual elements: filters</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      p {
+        margin: 1em 2em;
+        padding: 20px;
+        width: 100px;
+        display: inline-block;
+      }
+    </style>
+
+    <style class="editable">
+      p {
+        border: 5px dashed red;
+      }
+
+      .filter {
+        filter: drop-shadow(5px 5px 1px rgb(0 0 0 / 70%));
+      }
+
+      .box-shadow {
+        box-shadow: 5px 5px 1px rgb(0 0 0 / 70%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <p class="filter">Filter</p>
+      <p class="box-shadow">Box shadow</p>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 220px">p {
+  border: 5px dashed red;
+}
+
+.filter {
+  filter: drop-shadow(5px 5px 1px rgb(0 0 0 / 70%));
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 1px rgb(0 0 0 / 70%);
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 120px">&lt;p class="filter"&gt;Filter&lt;/p&gt;
+&lt;p class="box-shadow"&gt;Box shadow&lt;/p&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/images/filter-text.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:15:49 GMT -->
+
+</body></html>

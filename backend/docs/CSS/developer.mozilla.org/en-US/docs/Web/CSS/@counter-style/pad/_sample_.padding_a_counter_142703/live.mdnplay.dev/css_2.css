@@ -1,0 +1,3 @@
+
+@counter-style pad-example { system: extends decimal; suffix: ": "; pad: 3 "0"; }
+ul { list-style: pad-example; }

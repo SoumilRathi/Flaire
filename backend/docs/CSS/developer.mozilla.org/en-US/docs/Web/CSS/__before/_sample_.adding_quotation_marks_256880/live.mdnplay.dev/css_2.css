@@ -1,0 +1,3 @@
+
+q::before { content: "«"; color: blue; }
+q::after { content: "»"; color: red; }

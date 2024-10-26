@@ -1,0 +1,3 @@
+
+a { background-color: powderblue; transition: background-color 0.5s; }
+a:hover { background-color: gold; }

@@ -1,0 +1,4 @@
+
+tabbed-custom-element::part(tab) { color: blue; border-bottom-width: 4px; border-bottom-style: solid; border-bottom-color: transparent; }
+tabbed-custom-element::part(tab):hover { background-color: black; color: white; }
+tabbed-custom-element::part(tab active) { border-color: blue !important; }

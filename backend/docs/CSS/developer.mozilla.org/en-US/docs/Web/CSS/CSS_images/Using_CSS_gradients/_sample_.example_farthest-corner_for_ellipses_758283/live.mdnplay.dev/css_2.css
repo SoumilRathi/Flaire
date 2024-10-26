@@ -1,0 +1,3 @@
+
+div { width: 240px; height: 100px; }
+.radial-ellipse-far { background: radial-gradient(at 90% 90%, red, yellow 10%, rgb(30, 144, 255) 50%, beige); }

@@ -1,0 +1,11 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/display/multi-keyword_syntax_of_display/index.md
+
+# Original Wiki contributors
+ExE-Boss
+gerfolder
+blueblots
+zbjornson
+pallxk
+chrisdavidmills
+rachelandrew

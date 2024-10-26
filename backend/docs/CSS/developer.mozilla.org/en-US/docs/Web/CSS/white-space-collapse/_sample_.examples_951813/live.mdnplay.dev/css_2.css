@@ -1,0 +1,5 @@
+
+.collapse { white-space-collapse: collapse; }
+.preserve { white-space-collapse: preserve; }
+.preserve-breaks { white-space-collapse: preserve-breaks; }
+h2 { font-size: 1.6rem; font-family: monospace; }

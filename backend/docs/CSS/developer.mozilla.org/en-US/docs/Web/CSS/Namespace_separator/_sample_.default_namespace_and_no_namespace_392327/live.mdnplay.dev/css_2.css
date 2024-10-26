@@ -1,0 +1,6 @@
+
+@namespace url("../www.w3.org/2000/svg");
+a { font-size: 1.4rem; }
+svg, p { border: 5px solid gold; }
+|a { font-weight: bold; }
+*|a { font-style: italic; color: magenta; fill: magenta; }

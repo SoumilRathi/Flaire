@@ -1,0 +1,77 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/css-cookbook/breadcrumb-navigation.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:57 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CSS Cookbook: Breadcrumb Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style class="editable">
+      .breadcrumb {
+        padding: 0 0.5rem;
+      }
+
+      .breadcrumb ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .breadcrumb li:not(:last-child)::after {
+        display: inline-block;
+        margin: 0 0.25rem;
+        content: "→";
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Category</a></li>
+          <li><a href="#">Sub Category</a></li>
+          <li><a href="#">Type</a></li>
+          <li><span aria-current="page">Product</span></li>
+        </ul>
+      </nav>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 300px">.breadcrumb {
+  padding: 0 .5rem;
+}
+
+.breadcrumb ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 .25rem;
+  content: "→";
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 160px">&lt;nav aria-label="Breadcrumb" class="breadcrumb"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Category&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Sub Category&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Type&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span aria-current="page"&gt;Product&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/css-cookbook/breadcrumb-navigation.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:57 GMT -->
+
+</body></html>

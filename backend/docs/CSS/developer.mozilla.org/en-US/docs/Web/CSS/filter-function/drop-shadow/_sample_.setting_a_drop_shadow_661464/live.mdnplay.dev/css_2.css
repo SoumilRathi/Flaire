@@ -1,0 +1,6 @@
+
+div { display: inline-block; margin: 0px 0.5rem 2rem 1rem; padding: 0.5rem; height: 100px; width: 190px; vertical-align: top; background-color: rgb(34, 34, 34); color: lime; }
+div:nth-child(1) { filter: drop-shadow(16px 16px); }
+div:nth-child(2) { filter: drop-shadow(red 16px 16px); }
+div:nth-child(3) { filter: drop-shadow(red 1rem 1rem 10px); }
+div:nth-child(4) { filter: drop-shadow(red -16px -6px); }

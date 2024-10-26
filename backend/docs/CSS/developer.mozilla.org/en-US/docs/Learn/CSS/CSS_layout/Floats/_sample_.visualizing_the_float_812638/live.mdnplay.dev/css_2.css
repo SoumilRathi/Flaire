@@ -1,0 +1,4 @@
+
+.special { background-color: rgb(148, 255, 172); padding: 10px; color: purple; }
+body { width: 90%; max-width: 900px; margin: 0px auto; font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 0.9em; line-height: 1.2; font-family: Arial, Helvetica, sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; }
+.box { float: left; margin: 15px; width: 150px; height: 150px; border-radius: 5px; background-color: rgb(207, 232, 220); padding: 1em; }

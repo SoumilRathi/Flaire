@@ -1,0 +1,11 @@
+
+body, input { font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: arial; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; overflow: hidden; }
+.propInputCont { float: left; text-align: center; margin-right: 5px; width: 80px; }
+.setPropCont { float: left; margin-right: 5px; width: 120px; }
+.propInputs, .setPropCont { margin-bottom: 1em; }
+.curCss { border-width: medium medium 1px; border-style: none none solid; border-color: currentcolor currentcolor black; border-image: none; text-align: center; width: 80px; }
+.mandatory { border-bottom-color: red; }
+.cf::before, .cf::after { content: " "; display: table; }
+.cf::after { clear: both; }
+.tar { width: 40px; text-align: right; }
+.fontfamily { display: inline-block; }

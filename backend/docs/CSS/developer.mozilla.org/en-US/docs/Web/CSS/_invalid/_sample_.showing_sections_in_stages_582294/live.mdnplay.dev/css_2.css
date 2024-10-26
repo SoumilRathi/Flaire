@@ -1,0 +1,5 @@
+
+fieldset:invalid ~ fieldset { display: none; }
+form:invalid button { opacity: 0.3; pointer-events: none; }
+input, textarea { box-sizing: border-box; width: 100%; font-family: monospace; padding: 0.25em 0.5em; }
+button { width: 100%; border: thin solid darkgrey; font-size: 1.25em; background-color: darkgrey; color: white; }

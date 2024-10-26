@@ -1,0 +1,15 @@
+
+@page upright { size: portrait; }
+@page left { size: landscape; }
+@page right { size: landscape; }
+fieldset { display: flex; flex-direction: row; justify-content: space-between; gap: 1rem; width: fit-content; }
+p { max-width: 60ch; }
+@media print {
+  fieldset { display: none; }
+  section { font-family: Roboto; font-size: 1.5rem; }
+}
+@media print {
+  .upright { page: upright; }
+  .left { page: left; }
+  .right { page: right; }
+}

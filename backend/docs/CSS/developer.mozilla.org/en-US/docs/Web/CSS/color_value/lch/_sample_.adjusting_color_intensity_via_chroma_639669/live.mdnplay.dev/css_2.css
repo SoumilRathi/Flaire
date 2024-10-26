@@ -1,0 +1,15 @@
+
+body { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+div { height: 50px; border: 1px solid black; }
+[data-color="blue"] { background-color: lch(50 150 240); }
+[data-color="blue-chroma1"] { background-color: lch(50 105 240); }
+[data-color="blue-chroma2"] { background-color: lch(50 54 240); }
+[data-color="blue-chroma3"] { background-color: lch(50 3 240); }
+[data-color="red"] { background-color: lch(50 150 20); }
+[data-color="red-chroma1"] { background-color: lch(50 105 20); }
+[data-color="red-chroma2"] { background-color: lch(50 54 20); }
+[data-color="red-chroma3"] { background-color: lch(50 3 20); }
+[data-color="green"] { background-color: lch(50 150 130); }
+[data-color="green-chroma1"] { background-color: lch(50 105 130); }
+[data-color="green-chroma2"] { background-color: lch(50 54 130); }
+[data-color="green-chroma3"] { background-color: lch(50 3 130); }

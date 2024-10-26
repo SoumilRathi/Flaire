@@ -1,0 +1,3 @@
+
+ol[type="a"]:first-child { list-style-type: lower-alpha; background: red; }
+ol[type="a" i] { list-style-type: upper-alpha; background: green; }

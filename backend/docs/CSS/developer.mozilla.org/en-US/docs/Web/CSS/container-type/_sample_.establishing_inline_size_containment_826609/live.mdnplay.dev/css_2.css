@@ -1,0 +1,10 @@
+
+.container { container-type: inline-size; width: 300px; height: 120px; }
+.wide { width: 500px; }
+h3 { height: 2rem; margin: 0.5rem; }
+.card { height: 100%; }
+.content { background-color: wheat; height: 100%; }
+.container { margin: 1rem; border: 2px dashed red; overflow: hidden; }
+@container (min-width: 400px) {
+  .card { display: grid; grid-template-columns: 1fr 2fr; }
+}

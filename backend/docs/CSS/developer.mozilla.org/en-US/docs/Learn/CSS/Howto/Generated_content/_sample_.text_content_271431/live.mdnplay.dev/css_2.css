@@ -1,0 +1,2 @@
+
+.ref::before { font-weight: bold; color: navy; content: "Reference "; }

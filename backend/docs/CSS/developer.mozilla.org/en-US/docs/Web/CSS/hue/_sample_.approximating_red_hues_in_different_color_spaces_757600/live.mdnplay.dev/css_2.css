@@ -1,0 +1,6 @@
+
+[data-color="hsl-red"] { background-color: rgb(255, 0, 0); }
+[data-color="hwb-red"] { background-color: rgb(255, 0, 0); }
+[data-color="lch-red"] { background-color: lch(50 150 40); }
+[data-color="oklch-red"] { background-color: oklch(0.6 0.4 20); }
+div { font-family: monospace; width: 100px; height: 100px; margin: 10px; border: 1px solid black; display: inline-block; }

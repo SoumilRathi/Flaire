@@ -1,0 +1,18 @@
+
+.animation { animation: 1s linear infinite both pulse; background-color: purple; }
+@media (prefers-reduced-motion) {
+  .animation { animation: 4s linear infinite both dissolve; background-color: green; text-decoration: overline; }
+}
+.animation { color: rgb(255, 255, 255); font-style: normal; font-variant-caps: normal; font-weight: normal; font-stretch: normal; font-size: 1.2em; line-height: normal; font-family: sans-serif; font-size-adjust: none; font-kerning: auto; font-variant-alternates: normal; font-variant-ligatures: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; font-feature-settings: normal; font-optical-sizing: auto; font-variation-settings: normal; width: 10em; padding: 1em; border-radius: 1em; text-align: center; }
+@keyframes pulse { 
+  0% { transform: scale(1); }
+  25% { transform: scale(0.9); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes dissolve { 
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}

@@ -1,0 +1,5 @@
+
+div { width: 50px; height: 50px; padding: 5px; margin: 5px; display: inline-block; border: 1px solid black; }
+#background-div { background-color: lightblue; width: 150px; height: 40px; }
+[data-color="red"] { background-color: oklab(0.628 0.225 0.126); }
+[data-color="red-alpha"] { background-color: oklab(0.628 0.225 0.126 / 0.4); }

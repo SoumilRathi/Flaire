@@ -1,0 +1,9 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/frequency-percentage/index.md
+
+# Original Wiki contributors
+mfuji09
+Sheppy
+chrisdavidmills
+wbamberg
+rachelandrew

@@ -1,0 +1,4 @@
+
+:lang(en) > q { quotes: "“" "”" "‘" "’"; }
+:lang(fr) > q { quotes: "« " " »"; }
+:lang(de) > q { quotes: "»" "«" "‹" "›"; }

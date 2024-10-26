@@ -1,0 +1,7 @@
+
+ul { list-style: none; }
+.parent { counter-reset: item 0; }
+li { counter-increment: item 1; }
+li::before { content: counter(item) " "; }
+.sub-list-one { counter-set: item 10; }
+.sub-list-two { counter-reset: item 0; }

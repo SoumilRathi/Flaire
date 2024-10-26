@@ -1,0 +1,5 @@
+
+input { appearance: none; width: 1em; height: 1em; display: inline-block; background: red; }
+input:checked { border-radius: 50%; background: green; }
+select { border: 1px solid black; font-size: 1em; }
+select.none { appearance: none; }

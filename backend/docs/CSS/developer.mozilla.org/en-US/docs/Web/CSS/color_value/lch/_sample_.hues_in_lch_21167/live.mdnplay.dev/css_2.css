@@ -1,0 +1,22 @@
+
+body { display: flex; flex-wrap: wrap; gap: 3px; }
+div { flex: 0 0 4em; text-align: center; line-height: 4em; display: inline-block; border: 1px solid black; color: white; font-family: monospace; }
+[data-color="0"] { background-color: lch(50 150 0); }
+[data-color="20"] { background-color: lch(50 150 20); }
+[data-color="40"] { background-color: lch(50 150 40); }
+[data-color="60"] { background-color: lch(50 150 60); }
+[data-color="80"] { background-color: lch(50 150 80); }
+[data-color="100"] { background-color: lch(50 150 100); }
+[data-color="120"] { background-color: lch(50 150 120); }
+[data-color="140"] { background-color: lch(50 150 140); }
+[data-color="160"] { background-color: lch(50 150 160); }
+[data-color="180"] { background-color: lch(50 150 180); }
+[data-color="200"] { background-color: lch(50 150 200); }
+[data-color="220"] { background-color: lch(50 150 220); }
+[data-color="240"] { background-color: lch(50 150 240); }
+[data-color="260"] { background-color: lch(50 150 260); }
+[data-color="280"] { background-color: lch(50 150 280); }
+[data-color="300"] { background-color: lch(50 150 300); }
+[data-color="320"] { background-color: lch(50 150 320); }
+[data-color="340"] { background-color: lch(50 150 340); }
+[data-color="360"] { background-color: lch(50 150 0); }

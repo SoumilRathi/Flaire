@@ -1,0 +1,10 @@
+
+* { box-sizing: border-box; }
+.flex-container { background-color: rgb(244, 247, 248); resize: horizontal; overflow: hidden; display: flex; margin: 1em; }
+.item { margin: 1em; padding: 0.5em; width: 110px; min-width: 0px; background-color: rgb(27, 83, 133); color: white; font-family: monospace; font-size: 13px; }
+.initial { flex: initial; }
+.auto { flex: 1 1 auto; }
+.none { flex: 0 0 auto; }
+.four { flex: 4 1 0%; }
+.two { flex: 2 1 0%; }
+.one { flex: 1 1 0%; }

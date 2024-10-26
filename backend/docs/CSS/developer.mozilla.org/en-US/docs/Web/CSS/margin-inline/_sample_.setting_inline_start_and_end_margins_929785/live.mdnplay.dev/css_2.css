@@ -1,0 +1,4 @@
+
+div { background-color: yellow; width: 120px; height: auto; border: 1px solid green; }
+p { margin: 0px; margin-inline: 20px 40px; background-color: tan; }
+.verticalExample { writing-mode: vertical-rl; }

@@ -1,0 +1,6 @@
+
+p { animation-duration: 3s; animation-name: slidein; animation-iteration-count: infinite; animation-direction: alternate; }
+@keyframes slidein { 
+  0% { translate: 150vw; scale: 2 1; }
+  100% { translate: 0px; scale: 1; }
+}

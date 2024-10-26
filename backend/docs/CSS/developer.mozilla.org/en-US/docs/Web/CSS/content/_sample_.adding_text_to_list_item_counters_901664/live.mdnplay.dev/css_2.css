@@ -1,0 +1,4 @@
+
+ol { counter-reset: items 0; margin-left: 2em; }
+li { counter-increment: items 1; }
+li::marker { content: "item " counters(items, ".", numeric) ": "; }

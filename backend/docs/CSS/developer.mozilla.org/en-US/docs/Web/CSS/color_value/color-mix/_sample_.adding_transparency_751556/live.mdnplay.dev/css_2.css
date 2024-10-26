@@ -1,0 +1,11 @@
+
+ul { display: flex; list-style-type: none; font-size: 150%; gap: 10px; border: 2px solid; padding: 10px; }
+li { padding: 10px; flex: 1 1 0%; box-sizing: border-box; font-family: monospace; outline: 1px solid var(--base); text-align: center; }
+:root { --base: red; }
+ul { background: repeating-linear-gradient(45deg, chocolate 0px, chocolate 2px, white 2px, white 12px); }
+li:nth-child(1) { background-color: color-mix(in srgb, var(--base) 0%, transparent); }
+li:nth-child(2) { background-color: color-mix(in srgb, var(--base) 25%, transparent); }
+li:nth-child(3) { background-color: color-mix(in srgb, var(--base) 50%, transparent); }
+li:nth-child(4) { background-color: color-mix(in srgb, var(--base) 75%, transparent); }
+li:nth-child(5) { background-color: color-mix(in srgb, var(--base) 100%, transparent); }
+li:nth-child(6) { background-color: color-mix(in srgb, var(--base), transparent); }

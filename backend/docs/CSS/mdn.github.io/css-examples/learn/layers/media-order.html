@@ -1,0 +1,63 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/layers/media-order.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:06:57 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Cascade Layers: layer order</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style></style>
+
+    <style class="editable">
+      @media (min-width: 50em) {
+        @layer site;
+      }
+
+      @layer page {
+        h1 {
+          text-decoration: overline;
+          color: red;
+        }
+      }
+
+      @layer site {
+        h1 {
+          text-decoration: underline;
+          color: green;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <h1>Site layer is first on wide screens</h1>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 120px">@media (min-width: 50em) {
+  @layer site;
+}
+
+@layer page {
+  h1 {
+    text-decoration: overline;
+    color: red;
+  }
+}
+
+@layer site {
+  h1 {
+    text-decoration: underline;
+    color: green;
+  }
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 40px">&lt;h1&gt;Is this heading underlined?&lt;/h1&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/layers/media-order.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:06:57 GMT -->
+
+</body></html>

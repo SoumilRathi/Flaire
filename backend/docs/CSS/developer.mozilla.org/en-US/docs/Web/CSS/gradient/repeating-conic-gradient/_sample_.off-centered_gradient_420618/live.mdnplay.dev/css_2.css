@@ -1,0 +1,3 @@
+
+div { width: 200px; height: 200px; }
+div { background: repeating-conic-gradient(from 3deg at 25% 25%, green, blue 2deg, blue 5deg, green, yellow 15deg, yellow 18deg, green 20deg); }

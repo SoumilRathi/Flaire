@@ -1,0 +1,5 @@
+
+div { width: 400px; height: 200px; overflow: scroll; font-size: 16px; font-family: verdana; border: 1px solid; }
+p { width: 600px; margin: 0px; border: 110px solid transparent; }
+.bulb { position: sticky; inset: 50px 100px; }
+div { background: linear-gradient(rgba(153, 153, 153, 0.6), rgba(153, 153, 153, 0.6)) 100px 50px / 192px 100px no-repeat; }

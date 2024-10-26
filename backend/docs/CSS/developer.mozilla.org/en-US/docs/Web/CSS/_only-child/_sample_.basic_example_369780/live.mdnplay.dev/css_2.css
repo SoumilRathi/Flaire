@@ -1,0 +1,3 @@
+
+div:only-child { color: red; }
+div { display: inline-block; margin: 6px; outline: solid 1px; }

@@ -1,0 +1,7 @@
+
+.container { margin: 5px auto; border: 1px dashed; box-sizing: border-box; background-color: lightblue; }
+div { line-height: 1em; border: 1px solid; box-sizing: border-box; text-align: center; background-color: pink; }
+.container { align-items: baseline; display: flex; width: 350px; height: 2em; }
+.safe { justify-content: center; }
+.safe-center { justify-content: safe center; }
+div { flex: 0 0 100px; }

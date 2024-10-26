@@ -1,0 +1,10 @@
+
+p { color: blue; }
+p { }
+:root { --text-color: 16px; }
+p { color: blue; }
+p { color: var(--text-color); }
+@property --text-color { syntax: "<color>"; inherits: false; initial-value: cornflowerblue; }
+:root { --text-color: 16px; }
+p { color: blue; }
+p { color: var(--text-color); }

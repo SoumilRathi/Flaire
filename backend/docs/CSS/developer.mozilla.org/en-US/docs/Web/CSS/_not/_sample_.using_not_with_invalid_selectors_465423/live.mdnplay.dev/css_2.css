@@ -1,0 +1,4 @@
+
+p:not(:is(.foo, :invalid-pseudo-class)) { color: green; border-top-width: thin; border-top-style: dotted; border-top-color: currentcolor; }
+div:not(.foo, .bar) { color: red; font-style: italic; }
+div:not(:is(.foo, .bar)) { border-bottom-width: thin; border-bottom-style: dotted; border-bottom-color: currentcolor; }

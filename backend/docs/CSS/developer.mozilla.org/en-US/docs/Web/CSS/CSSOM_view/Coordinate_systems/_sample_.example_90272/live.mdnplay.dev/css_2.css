@@ -1,0 +1,4 @@
+
+.outer { width: 1000px; }
+.inner { font-family: monospace; position: relative; width: 500px; height: 150px; top: 25px; left: 100px; background-color: darkblue; color: white; cursor: crosshair; }
+.log { position: relative; width: 100%; text-align: center; }

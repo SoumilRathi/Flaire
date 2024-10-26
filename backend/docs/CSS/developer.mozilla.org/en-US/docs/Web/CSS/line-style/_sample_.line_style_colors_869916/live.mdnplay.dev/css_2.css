@@ -1,0 +1,4 @@
+
+section { display: flex; flex-wrap: wrap; gap: 1em; text-transform: uppercase; font-family: monospace; }
+div { border-width: 10px; border-style: inset groove ridge outset; padding: 5px; }
+div::before { content: attr(style); }

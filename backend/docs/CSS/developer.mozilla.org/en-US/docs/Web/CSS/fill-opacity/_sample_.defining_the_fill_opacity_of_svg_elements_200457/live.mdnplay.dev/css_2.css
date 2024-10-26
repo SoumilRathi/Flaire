@@ -1,0 +1,10 @@
+
+svg { border: 1px solid; height: calc(-20px + 100vh); background: repeating-linear-gradient(to right bottom, transparent 0px, transparent 10px, rgb(204, 204, 204) 10px, rgb(204, 204, 204) 11px); }
+svg > * { fill: black; }
+rect:last-of-type { fill-opacity: 0.1; }
+circle { fill-opacity: 0.6; }
+ellipse { fill-opacity: 0.4; }
+line { fill-opacity: 0.1; }
+polyline { fill-opacity: 0.5; }
+path { fill-opacity: 0.5; }
+circle, ellipse { stroke: black; stroke-width: 3px; }

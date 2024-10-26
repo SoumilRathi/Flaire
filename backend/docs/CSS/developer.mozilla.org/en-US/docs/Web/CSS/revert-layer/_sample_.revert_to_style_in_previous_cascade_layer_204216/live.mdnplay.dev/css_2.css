@@ -1,0 +1,10 @@
+
+@layer base, special;
+@layer special {
+  .item { color: red; }
+  .feature { color: revert-layer; }
+}
+@layer base {
+  .item { color: blue; }
+  .feature { color: green; }
+}

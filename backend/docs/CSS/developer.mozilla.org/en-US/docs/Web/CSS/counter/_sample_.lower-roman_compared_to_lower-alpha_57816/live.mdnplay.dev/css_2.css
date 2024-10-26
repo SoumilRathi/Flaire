@@ -1,0 +1,4 @@
+
+ol { counter-reset: count 0; }
+li { counter-increment: count 1; }
+li::after { content: "[" counter(count, lower-roman) "] == [" counter(count, lower-alpha) "]"; }

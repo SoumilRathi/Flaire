@@ -1,0 +1,7 @@
+
+#wrapper { display: flex; flex-direction: row; justify-content: space-evenly; }
+.container { display: flex; flex-direction: column; width: 200px; }
+.container > div { width: 100px; height: 100px; margin: 10px; }
+span { font-family: monospace; font-size: 0.8em; }
+#e { background-color: blue; }
+#pi { background-color: blue; }

@@ -1,0 +1,11 @@
+
+#container { display: flex; width: 100vw; height: 100vh; box-sizing: border-box; }
+.item { flex: 1 1 0%; margin: 20px; }
+:root { --base-color: orange; }
+#one { background-color: hwb(from var(--base-color) h calc(w + 0.3) b); }
+#two { background-color: var(--base-color); }
+#three { background-color: hwb(from var(--base-color) h w calc(b + 0.3)); }
+@supports (color: hwb(from red h w calc(b + 30%))) {
+  #one { background-color: hwb(from var(--base-color) h calc(w + 30%) b); }
+  #three { background-color: hwb(from var(--base-color) h w calc(b + 30%)); }
+}

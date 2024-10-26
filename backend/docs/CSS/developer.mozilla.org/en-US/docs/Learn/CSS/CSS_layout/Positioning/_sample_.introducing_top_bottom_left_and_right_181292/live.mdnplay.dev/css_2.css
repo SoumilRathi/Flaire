@@ -1,0 +1,4 @@
+
+p { background: aqua; border: 3px solid blue; padding: 10px; margin: 10px; }
+span { background: red; border: 1px solid black; }
+.positioned { position: relative; background: yellow; top: 30px; left: 30px; }

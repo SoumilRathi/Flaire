@@ -1,0 +1,6 @@
+
+g path:nth-child(1) { stroke-opacity: 0.2; }
+g path:nth-child(2) { stroke-opacity: 0.4; }
+g path:nth-child(3) { stroke-opacity: 0.6; }
+g path:nth-child(4) { stroke-opacity: 0.8; }
+g path:nth-child(5) { stroke-opacity: 1; }

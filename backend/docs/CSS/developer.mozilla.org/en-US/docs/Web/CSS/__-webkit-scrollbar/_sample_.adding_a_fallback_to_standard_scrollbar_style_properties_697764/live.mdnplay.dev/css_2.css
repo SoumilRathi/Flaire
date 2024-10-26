@@ -1,0 +1,9 @@
+
+.scrollbox { overflow: auto; width: 20rem; height: 5rem; border: 2px solid cornflowerblue; margin: 2rem auto; font-family: monospace; }
+@supports (scrollbar-color: auto) {
+  .scrollbox { }
+}
+@supports selector(::-webkit-scrollbar) {
+  .scrollbox::-webkit-scrollbar { background: aquamarine; }
+  .scrollbox::-webkit-scrollbar-thumb { background: cornflowerblue; }
+}

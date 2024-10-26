@@ -1,0 +1,8 @@
+
+p { display: none; }
+@media (monochrome) {
+  p.mono { display: block; color: rgb(51, 51, 51); }
+}
+@media (monochrome: 0) {
+  p.no-mono { display: block; color: rgb(238, 54, 54); }
+}

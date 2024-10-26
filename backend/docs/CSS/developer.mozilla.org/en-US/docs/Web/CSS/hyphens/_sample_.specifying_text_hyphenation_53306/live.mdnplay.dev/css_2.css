@@ -1,0 +1,5 @@
+
+dd { width: 55px; border: 1px solid black; }
+dd.none { hyphens: none; }
+dd.manual { hyphens: manual; }
+dd.auto { hyphens: auto; }

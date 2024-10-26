@@ -1,0 +1,4 @@
+
+p { height: 7em; background: rgb(255, 255, 153); column-width: auto; column-count: 3; column-rule-width: 1px; column-rule-style: solid; column-rule-color: currentcolor; }
+p.fill-auto { column-fill: auto; }
+p.fill-balance { column-fill: balance; }

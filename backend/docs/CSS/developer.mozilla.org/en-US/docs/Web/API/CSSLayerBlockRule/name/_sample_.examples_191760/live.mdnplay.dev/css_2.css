@@ -1,0 +1,8 @@
+
+output { display: block; }
+@layer special {
+  div { color: rebeccapurple; }
+}
+@layer {
+  div { color: black; }
+}

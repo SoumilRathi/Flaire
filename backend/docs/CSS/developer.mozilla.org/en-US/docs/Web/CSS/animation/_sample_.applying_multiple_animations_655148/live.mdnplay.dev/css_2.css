@@ -1,0 +1,11 @@
+
+:root { overflow: hidden; background-color: lightblue; display: flex; justify-content: center; }
+.sun { background-color: yellow; border-radius: 50%; height: 100vh; aspect-ratio: 1 / 1; animation: 4s linear infinite alternate rise, 24s linear infinite psychedelic; }
+@keyframes rise { 
+  0% { transform: translateY(110vh); }
+  100% { transform: translateY(0px); }
+}
+@keyframes psychedelic { 
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}

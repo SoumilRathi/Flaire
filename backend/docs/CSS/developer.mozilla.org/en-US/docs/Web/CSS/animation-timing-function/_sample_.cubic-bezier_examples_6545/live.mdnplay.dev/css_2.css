@@ -1,0 +1,15 @@
+
+.x-axis { display: flex; justify-content: space-evenly; width: 80vw; margin-left: 4px; }
+.parent { background: linear-gradient(to right, white 49.8%, grey 49.8%, grey 50.2%, white 50.2%); width: 80vw; font-family: monospace; font-weight: bold; border: 2px solid grey; }
+.animate { animation-name: changeme; }
+.parent > div[class] { animation-fill-mode: forwards; animation-duration: 10s; width: 0px; margin-bottom: 4px; padding: 5px 0px; box-sizing: border-box; text-wrap: nowrap; background-color: lime; }
+@keyframes changeme { 
+  0% { width: 0em; }
+  100% { width: 100%; background-color: orange; }
+}
+.linear { animation-timing-function: linear; }
+.ease { animation-timing-function: ease; }
+.easein { animation-timing-function: ease-in; }
+.easeout { animation-timing-function: ease-out; }
+.easeinout { animation-timing-function: ease-in-out; }
+.cb { animation-timing-function: cubic-bezier(0.5, -0.5, 1, 1.5); }

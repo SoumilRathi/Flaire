@@ -1,0 +1,7 @@
+
+@supports not (counter-reset: reversed(priority)) {
+  .stack { display: none; }
+  body::after { content: "Your browser doesn't support the reversed counters yet."; }
+}
+li::before { content: counter(priority) ". "; counter-increment: priority -1; }
+.stack { list-style: none; }

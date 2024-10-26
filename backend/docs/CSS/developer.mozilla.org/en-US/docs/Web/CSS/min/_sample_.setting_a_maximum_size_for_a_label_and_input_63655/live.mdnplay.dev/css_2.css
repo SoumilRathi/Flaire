@@ -1,0 +1,3 @@
+
+input, label { padding: 2px; box-sizing: border-box; display: inline-block; width: min(40%, 400px); background-color: pink; }
+form { margin: 4px; border: 1px solid black; padding: 4px; }

@@ -1,0 +1,9 @@
+
+label { display: block; margin: 1px; padding: 1px; }
+.field { margin: 1px; padding: 1px; }
+input:invalid { background-color: rgb(255, 221, 221); }
+form:invalid { border: 5px solid rgb(255, 221, 221); }
+input:valid { background-color: rgb(221, 255, 221); }
+form:valid { border: 5px solid rgb(221, 255, 221); }
+input:required { border-color: rgb(128, 0, 0); border-width: 3px; }
+input:required:invalid { border-color: rgb(192, 0, 0); }

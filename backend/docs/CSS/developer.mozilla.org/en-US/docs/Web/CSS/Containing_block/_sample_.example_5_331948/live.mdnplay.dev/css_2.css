@@ -1,0 +1,4 @@
+
+body { background: beige; }
+section { transform: rotate(0deg); width: 400px; height: 160px; background: lightgray; }
+p { position: absolute; left: 80px; top: 30px; width: 50%; height: 25%; margin: 5%; padding: 5%; background: cyan; }

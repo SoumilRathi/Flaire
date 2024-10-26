@@ -1,0 +1,3 @@
+
+progress { margin: 4px; }
+progress:indeterminate { width: 80vw; height: 20px; }

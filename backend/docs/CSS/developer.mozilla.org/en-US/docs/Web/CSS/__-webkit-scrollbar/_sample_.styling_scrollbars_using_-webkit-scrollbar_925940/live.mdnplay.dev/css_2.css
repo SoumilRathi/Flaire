@@ -1,0 +1,5 @@
+
+.visible-scrollbar, .invisible-scrollbar, .mostly-customized-scrollbar { display: block; width: 10em; overflow: auto; height: 2em; padding: 1em; margin: 1em auto; outline: cornflowerblue dashed 2px; }
+.invisible-scrollbar::-webkit-scrollbar { display: none; }
+.mostly-customized-scrollbar::-webkit-scrollbar { width: 5px; height: 8px; background-color: rgb(170, 170, 170); }
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb { background: rgb(0, 0, 0); }

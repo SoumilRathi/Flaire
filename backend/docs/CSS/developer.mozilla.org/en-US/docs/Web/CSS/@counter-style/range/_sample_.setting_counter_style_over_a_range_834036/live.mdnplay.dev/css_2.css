@@ -1,0 +1,3 @@
+
+@counter-style range-multi-example { system: cyclic; symbols: "■" "□"; range: 2 4, 7 9; }
+.list { list-style: range-multi-example; }

@@ -1,0 +1,57 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/cascade/all.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:06:54 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>all</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style></style>
+
+    <style class="editable">
+      blockquote {
+        background-color: orange;
+        border: 2px solid blue;
+      }
+
+      .fix-this {
+        all: unset;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <blockquote>
+        <p>This blockquote is styled</p>
+      </blockquote>
+
+      <blockquote class="fix-this">
+        <p>This blockquote is not styled</p>
+      </blockquote>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 280px">blockquote {
+  background-color: orange;
+  border: 2px solid blue;
+}
+
+.fix-this {
+  all: unset;
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 140px">&lt;blockquote&gt;
+  &lt;p&gt;This blockquote is styled&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class="fix-this"&gt;
+  &lt;p&gt;This blockquote is not styled&lt;/p&gt;
+&lt;/blockquote&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/cascade/all.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:06:54 GMT -->
+
+</body></html>

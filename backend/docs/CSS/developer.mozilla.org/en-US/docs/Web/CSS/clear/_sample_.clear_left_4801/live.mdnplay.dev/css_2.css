@@ -1,0 +1,6 @@
+
+.wrapper { border: 1px solid black; padding: 10px; }
+.left { border: 1px solid black; clear: left; }
+.black { float: left; margin: 0px; background-color: black; color: rgb(255, 255, 255); width: 20%; }
+.red { float: left; margin: 0px; background-color: pink; width: 20%; }
+p { width: 50%; }

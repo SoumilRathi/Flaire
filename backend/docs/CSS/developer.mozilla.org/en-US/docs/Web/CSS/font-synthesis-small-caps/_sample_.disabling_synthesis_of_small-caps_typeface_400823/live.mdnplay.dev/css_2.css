@@ -1,0 +1,12 @@
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Ew-.ttf") format('truetype');
+}
+
+.english { font-family: Montserrat, sans-serif; }
+.small-caps { font-variant-ligatures: normal; font-variant-caps: small-caps; font-variant-alternates: normal; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-position: normal; font-variant-emoji: normal; }
+.no-syn { font-synthesis-small-caps: none; }

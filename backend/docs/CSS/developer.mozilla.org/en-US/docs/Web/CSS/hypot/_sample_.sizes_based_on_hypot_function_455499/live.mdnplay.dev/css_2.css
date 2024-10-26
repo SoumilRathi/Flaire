@@ -1,0 +1,7 @@
+
+:root { --size-0: 100px; --size-1: hypot(var(--size-0)); --size-2: hypot(var(--size-0), var(--size-0)); --size-3: hypot(     calc(var(--size-0) * 1.5),     calc(var(--size-0) * 2)   ); }
+.boxes { display: flex; flex-wrap: wrap; justify-content: space-around; }
+.box { width: var(--size-0); height: var(--size-0); background-color: tomato; color: white; display: flex; align-items: center; justify-content: center; }
+.one { width: var(--size-1); height: var(--size-1); }
+.two { width: var(--size-2); height: var(--size-2); }
+.three { width: var(--size-3); height: var(--size-3); }

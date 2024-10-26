@@ -1,0 +1,6 @@
+
+path:nth-child(1) { stroke-width: 0.25; }
+path:nth-child(2) { stroke-width: 0.25px; }
+path:nth-child(3) { stroke-width: 1; }
+path:nth-child(4) { stroke-width: 1px; }
+path:nth-child(5) { stroke-width: 5%; }

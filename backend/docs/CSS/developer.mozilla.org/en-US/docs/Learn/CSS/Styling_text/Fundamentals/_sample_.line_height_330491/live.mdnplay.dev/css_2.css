@@ -1,0 +1,6 @@
+
+p { line-height: 1.6; }
+html { font-size: 10px; }
+h1 { font-size: 5rem; text-transform: capitalize; text-shadow: red 1px 1px 1px, red 2px 2px 1px; text-align: center; }
+h1 + p { font-weight: bold; }
+p { font-size: 1.5rem; color: red; font-family: Helvetica, Arial, sans-serif; line-height: 1.6; }

@@ -1,0 +1,12 @@
+
+div { font-size: 1.6rem; padding: 20px; border: 3px solid red; border-radius: 20px; width: 480px; content-visibility: hidden; }
+.show { animation: 0.7s ease-in forwards show; }
+.hide { animation: 0.7s ease-out forwards hide; }
+@keyframes show { 
+  0% { content-visibility: hidden; color: rgba(0, 0, 0, 0); }
+  100% { content-visibility: visible; color: rgb(0, 0, 0); }
+}
+@keyframes hide { 
+  0% { content-visibility: visible; color: rgb(0, 0, 0); }
+  100% { content-visibility: hidden; color: rgba(0, 0, 0, 0); }
+}

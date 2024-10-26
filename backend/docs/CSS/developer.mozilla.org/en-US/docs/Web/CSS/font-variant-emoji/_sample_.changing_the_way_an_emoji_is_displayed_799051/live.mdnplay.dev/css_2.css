@@ -1,0 +1,11 @@
+
+@supports (font-variant-emoji: emoji) {
+  .no-support { display: none; }
+  .emojis { display: flex; flex-direction: row; justify-content: space-around; }
+  .emoji > div { font-size: 2rem; }
+}
+@supports not (font-variant-emoji: emoji) {
+  .emojis { display: none; }
+}
+.text-presentation { }
+.emoji-presentation { }

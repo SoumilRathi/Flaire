@@ -1,0 +1,4 @@
+
+.solid { outline-style: solid; }
+.double { outline-style: double; }
+* { outline-width: 10px; padding: 15px; }

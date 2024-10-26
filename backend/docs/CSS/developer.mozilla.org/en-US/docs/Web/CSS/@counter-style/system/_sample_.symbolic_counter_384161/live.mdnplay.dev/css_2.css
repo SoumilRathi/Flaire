@@ -1,0 +1,3 @@
+
+@counter-style abc { system: symbolic; symbols: a b c; suffix: ". "; }
+ul { list-style: abc; }

@@ -1,0 +1,6 @@
+
+#expand-toggle { display: none; }
+.expandable { visibility: collapse; background: rgb(221, 221, 221); }
+#expand-btn { display: inline-block; margin-top: 12px; padding: 5px 11px; background-color: rgb(255, 255, 119); border: 1px solid; border-radius: 3px; }
+#expand-toggle:checked ~ * .expandable { visibility: visible; }
+#expand-toggle:checked ~ #expand-btn { background-color: rgb(204, 204, 204); }

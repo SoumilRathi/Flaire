@@ -1,0 +1,4 @@
+
+div { height: 50vh; color: white; font-weight: bolder; }
+.shorter { background: linear-gradient(90deg in hsl, red, blue); }
+.longer { background: linear-gradient(90deg in hsl longer hue, red, blue); }

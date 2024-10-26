@@ -1,0 +1,10 @@
+
+div { color: black; font-family: sans-serif; width: 75%; height: 80%; margin: 4px; border: 2px solid black; display: inline-block; }
+p { margin: 0px; }
+.one { height: 250px; }
+.two { height: 80%; }
+.three { height: 40%; }
+.four { height: 40%; }
+div { background-color: var(--box-color); }
+.two { --box-color: cornflowerblue; }
+.three { --box-color: aquamarine; }

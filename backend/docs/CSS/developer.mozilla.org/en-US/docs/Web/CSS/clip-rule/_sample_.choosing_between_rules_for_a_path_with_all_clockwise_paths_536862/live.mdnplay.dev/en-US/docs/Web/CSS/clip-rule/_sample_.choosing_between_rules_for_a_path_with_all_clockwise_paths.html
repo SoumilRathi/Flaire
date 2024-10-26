@@ -1,0 +1,24 @@
+<html><!-- Online page at https://live.mdnplay.dev/en-US/docs/Web/CSS/clip-rule/_sample_.choosing_between_rules_for_a_path_with_all_clockwise_paths.html --><head><meta charset="utf-8"><title>clip-rule - choosing_between_rules_for_a_path_with_all_clockwise_paths - code sample</title><link rel="stylesheet" href="../../../../../css_1.css" type="text/css"><link rel="stylesheet" href="../../../../../css_2.css" type="text/css"></head><body>
+        
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <g stroke="#123" fill="#BCD">
+    <!-- basic rectangle and clipping path visualization follow -->
+    <rect x="10" y="10" width="30" height="30"></rect>
+    <path d="M 65,5 l 20,20 -20,20 -20,-20 20,-20 m 0,10 l 10,10 -10,10 -10,-10 10,-10 z" fill="none" stroke-width="0.5"></path>
+    <!-- rectangles to be clipped follow -->
+    <rect x="110" y="10" width="30" height="30" clip-path="url(#clipper1)"></rect>
+    <rect x="160" y="10" width="30" height="30" clip-path="url(#clipper2)"></rect>
+  </g>
+  <!-- clipping paths follow -->
+  <clipPath id="clipper1" clipPathUnits="objectBoundingBox">
+    <path d="M 0.5 -0.15 l 0.65 0.65 -0.65,0.65 -0.65,-0.65 0.65,-0.65 m 0,0.33 l 0.33,0.33 -0.33,0.33 -0.33,-0.33 0.33,-0.33 z" clip-rule="evenodd"></path>
+  </clipPath>
+  <clipPath id="clipper2" clipPathUnits="objectBoundingBox">
+    <path d="M 0.5 -0.15 l 0.65 0.65 -0.65,0.65 -0.65,-0.65 0.65,-0.65 m 0,0.33 l 0.33,0.33 -0.33,0.33 -0.33,-0.33 0.33,-0.33 z" clip-rule="nonzero"></path>
+  </clipPath>
+</svg>
+
+        
+        
+    
+</body></html>

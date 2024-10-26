@@ -1,0 +1,7 @@
+
+form { box-sizing: border-box; display: flex; gap: 20px; font-family: sans-serif; }
+h2 { margin-top: 0px; font-size: 1rem; text-align: center; flex: 1 0 100%; }
+div { margin-bottom: 20px; flex: 1 1 0%; display: flex; align-items: flex-start; justify-content: space-around; flex-flow: wrap; }
+textarea, input[type="text"] { inline-size: 100px; margin-block-end: 20px; writing-mode: vertical-rl; }
+.direction textarea, .direction input[type="text"] { writing-mode: vertical-rl; direction: rtl; }
+.reverse-line-order textarea, .reverse-line-order input[type="text"] { writing-mode: vertical-lr; }

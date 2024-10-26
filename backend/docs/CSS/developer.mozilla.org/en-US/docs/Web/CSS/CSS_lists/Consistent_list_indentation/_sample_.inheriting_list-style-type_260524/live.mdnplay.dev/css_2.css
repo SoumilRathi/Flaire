@@ -1,0 +1,5 @@
+
+li { border: 1px dashed red; }
+ul { border: 1px dotted blue; }
+ul:last-of-type { list-style-position: inside; }
+ul { width: 15em; }

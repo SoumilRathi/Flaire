@@ -1,0 +1,3 @@
+
+.bar { width: calc(log(var(--value), 10) * 2em); }
+.bar { height: 2em; background-color: tomato; color: white; display: flex; align-items: center; justify-content: center; margin: 0.25em 0px; }

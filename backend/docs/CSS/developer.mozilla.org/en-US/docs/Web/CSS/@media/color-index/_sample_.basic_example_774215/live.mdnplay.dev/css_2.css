@@ -1,0 +1,8 @@
+
+p { color: black; }
+@media (color-index) {
+  p { color: red; }
+}
+@media (min-color-index: 15000) {
+  p { color: rgb(20, 117, 239); }
+}

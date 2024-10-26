@@ -1,0 +1,6 @@
+
+#page { display: grid; width: 100%; height: 250px; grid-template: "head head" 50px "nav main" 1fr ". foot" 30px / 150px 1fr; }
+#page > header { grid-row-start: head; grid-column-start: head; grid-row-end: head; grid-column-end: head; background-color: rgb(140, 160, 255); }
+#page > nav { grid-row-start: nav; grid-column-start: nav; grid-row-end: nav; grid-column-end: nav; background-color: rgb(255, 160, 140); }
+#page > main { grid-row-start: main; grid-column-start: main; grid-row-end: main; grid-column-end: main; background-color: rgb(255, 255, 100); }
+#page > footer { grid-row-start: foot; grid-column-start: foot; grid-row-end: foot; grid-column-end: foot; background-color: rgb(140, 255, 160); }

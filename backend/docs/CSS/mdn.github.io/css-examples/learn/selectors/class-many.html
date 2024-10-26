@@ -1,0 +1,83 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/selectors/class-many.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:06:46 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Selectors: class</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+      .notebox {
+        margin: 1em 0;
+      }
+    </style>
+
+    <style class="editable">
+      .notebox {
+        border: 4px solid #666;
+        padding: 0.5em;
+      }
+
+      .notebox.warning {
+        border-color: orange;
+        font-weight: bold;
+      }
+
+      .notebox.danger {
+        border-color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="notebox">This is an informational note.</div>
+
+      <div class="notebox warning">This note shows a warning.</div>
+
+      <div class="notebox danger">This note shows danger!</div>
+
+      <div class="danger">
+        This won't get styled — it also needs to have the notebox class.
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 240px">.notebox {
+  border: 4px solid #666;
+  padding: .5em;
+}
+
+.notebox.warning {
+  border-color: orange;
+  font-weight: bold;
+}
+
+.notebox.danger {
+  border-color: red;
+  font-weight: bold;
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 260px">&lt;div class="notebox"&gt;
+    This is an informational note.
+&lt;/div&gt;
+
+&lt;div class="notebox warning"&gt;
+    This note shows a warning.
+&lt;/div&gt;
+
+&lt;div class="notebox danger"&gt;
+    This note shows danger!
+&lt;/div&gt;
+
+&lt;div class="danger"&gt;
+    This won't get styled — it also needs to have the notebox class
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/selectors/class-many.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:06:46 GMT -->
+
+</body></html>

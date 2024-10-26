@@ -1,0 +1,4 @@
+
+li { border: 1px dashed red; }
+li:nth-of-type(n+4) { list-style-type: none; }
+li { width: 15em; }

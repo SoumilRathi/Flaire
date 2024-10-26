@@ -1,0 +1,34 @@
+<html><!-- Online page at https://live.mdnplay.dev/en-US/docs/Web/CSS/math-depth/_sample_.specifying_a_math_depth.html --><head><meta charset="utf-8"><title>math-depth - specifying_a_math_depth - code sample</title><link rel="stylesheet" href="../../../../../css_1.css" type="text/css"><link rel="stylesheet" href="../../../../../css_2.css" type="text/css"></head><body>
+        
+            <p style="font-size: 3rem; margin: 1rem 0">
+  <math>
+    <mtext>0</mtext>
+
+    <!-- auto-add value has no effect when math-style is normal -->
+    <mrow style="math-style: normal">
+      <mrow style="math-depth: auto-add">
+        <mtext>0</mtext>
+      </mrow>
+    </mrow>
+
+    <!-- the inherited math-style is compact, so math-depth is set to 1 -->
+    <mrow style="math-depth: auto-add">
+      <mtext>1</mtext>
+    </mrow>
+
+    <mrow style="math-depth: add(2)">
+      <mtext>2</mtext>
+      <mrow style="math-depth: add(-1)">
+        <mtext>1</mtext>
+      </mrow>
+      <mrow style="math-depth: 0">
+        <mtext>0</mtext>
+      </mrow>
+    </mrow>
+  </math>
+</p>
+
+        
+        
+    
+<script type='text/javascript' src='../../../../../js_1.js'></script></body></html>

@@ -1,0 +1,7 @@
+
+#wrap { width: 260px; height: 160px; border: 1px dashed black; }
+#motion-demo { offset-path: path("M 20 20 C 20 100 200 0 200 100"); offset-position: left top; animation: 3000ms ease-in-out infinite alternate move; width: 40px; height: 40px; background: cyan; }
+@keyframes move { 
+  0%,20% { offset-distance: 0%; }
+  80%,100% { offset-distance: 100%; }
+}

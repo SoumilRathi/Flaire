@@ -1,0 +1,3 @@
+
+.ribbon { background-color: rgb(91, 200, 247); }
+.ribbon::after { content: "This is a fancy orange box."; background-color: rgb(255, 186, 16); border-color: black; border-style: dotted; }

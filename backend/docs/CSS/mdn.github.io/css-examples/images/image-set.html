@@ -1,0 +1,54 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/images/image-set.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:12:36 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>image-set()</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .box {
+        width: 400px;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+
+    <style class="editable">
+      .box {
+        background-image: -webkit-image-set(
+          url("small-balloons.jpg") 1x,
+          url("large-balloons.jpg") 2x
+        );
+        background-image: image-set(
+          url("small-balloons.jpg") 1x,
+          url("large-balloons.jpg") 2x
+        );
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="box"></div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 150px">.box {
+  background-image: -webkit-image-set(
+    url("small-balloons.jpg") 1x,
+    url("large-balloons.jpg") 2x);
+  background-image: image-set(
+    url("small-balloons.jpg") 1x,
+    url("large-balloons.jpg") 2x);
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 70px">&lt;div class="box"&gt;&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/images/image-set.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:12:36 GMT -->
+
+</body></html>

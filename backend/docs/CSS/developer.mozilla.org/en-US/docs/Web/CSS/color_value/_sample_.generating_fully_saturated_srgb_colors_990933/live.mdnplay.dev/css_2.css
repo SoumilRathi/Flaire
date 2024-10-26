@@ -1,0 +1,15 @@
+
+body { display: flex; flex-wrap: wrap; }
+div { height: 80px; margin: 10px; width: 80px; }
+div:nth-child(1) { background-color: rgb(255, 0, 0); }
+div:nth-child(2) { background-color: rgb(255, 128, 0); }
+div:nth-child(3) { background-color: rgb(255, 255, 0); }
+div:nth-child(4) { background-color: rgb(128, 255, 0); }
+div:nth-child(5) { background-color: rgb(0, 255, 0); }
+div:nth-child(6) { background-color: rgb(0, 255, 128); }
+div:nth-child(7) { background-color: rgb(0, 255, 255); }
+div:nth-child(8) { background-color: rgb(0, 128, 255); }
+div:nth-child(9) { background-color: rgb(0, 0, 255); }
+div:nth-child(10) { background-color: rgb(128, 0, 255); }
+div:nth-child(11) { background-color: rgb(255, 0, 255); }
+div:nth-child(12) { background-color: rgb(255, 0, 128); }

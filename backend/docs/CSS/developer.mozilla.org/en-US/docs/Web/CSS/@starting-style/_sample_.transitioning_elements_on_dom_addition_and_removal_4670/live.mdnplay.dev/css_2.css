@@ -1,0 +1,11 @@
+
+html * { box-sizing: border-box; font-family: sans-serif; }
+body { margin: 0px; display: flex; flex-direction: column; height: 100vh; gap: 10px; }
+body > button { margin: 10px 10px 0px; }
+section { display: flex; flex: 1 1 0%; gap: 10px; margin: 10px; }
+div { flex: 1 1 0%; border: 1px solid gray; position: relative; background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)); opacity: 1; scale: 1; transition: opacity 0.7s, scale 0.7s, display 0.7s allow-discrete, 0.7s allow-discrete; }
+@starting-style {
+  div { opacity: 0; scale: 1 0; }
+}
+.fade-out { opacity: 0; display: none; scale: 1 0; }
+div > button { font-size: 1.6rem; background: none; border: 0px; text-shadow: white 2px 1px 1px; border-radius: 15px; position: absolute; top: 1px; right: 1px; cursor: pointer; }

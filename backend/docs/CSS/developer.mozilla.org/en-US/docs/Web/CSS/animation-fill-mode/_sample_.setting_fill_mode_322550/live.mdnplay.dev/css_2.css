@@ -1,0 +1,8 @@
+
+.demo { border-top-width: 100px; border-top-style: solid; border-top-color: rgb(204, 204, 204); height: 300px; }
+@keyframes grow { 
+  0% { font-size: 0px; }
+  100% { font-size: 40px; }
+}
+.demo:hover .grows { animation-name: grow; animation-duration: 3s; }
+.demo:hover .growsandstays { animation-name: grow; animation-duration: 3s; animation-fill-mode: forwards; }

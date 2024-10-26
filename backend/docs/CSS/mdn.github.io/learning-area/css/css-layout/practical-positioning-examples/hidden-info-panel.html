@@ -1,0 +1,78 @@
+<html><!-- Mirrored from mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/hidden-info-panel.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:16:45 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Hidden info panel</title>
+
+    <style>
+      #menu-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        z-index: 1;
+
+        font-size: 3rem;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+
+      /* information panel styling */
+      #info-panel {
+        background-color: #a60000;
+        color: white;
+
+        width: 340px;
+        height: 100%;
+        padding: 0 20px;
+
+        position: fixed;
+        top: 0;
+        right: -370px;
+
+        transition: 0.6s right ease-out;
+      }
+
+      #info-panel.open {
+        right: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button type="button" id="menu-button" aria-haspopup="true" aria-controls="info-panel" aria-expanded="false">
+      ❔
+    </button>
+
+    <aside id="info-panel" aria-labelledby="menu-button">
+      <h2>Information</h2>
+
+      <p>Some very important information about your app:</p>
+
+      <ol>
+        <li>It has a really cool slide-out information panel.</li>
+        <li>
+          This information panel uses a combination of fixed positioning and a
+          CSS transition for the smooth sliding.
+        </li>
+        <li>
+          Using JavaScript this information panel is brought in and out of the
+          view.
+        </li>
+      </ol>
+    </aside>
+
+    <script>
+      const button = document.querySelector("#menu-button");
+      const panel = document.querySelector("#info-panel");
+
+      button.addEventListener("click", () => {
+        panel.classList.toggle("open");
+        button.setAttribute("aria-expanded", panel.classList.contains("open"));
+      });
+    </script>
+  
+
+
+
+</body><!-- Mirrored from mdn.github.io/learning-area/css/css-layout/practical-positioning-examples/hidden-info-panel.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:16:45 GMT --></html>

@@ -1,0 +1,6 @@
+
+svg { border: 1px solid; }
+rect:nth-of-type(2) { rx: 10px; fill: red; }
+rect:nth-of-type(3) { rx: 2em; fill: blue; }
+rect:nth-of-type(4) { rx: 5%; fill: orange; }
+rect:nth-of-type(5) { rx: 80%; fill: green; }

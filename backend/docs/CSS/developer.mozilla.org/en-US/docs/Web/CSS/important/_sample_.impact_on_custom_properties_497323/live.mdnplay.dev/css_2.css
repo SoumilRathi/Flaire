@@ -1,0 +1,4 @@
+
+:root { --myColor: red !important; }
+p { color: var(--myColor); }
+blockquote { color: purple; }

@@ -1,0 +1,8 @@
+
+#container { margin: 5px auto; border: 1px dashed black; box-sizing: border-box; }
+div { line-height: 2em; border: 1px solid; box-sizing: border-box; text-align: center; }
+#container { display: flex; flex-flow: wrap; justify-content: space-between; width: 510px; }
+div { line-height: 2em; flex: 0 0 120px; background-color: pink; }
+div:nth-of-type(2) { flex-grow: 1; background-color: yellow; }
+div:nth-of-type(n+9) { flex: 0 0 35px; background-color: lightgreen; }
+div:last-of-type { flex: 0 0 300px; background-color: lightblue; }

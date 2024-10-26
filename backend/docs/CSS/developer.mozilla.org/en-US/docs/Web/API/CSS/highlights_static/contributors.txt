@@ -1,0 +1,5 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/api/css/highlights_static/index.md
+
+# Original Wiki contributors
+

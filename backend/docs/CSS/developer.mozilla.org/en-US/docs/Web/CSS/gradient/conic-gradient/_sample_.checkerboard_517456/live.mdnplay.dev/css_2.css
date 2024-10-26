@@ -1,0 +1,3 @@
+
+div { width: 100px; height: 100px; }
+div { background: conic-gradient(rgb(255, 255, 255) 0.25turn, rgb(0, 0, 0) 0.25turn, rgb(0, 0, 0) 0.5turn, rgb(255, 255, 255) 0.5turn, rgb(255, 255, 255) 0.75turn, rgb(0, 0, 0) 0.75turn) left top / 25% 25% repeat; border: 1px solid; }

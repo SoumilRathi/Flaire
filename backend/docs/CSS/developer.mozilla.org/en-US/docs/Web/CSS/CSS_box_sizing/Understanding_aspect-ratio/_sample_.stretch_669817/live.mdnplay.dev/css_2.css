@@ -1,0 +1,8 @@
+
+img { width: 55px; margin-right: 5px; }
+img + img { width: 110px; }
+img + img + img { width: auto; }
+img { width: 55px; height: 110px; }
+img + img { width: 110px; }
+img + img + img { width: 220px; }
+img { height: 100vh; aspect-ratio: 3 / 1; }

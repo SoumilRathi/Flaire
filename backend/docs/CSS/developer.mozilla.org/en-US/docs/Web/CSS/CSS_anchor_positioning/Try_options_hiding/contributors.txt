@@ -1,0 +1,5 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/css_anchor_positioning/try_options_hiding/index.md
+
+# Original Wiki contributors
+

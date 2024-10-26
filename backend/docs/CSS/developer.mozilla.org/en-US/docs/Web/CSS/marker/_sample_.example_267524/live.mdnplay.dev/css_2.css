@@ -1,0 +1,3 @@
+
+html, body, svg { height: 100%; }
+polyline#test { marker: url("../%23triangle/index.html"); }

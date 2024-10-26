@@ -1,0 +1,54 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/feature-queries/not.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:13:49 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Feature Queries: not</title>
+    <link rel="stylesheet" href="../learn/styles.css">
+    <style></style>
+
+    <style class="editable">
+      .box {
+        border: 4px solid blue;
+        color: blue;
+      }
+      @supports not (row-gap: 10px) {
+        .box {
+          border: 4px dashed darkgreen;
+          color: darkgreen;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="box">
+        If your browser does not support row-gap, the content will be darkgreen
+        with a dashed border.
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 200px">.box {
+  border: 4px solid blue;
+  color: blue;
+}
+@supports not (row-gap: 10px) {
+  .box {
+    border: 4px dashed darkgreen;
+    color: darkgreen;
+  }
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 120px">&lt;div class="box"&gt;
+If your browser does not support row-gap, the content will be darkgreen with a dashed border.
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../learn/playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/feature-queries/not.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:13:49 GMT -->
+
+</body></html>

@@ -1,0 +1,17 @@
+
+* { box-sizing: border-box; }
+body { width: 600px; margin: 0px auto; }
+section { margin-top: 20px; font-family: Arial, Helvetica, sans-serif; background: rgb(238, 238, 238); border: 2px solid rgb(204, 204, 204); padding: 0px 20px; position: relative; }
+p, li { font-size: 0.8rem; line-height: 1.5; }
+button { position: absolute; top: 2px; right: 2px; }
+section { width: fit-content; }
+@keyframes narrower { 
+  0% { width: fit-content; }
+  100% { }
+}
+@keyframes wider { 
+  0% { }
+  100% { width: fit-content; }
+}
+.narrower { animation: 1s forwards narrower; }
+.wider { animation: 1s forwards wider; }

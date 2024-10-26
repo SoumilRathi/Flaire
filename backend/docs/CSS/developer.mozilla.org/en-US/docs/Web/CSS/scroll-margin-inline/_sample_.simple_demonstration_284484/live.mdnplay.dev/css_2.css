@@ -1,0 +1,6 @@
+
+.scroller { text-align: left; width: 250px; height: 250px; overflow-x: scroll; display: flex; box-sizing: border-box; border: 1px solid rgb(0, 0, 0); scroll-snap-type: x mandatory; }
+.scroller > div { flex: 0 0 250px; width: 250px; background-color: rgb(102, 51, 153); color: rgb(255, 255, 255); font-size: 30px; display: flex; align-items: center; justify-content: center; scroll-snap-align: end; }
+.scroller > div:nth-child(2n) { background-color: rgb(255, 255, 255); color: rgb(102, 51, 153); }
+.scroller > div:nth-child(2) { scroll-margin-inline: 1rem; }
+.scroller > div:nth-child(3) { scroll-margin-inline: 2rem; }

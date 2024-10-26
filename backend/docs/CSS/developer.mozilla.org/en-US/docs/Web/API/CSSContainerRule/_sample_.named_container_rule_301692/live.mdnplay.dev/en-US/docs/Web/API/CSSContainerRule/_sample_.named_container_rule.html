@@ -1,0 +1,39 @@
+<html><!-- Online page at https://live.mdnplay.dev/en-US/docs/Web/API/CSSContainerRule/_sample_.named_container_rule.html --><head><meta charset="utf-8"><title>CSSContainerRule - named_container_rule - code sample</title><link rel="stylesheet" href="../../../../../css_1.css" type="text/css"><link rel="stylesheet" href="../../../../../css_2.css" type="text/css"></head><body>
+        
+            <div id="log">
+  <h2>Log</h2>
+  <ul><li>CSSContainerRule.containerName: "sidebar"</li><li>CSSContainerRule.containerQuery: "(min-width: 700px)"</li><li>CSSContainerRule.conditionText: "sidebar (min-width: 700px)"</li></ul>
+  <hr>
+</div>
+
+<div class="post">
+  <div class="card">
+    <h2>Card title</h2>
+    <p>Card content</p>
+  </div>
+</div>
+
+<style id="example-styles">
+  .post {
+    container-type: inline-size;
+    container-name: sidebar;
+  }
+
+  /* Default heading styles for the card title */
+  .card h2 {
+    font-size: 1em;
+  }
+
+  @container sidebar (min-width: 700px) {
+    .card {
+      font-size: 2em;
+    }
+  }
+</style>
+
+        
+        
+            
+        
+    
+<script type='text/javascript' src='../../../../../js_1.js'></script></body></html>

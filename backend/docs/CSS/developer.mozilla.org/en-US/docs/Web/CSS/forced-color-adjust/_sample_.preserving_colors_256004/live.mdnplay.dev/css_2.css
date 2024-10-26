@@ -1,0 +1,5 @@
+
+.box { border: 5px solid grey; background-color: rgb(204, 204, 204); width: 300px; margin: 20px; padding: 10px; }
+@media (forced-colors: active) {
+  .forced { }
+}

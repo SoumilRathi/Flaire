@@ -1,0 +1,5 @@
+
+.fancy { text-align: center; box-sizing: border-box; width: 150px; height: 150px; padding: 80px 1em 0px; margin: 0px 100px; position: relative; background-color: rgb(164, 201, 207); border-radius: 100% 100% 0px 0px; }
+.fancy::before, .fancy::after { content: ""; position: absolute; bottom: 0px; z-index: -1; background-color: rgb(164, 201, 207); border-radius: 100%; }
+.fancy::before { width: 125px; height: 125px; left: -80px; border-bottom-right-radius: 0px; }
+.fancy::after { width: 100px; height: 100px; right: -60px; border-bottom-left-radius: 0px; }

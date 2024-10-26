@@ -1,0 +1,10 @@
+
+@media (-webkit-device-pixel-ratio: 1) {
+  p { color: red; }
+}
+@media (min--webkit-device-pixel-ratio: 1.1) {
+  p { font-size: 1.5em; }
+}
+@media (max--webkit-device-pixel-ratio: 3) {
+  p { background: yellow; }
+}

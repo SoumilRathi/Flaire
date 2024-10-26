@@ -1,0 +1,8 @@
+
+@supports (color: AccentColor) {
+  p { color: green; border: 2px solid; }
+  span { display: none; }
+}
+@supports not (color: AccentColor) {
+  p { color: red; }
+}

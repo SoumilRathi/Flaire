@@ -1,0 +1,10 @@
+
+@media (width: 360px) {
+  div { color: red; }
+}
+@media (min-width: 35rem) {
+  div { background: yellow; }
+}
+@media (max-width: 50rem) {
+  div { border: 2px solid blue; }
+}

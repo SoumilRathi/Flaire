@@ -1,0 +1,5 @@
+
+body > div { background-color: rgb(204, 204, 204); width: 200px; flex-flow: column; }
+#grid { display: inline-grid; height: 200px; gap: 12.5% 0px; }
+#flex { display: inline-flex; height: 200px; gap: 12.5% 0px; }
+#grid > div, #flex > div { background-color: coral; width: 20px; height: 20px; }

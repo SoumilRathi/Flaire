@@ -1,0 +1,5 @@
+
+.contrast { width: 100px; height: 100px; outline: black dashed 2px; }
+@media (prefers-contrast: more) {
+  .contrast { outline: black solid 2px; }
+}

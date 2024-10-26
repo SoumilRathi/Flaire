@@ -1,0 +1,7 @@
+
+main { border: 3px solid steelblue; }
+section { margin: 0.5rem; border: 2px dashed darkgreen; }
+main { color: steelblue; }
+section { color: darkgreen; }
+p { color: red; }
+section.with-revert { color: revert; }

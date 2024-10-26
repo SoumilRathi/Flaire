@@ -1,0 +1,7 @@
+
+#container { display: flex; width: 100vw; height: 100vh; box-sizing: border-box; }
+.item { flex: 1 1 0%; margin: 20px; }
+:root { --base-color: orange; }
+#one { background-color: oklab(from var(--base-color) calc(l + 0.15) a b); }
+#two { background-color: var(--base-color); }
+#three { background-color: oklab(from var(--base-color) calc(l - 0.15) a b); }

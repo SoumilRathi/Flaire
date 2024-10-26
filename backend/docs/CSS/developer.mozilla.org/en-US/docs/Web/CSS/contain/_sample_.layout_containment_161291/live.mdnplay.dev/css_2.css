@@ -1,0 +1,7 @@
+
+p { margin: 4px; padding: 4px; }
+h2 { margin-bottom: 4px; padding: 10px; }
+div { border-radius: 4px; box-shadow: gray 0px 2px 4px 0px; padding: 6px; margin: 6px; }
+.card { width: 70%; height: 90px; }
+.fixed { position: fixed; right: 10px; top: 10px; background: coral; }
+.float { float: left; margin: 10px; background: aquamarine; }

@@ -1,0 +1,144 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/css-cookbook/grid-wrapper.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:58 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CSS Cookbook: Grid Wrapper</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(20px, 1fr) repeat(6, minmax(0, 60px)) minmax(
+            20px,
+            1fr
+          );
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 10px;
+      }
+
+      .grid > * {
+        border: 2px solid rgb(95 97 110);
+        border-radius: 0.5em;
+        padding: 20px;
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .wrapper {
+        grid-column: 2 / -2;
+      }
+
+      .left-edge {
+        grid-column: 1 / -2;
+      }
+
+      .right-wrapper {
+        grid-column: 4 / -2;
+      }
+    </style>
+
+    <style class="editable">
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(20px, 1fr) repeat(6, minmax(0, 60px)) minmax(
+            20px,
+            1fr
+          );
+        grid-gap: 10px;
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .wrapper {
+        grid-column: 2 / -2;
+      }
+
+      .left-edge {
+        grid-column: 1 / -2;
+      }
+
+      .right-wrapper {
+        grid-column: 4 / -2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="grid">
+        <div class="wrapper">
+          <p>
+            This item aligns to a central “wrapper” – columns that have a
+            maximum width.
+          </p>
+        </div>
+        <div class="full-width">
+          <p>This item aligns to the edge of the grid container.</p>
+        </div>
+        <div class="left-edge">
+          <p>
+            This item aligns to the left edge of the grid container and the
+            right edge of the wrapper.
+          </p>
+        </div>
+        <div class="right-wrapper">
+          <p>This item aligns to the right edge of the “wrapper” columns.</p>
+        </div>
+      </div>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 170px">.grid {
+  display: grid;
+  grid-template-columns: minmax(20px, 1fr) repeat(6, minmax(0, 60px)) minmax(20px, 1fr);
+  grid-gap: 10px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.wrapper {
+  grid-column: 2 / -2;
+}
+
+.left-edge {
+  grid-column: 1 / -2;
+}
+
+.right-wrapper {
+  grid-column: 4 / -2;
+}</textarea>
+
+    <textarea class="playable playable-html" style="height: 170px">&lt;div class="grid"&gt;
+
+  &lt;div class="wrapper"&gt;
+    &lt;p&gt;This item aligns to a central “wrapper” – columns that have a maximum width.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="full-width"&gt;
+    &lt;p&gt;This item aligns to the edge of the grid container.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="left-edge"&gt;
+    &lt;p&gt;This item aligns to the left edge of the grid container and the right edge of the wrapper.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="right-wrapper"&gt;
+    &lt;p&gt;This item aligns to the right edge of the “wrapper” columns.&lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</textarea>
+
+    <!-- leave everything below here alone -->
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/css-cookbook/grid-wrapper.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:58 GMT -->
+
+</body></html>

@@ -1,0 +1,15 @@
+
+body { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+div { height: 50px; border: 1px solid black; }
+[data-color="blue"] { background-color: oklch(0.5 0.4 240); }
+[data-color="blue-chroma1"] { background-color: oklch(0.5 0.2 240); }
+[data-color="blue-chroma2"] { background-color: oklch(0.5 0.1 240); }
+[data-color="blue-chroma3"] { background-color: oklch(0.5 0.01 240); }
+[data-color="red"] { background-color: oklch(0.5 0.4 20); }
+[data-color="red-chroma1"] { background-color: oklch(0.5 0.2 20); }
+[data-color="red-chroma2"] { background-color: oklch(0.5 0.1 20); }
+[data-color="red-chroma3"] { background-color: oklch(0.5 0.008 20); }
+[data-color="green"] { background-color: oklch(0.5 0.4 130); }
+[data-color="green-chroma1"] { background-color: oklch(0.5 0.2 130); }
+[data-color="green-chroma2"] { background-color: oklch(0.5 0.1 130); }
+[data-color="green-chroma3"] { background-color: oklch(0.5 0.01 130); }

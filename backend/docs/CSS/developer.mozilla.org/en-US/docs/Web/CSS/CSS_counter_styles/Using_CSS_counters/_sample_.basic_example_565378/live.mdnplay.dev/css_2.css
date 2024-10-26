@@ -1,0 +1,3 @@
+
+body { counter-reset: section 0; }
+h3::before { counter-increment: section 1; content: "Section " counter(section) ": "; }

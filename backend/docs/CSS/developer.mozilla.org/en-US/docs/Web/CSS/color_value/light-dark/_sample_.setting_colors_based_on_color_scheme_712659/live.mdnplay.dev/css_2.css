@@ -1,0 +1,7 @@
+
+:root { color-scheme: light dark; --light-bg: ghostwhite; --light-color: darkslategray; --light-code: tomato; --dark-bg: darkslategray; --dark-color: ghostwhite; --dark-code: gold; }
+* { background-color: light-dark(var(--light-bg), var(--dark-bg)); color: light-dark(var(--light-color), var(--dark-color)); }
+code { color: light-dark(var(--light-code), var(--dark-code)); }
+.light { color-scheme: light; }
+.dark { color-scheme: dark; }
+section { padding: 0.8rem; }

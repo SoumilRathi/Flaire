@@ -1,0 +1,3 @@
+
+@counter-style circled-digits { system: fixed 3; symbols: ➀ ➁ ➂; suffix: ": "; }
+ul { list-style: circled-digits; }

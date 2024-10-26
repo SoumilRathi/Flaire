@@ -1,0 +1,7 @@
+
+div { counter-reset: sevens 100; }
+i { counter-increment: sevens -7; }
+i:first-of-type { counter-increment: none; }
+i::before { content: counter(sevens); }
+div { display: flex; flex-flow: column wrap; height: 300px; width: 200px; }
+i { flex: 0 0 2em; }

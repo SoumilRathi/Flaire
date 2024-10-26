@@ -1,0 +1,3 @@
+
+ol { counter-reset: section 0; list-style-type: none; }
+li::before { counter-increment: section 1; content: counters(section, ".") " "; }

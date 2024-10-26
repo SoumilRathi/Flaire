@@ -1,0 +1,2 @@
+
+.red-square { height: 100px; width: 100px; background-color: rgb(128, 128, 128); border: 1px solid black; mask: url("../%23m/index.html"); mask-size: auto; mask-composite: add; mask-mode: match-source; }

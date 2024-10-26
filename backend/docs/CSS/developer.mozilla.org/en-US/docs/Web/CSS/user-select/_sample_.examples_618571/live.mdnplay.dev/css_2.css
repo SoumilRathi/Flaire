@@ -1,0 +1,3 @@
+
+.unselectable { -webkit-user-select: none; }
+.all { -webkit-user-select: all; }

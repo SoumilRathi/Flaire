@@ -1,0 +1,86 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/css-cookbook/sticky-footer.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:56 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>CSS Cookbook: sticky footer</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+      html {
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      * {
+        box-sizing: inherit;
+      }
+
+      body {
+        height: 100%;
+      }
+
+      .page-header,
+      .page-footer {
+        background-color: rgb(75 70 74);
+        color: #fff;
+        padding: 20px;
+      }
+
+      .page-body {
+        padding: 20px;
+      }
+
+      .preview {
+        height: 100%;
+        overflow: auto;
+      }
+    </style>
+
+    <style class="editable">
+      .wrapper {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <div class="wrapper">
+        <header class="page-header">This is the header</header>
+        <main class="page-body">
+          <p>
+            Main page content here, add more if you want to see the footer push
+            down.
+          </p>
+        </main>
+        <footer class="page-footer">Sticky footer</footer>
+      </div>
+    </section>
+
+    <textarea class="playable playable-css">.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}</textarea>
+
+    <textarea class="playable playable-html">&lt;div class="wrapper"&gt;
+  &lt;header class="page-header"&gt;This is the header&lt;/header&gt;
+  &lt;article class="page-body"&gt;
+    &lt;p&gt;Main page content here, add more if you want to see the footer push down.&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;footer class="page-footer"&gt;Sticky footer&lt;/footer&gt;
+&lt;/div&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/css-cookbook/sticky-footer.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:14:56 GMT -->
+
+</body></html>

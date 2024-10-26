@@ -1,0 +1,17 @@
+
+@font-face {
+  font-family: 'Nabla';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts.gstatic.com/s/nabla/v10/j8_D6-LI0Lvpe7Makz5UhJt9C3uqg_X_75gyGS4jAxsNIjrRNRA.ttf") format('truetype');
+}
+body {
+  --google-font-color-nabla:none;
+}
+
+h2 { font-family: Nabla; }
+@font-palette-values --two { font-family: Nabla; base-palette: 2; }
+@font-palette-values --five { font-family: Nabla; base-palette: 5; }
+.two { font-palette: --two; }
+.five { font-palette: --five; }

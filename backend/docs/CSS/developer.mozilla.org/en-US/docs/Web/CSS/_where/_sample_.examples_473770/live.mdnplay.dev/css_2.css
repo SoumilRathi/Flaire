@@ -1,0 +1,5 @@
+
+html { font-family: sans-serif; font-size: 150%; }
+:is(section.is-styling, aside.is-styling, footer.is-styling) a { color: red; }
+:where(section.where-styling, aside.where-styling, footer.where-styling) a { color: orange; }
+footer a { color: blue; }

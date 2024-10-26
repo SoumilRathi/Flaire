@@ -1,0 +1,5 @@
+
+div { outline: rgb(204, 204, 204) solid 1px; }
+#parent { width: 200px; height: 200px; background-color: rgb(255, 199, 228); position: relative; }
+#width, #noWidth { background-color: rgb(194, 255, 215); position: absolute; left: 0px; right: 0px; }
+#width { width: 100px; top: 60px; }

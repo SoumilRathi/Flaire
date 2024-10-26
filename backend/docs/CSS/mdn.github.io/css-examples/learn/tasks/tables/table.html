@@ -1,0 +1,166 @@
+<html><!-- Mirrored from mdn.github.io/css-examples/learn/tasks/tables/table.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:16:34 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html;charset=utf-8"><!-- /Added by HTTrack -->
+
+    <meta charset="utf-8">
+    <title>Tables Task</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+      table {
+        font-size: 75%;
+      }
+    </style>
+
+    <style class="editable"></style>
+  </head>
+
+  <body>
+    <section class="preview">
+      <table>
+        <caption>
+          A summary of the UK's most famous punk bands
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Band</th>
+            <th scope="col">Year formed</th>
+            <th scope="col">No. of Albums</th>
+            <th scope="col">Most famous song</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Buzzcocks</th>
+            <td>1976</td>
+            <td>9</td>
+            <td>Ever fallen in love (with someone you shouldn't've)</td>
+          </tr>
+          <tr>
+            <th scope="row">The Clash</th>
+            <td>1976</td>
+            <td>6</td>
+            <td>London Calling</td>
+          </tr>
+          <tr>
+            <th scope="row">The Damned</th>
+            <td>1976</td>
+            <td>10</td>
+            <td>Smash it up</td>
+          </tr>
+          <tr>
+            <th scope="row">Sex Pistols</th>
+            <td>1975</td>
+            <td>1</td>
+            <td>Anarchy in the UK</td>
+          </tr>
+          <tr>
+            <th scope="row">Sham 69</th>
+            <td>1976</td>
+            <td>13</td>
+            <td>If the kids are united</td>
+          </tr>
+          <tr>
+            <th scope="row">Siouxsie and the Banshees</th>
+            <td>1976</td>
+            <td>11</td>
+            <td>Hong Kong Garden</td>
+          </tr>
+          <tr>
+            <th scope="row">Stiff Little Fingers</th>
+            <td>1977</td>
+            <td>10</td>
+            <td>Suspect Device</td>
+          </tr>
+          <tr>
+            <th scope="row">The Stranglers</th>
+            <td>1974</td>
+            <td>17</td>
+            <td>No More Heroes</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Total albums</th>
+            <td colspan="2">77</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <textarea class="playable playable-css" style="height: 280px"> </textarea>
+
+    <textarea class="playable playable-html" style="height: 140px"> &lt;table&gt;
+  &lt;caption&gt;A summary of the UK's most famous punk bands&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Band&lt;/th&gt;
+      &lt;th scope="col"&gt;Year formed&lt;/th&gt;
+      &lt;th scope="col"&gt;No. of Albums&lt;/th&gt;
+      &lt;th scope="col"&gt;Most famous song&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Buzzcocks&lt;/th&gt;
+      &lt;td&gt;1976&lt;/td&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;Ever fallen in love (with someone you shouldn't've)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;The Clash&lt;/th&gt;
+      &lt;td&gt;1976&lt;/td&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;London Calling&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;The Damned&lt;/th&gt;
+      &lt;td&gt;1976&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Smash it up&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Sex Pistols&lt;/th&gt;
+      &lt;td&gt;1975&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;Anarchy in the UK&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Sham 69&lt;/th&gt;
+      &lt;td&gt;1976&lt;/td&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;If the kids are united&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Siouxsie and the Banshees&lt;/th&gt;
+      &lt;td&gt;1976&lt;/td&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;Hong Kong Garden&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;Stiff Little Fingers&lt;/th&gt;
+      &lt;td&gt;1977&lt;/td&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;Suspect Device&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;The Stranglers&lt;/th&gt;
+      &lt;td&gt;1974&lt;/td&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;No More Heroes&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;th scope="row" colspan="2"&gt;Total albums&lt;/th&gt;
+      &lt;td colspan="2"&gt;77&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</textarea>
+
+    <div class="playable-buttons">
+      <input id="reset" type="button" value="Reset">
+    </div>
+  
+  <script src="../playable.js"></script>
+
+<!-- Mirrored from mdn.github.io/css-examples/learn/tasks/tables/table.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Oct 2024 07:16:34 GMT -->
+
+</body></html>

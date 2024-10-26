@@ -1,0 +1,14 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/css_multicol_layout/index.md
+
+# Original Wiki contributors
+wbamberg
+SphinxKnight
+Syamsul88
+estelle
+rachelandrew
+mfluehr
+Sheppy
+fscholz
+Sebastianz
+teoli

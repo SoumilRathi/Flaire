@@ -1,0 +1,8 @@
+
+html { --zoom-level: normal; }
+.content { max-width: 60ch; margin: auto; zoom: var(--zoom-level); }
+.controls, .zoom-notice { display: flex; justify-content: space-around; }
+.zoom-notice { color: red; }
+@supports (zoom: 1) {
+  .zoom-notice { display: none; }
+}

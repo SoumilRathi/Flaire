@@ -1,0 +1,10 @@
+
+.wrapper { font-size: 1.25rem; display: flex; gap: 1rem; }
+section div { font-family: monospace; padding: 3px; }
+section { border: 1.5px solid tomato; height: 300px; width: 300px; flex-wrap: wrap; gap: 0.2rem; }
+.olive { background-color: olive; }
+.coral { background-color: coral; }
+.deepskyblue { background-color: deepskyblue; }
+.orchid { background-color: orchid; }
+.slateblue { background-color: slateblue; color: white; }
+.maroon { background-color: maroon; color: white; }

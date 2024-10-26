@@ -1,0 +1,14 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/css_scrollbars_styling/index.md
+
+# Original Wiki contributors
+wbamberg
+mfuji09
+Malvoz
+kioyang
+werdnagreb
+hidde
+chrisdavidmills
+speed-rmn
+rachelandrew
+ExE-Boss

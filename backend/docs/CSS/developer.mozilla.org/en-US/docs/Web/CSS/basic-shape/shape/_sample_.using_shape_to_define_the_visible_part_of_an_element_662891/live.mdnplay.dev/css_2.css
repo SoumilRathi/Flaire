@@ -1,0 +1,10 @@
+
+body { align-items: center; justify-content: center; display: flex; }
+.container { position: relative; display: inline-block; width: 200px; height: 200px; margin: 20px; background-color: lightgray; }
+@supports not (clip-path: shape(from 0 0, move to 0 0)) {
+  .container { display: none; }
+  body::after { content: "Your browser doesn't support the `shape()` function yet."; }
+}
+.shape { width: 100%; height: 100%; background: rgb(43, 196, 162); position: absolute; text-align: center; line-height: 50px; }
+.shape1 { }
+.shape2 { }

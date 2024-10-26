@@ -1,0 +1,6 @@
+
+#container { display: flex; width: 100vw; height: 100vh; box-sizing: border-box; background-image: repeating-linear-gradient(45deg, white, white 24px, black 25px, black 50px); }
+.item { flex: 1 1 0%; margin: 20px; }
+:root { --base-color: purple; --standard-opacity: 0.75; }
+#one { background-color: var(--base-color); }
+#two { background-color: hwb(from var(--base-color) h w b / var(--standard-opacity)); }

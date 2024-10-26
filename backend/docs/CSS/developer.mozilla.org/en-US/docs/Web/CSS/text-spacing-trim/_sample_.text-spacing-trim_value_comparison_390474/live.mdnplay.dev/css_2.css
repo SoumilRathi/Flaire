@@ -1,0 +1,8 @@
+
+main { font-family: "Yu Gothic", YuGothic, "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; display: grid; gap: 0.5em; grid-template-columns: 1fr 1fr; width: 70%; margin: 0px auto; }
+h2 { font-size: 80%; margin: 0px; }
+p { font-size: 20px; border: 1px solid blue; margin: 0px; }
+#normal { grid-column-start: 1; grid-column-end: auto; grid-row-start: 1; grid-row-end: auto; }
+#space-all { grid-column-start: 2; grid-column-end: auto; grid-row-start: 1; grid-row-end: auto; }
+#space-first { grid-column-start: 1; grid-column-end: auto; grid-row-start: 2; grid-row-end: auto; }
+#trim-start { grid-column-start: 2; grid-column-end: auto; grid-row-start: 2; grid-row-end: auto; }

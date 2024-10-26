@@ -1,0 +1,10 @@
+
+div.box { display: inline-block; padding: 1em; margin: 6px; outline: rgb(0, 0, 0) solid 2px; width: 12em; height: 2em; vertical-align: middle; }
+.theme-a { background: rgb(221, 204, 170); color: rgb(119, 51, 17); }
+@media (prefers-color-scheme: dark) {
+  .theme-a.adaptive { background: rgb(119, 85, 51); color: rgb(221, 204, 187); outline: rgb(0, 0, 0) dashed 5px; }
+}
+.theme-b { background: rgb(68, 68, 119); color: rgb(187, 187, 221); }
+@media (prefers-color-scheme: light) {
+  .theme-b.adaptive { background: rgb(187, 204, 221); color: rgb(51, 51, 68); outline: rgb(0, 0, 0) dotted 5px; }
+}

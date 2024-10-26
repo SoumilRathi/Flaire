@@ -1,0 +1,5 @@
+
+ol { counter-reset: count 0; }
+li { counter-increment: count 1; }
+li::marker { content: counters(count, "-", decimal-leading-zero) ") "; }
+li::before { content: counters(count, "~", upper-alpha) " == " counters(count, "*", lower-alpha); }

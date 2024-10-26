@@ -1,0 +1,5 @@
+
+#content { display: flex; }
+div > div { border: 3px solid rgba(0, 0, 0, 0.2); }
+.small { flex-grow: 1; }
+.double { flex-grow: 2; border: 3px solid rgba(0, 0, 0, 0.2); }

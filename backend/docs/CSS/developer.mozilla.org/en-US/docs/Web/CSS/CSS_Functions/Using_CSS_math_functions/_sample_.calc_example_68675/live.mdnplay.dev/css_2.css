@@ -1,0 +1,7 @@
+
+div { background-color: black; margin: 4px 0px; width: 100%; }
+div > code { display: block; background-color: red; color: white; height: 48px; }
+.calc1 > code { width: calc(110px); }
+.calc2 > code { width: calc(10em); }
+.calc3 > code { width: calc(100% - 32px); }
+.calc4 > code { --predefined-width: 100%; width: calc(var(--predefined-width) - calc(16px * 2)); }

@@ -1,0 +1,7 @@
+# Contributors by commit history
+https://github.com/mdn/content/commits/main/files/en-us/web/css/css_logical_properties_and_values/margins_borders_padding/index.md
+
+# Original Wiki contributors
+rachelandrew
+chrisdavidmills
+ExE-Boss

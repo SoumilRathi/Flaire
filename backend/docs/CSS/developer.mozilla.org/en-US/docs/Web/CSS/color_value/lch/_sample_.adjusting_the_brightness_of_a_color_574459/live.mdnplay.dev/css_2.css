@@ -1,0 +1,12 @@
+
+body { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+div { height: 50px; border: 1px solid black; }
+[data-color="blue-dark"] { background-color: lch(10 100 240); }
+[data-color="blue"] { background-color: lch(50 100 240); }
+[data-color="blue-light"] { background-color: lch(90 100 240); }
+[data-color="red-dark"] { background-color: lch(10 130 20); }
+[data-color="red"] { background-color: lch(50 130 20); }
+[data-color="red-light"] { background-color: lch(90 130 20); }
+[data-color="green-dark"] { background-color: lch(10 132 130); }
+[data-color="green"] { background-color: lch(50 132 130); }
+[data-color="green-light"] { background-color: lch(90 132 130); }

@@ -1,0 +1,5 @@
+
+* { box-sizing: border-box; }
+.media { border: 2px solid rgb(247, 103, 7); border-radius: 5px; background-color: rgb(255, 244, 230); max-width: 400px; display: grid; grid-template-columns: 1fr 3fr; grid-template-areas: "img content"; margin-bottom: 1em; }
+.media .image { grid-row-start: img; grid-column-start: img; grid-row-end: img; grid-column-end: img; background-color: rgb(255, 216, 168); }
+.media .text { grid-row-start: content; grid-column-start: content; grid-row-end: content; grid-column-end: content; padding: 10px; }

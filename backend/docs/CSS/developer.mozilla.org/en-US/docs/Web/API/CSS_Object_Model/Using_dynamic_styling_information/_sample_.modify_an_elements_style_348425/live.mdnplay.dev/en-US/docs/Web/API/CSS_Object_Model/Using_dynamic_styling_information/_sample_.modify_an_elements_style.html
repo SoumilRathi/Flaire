@@ -1,0 +1,32 @@
+<html><!-- Online page at https://live.mdnplay.dev/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information/_sample_.modify_an_elements_style.html --><head><meta charset="utf-8"><title>Using dynamic styling information - modify_an_elements_style - code sample</title><link rel="stylesheet" href="../../../../../../css_1.css" type="text/css"><link rel="stylesheet" href="../../../../../../css_2.css" type="text/css"></head><body>
+        
+            
+
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>simple style example</title>
+
+    
+    <style>
+      #p1 {
+        border: solid blue 2px;
+      }
+    </style>
+  
+
+  
+    <!-- passes a reference to the element's object as parameter 'this'. -->
+    <p id="p1" onclick="alterStyle(this);">
+      Click here to change background color.
+    </p>
+
+    <!-- passes the 'p1' id of another element's style to modify. -->
+    <button onclick="resetStyle('p1');">Reset background color</button>
+  
+
+
+        
+        
+    
+<script type='text/javascript' src='../../../../../../js_1.js'></script></body></html>

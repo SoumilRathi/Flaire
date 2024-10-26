@@ -1,0 +1,4 @@
+
+div { width: 120px; height: 120px; float: left; margin-right: 10px; box-sizing: border-box; }
+.colorhint-gradient { background: linear-gradient(to top, lime, 20%, cyan); }
+.regular-progression { background: linear-gradient(to top, lime, cyan); }

@@ -1,0 +1,5 @@
+
+.box { display: inline-block; margin: 1em; min-width: 6.5em; line-height: 6.5em; text-align: center; transition: 1s ease-in-out; border: 0.25em dotted; }
+#box1:hover { rotate: 90deg; }
+#box2:hover { rotate: y 180deg; }
+#box3:hover { rotate: 1 2 1 360deg; }

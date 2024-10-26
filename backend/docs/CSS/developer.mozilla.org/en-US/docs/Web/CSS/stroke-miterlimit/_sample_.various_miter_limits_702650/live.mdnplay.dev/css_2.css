@@ -1,0 +1,6 @@
+
+path:nth-child(1) { stroke-miterlimit: 1.1; }
+path:nth-child(2) { stroke-miterlimit: 1.4; }
+path:nth-child(3) { stroke-miterlimit: 1.9; }
+path:nth-child(4) { stroke-miterlimit: 4.2; }
+path:nth-child(5) { stroke-miterlimit: 6.1; }

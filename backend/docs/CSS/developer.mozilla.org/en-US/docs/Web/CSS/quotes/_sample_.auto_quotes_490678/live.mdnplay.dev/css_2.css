@@ -1,0 +1,4 @@
+
+q { quotes: auto; }
+li:not(:last-of-type) { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: currentcolor; }
+li { padding: 0.5em 0px; }
