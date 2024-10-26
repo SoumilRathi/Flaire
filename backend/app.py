@@ -3,8 +3,7 @@ from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 from firebase import db
 from agent import Agent
-import base64
-import asyncio
+import threading
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -38,30 +37,45 @@ def send_message():
     response.headers.add("Access-Control-Allow-Methods", "*")
     return response, 200
 
-def agent_reply_handler(message, client_sid):
+def agent_reply_handler(message, client_sid, project_id):
     """Callback function to handle agent replies"""
     if (message != ""):
-        socketio.emit('agent_response', {"message": message}, room=client_sid)
+        socketio.emit('agent_response', {"message": message, "project_id": project_id}, room=client_sid)
 
-def style_callback(code, client_sid, project_id):
-
+def style_callback(code, client_sid, project_id, html_code = None):
     # Get a reference to the specific document
     doc_ref = db.collection('projects').document(project_id)
-    
-    # Update the document
-    doc_ref.update({
+
+    data = {
         "updated": True,
         'cssCode': code,
-    })
-    
-    socketio.emit('styled_code', {"code": code}, room=client_sid)
+    }
+    if html_code:
+        data['htmlCode'] = html_code
+        
+    # Update the document
+    doc_ref.update(data)
 
-def screenshot_callback(client_sid):
-    socketio.emit('screenshot', room=client_sid)
+    toReturn = {
+        "code": code,
+        "project_id": project_id,
+    }
+    if html_code:
+        toReturn['htmlCode'] = html_code
+    
+    socketio.emit('styled_code', toReturn, room=client_sid)
+
+def screenshot_callback(client_sid, project_id):
+    socketio.emit('screenshot', {"project_id": project_id}, room=client_sid)
+
+def finish_callback(client_sid, project_id):
+    socketio.emit('finish', {"project_id": project_id}, room=client_sid)
 
 agent.reply_callback = agent_reply_handler
 agent.style_callback = style_callback
 agent.screenshot_callback = screenshot_callback
+agent.finish_callback = finish_callback
+
 @socketio.on('connect')
 def handle_connect():
     print('Client connected')
@@ -80,6 +94,7 @@ def handle_style_code(data):
     css_type = data.get('cssType')
     project_id = data.get('id')
     client_sid = request.sid
+    
     edit_classes = data.get('editClasses')
     messages = data.get('messages', [])
     
@@ -95,12 +110,21 @@ def handle_style_code(data):
                 images.append({"image": image, "text": message.get('text', '')})
 
     agent.receive_input(html_code, css_code, texts=texts, images=images, css_type=css_type, edit_classes=edit_classes, client_sid=client_sid, project_id=project_id)
+    socketio.emit('start', {"project_id": project_id}, room=client_sid)
 
 @socketio.on('screenshot_response')
 def handle_screenshot_response(data):
     screenshot = data.get('screenshot')
+    project_id = data.get('project_id')
     if screenshot:
         agent.receive_screenshot(screenshot)
+
+@socketio.on('screenshot_unavailable')
+def handle_screenshot_unavailable(data):
+    agent.working_memory.observations.append("Unable to access screenshots at the moment.") 
+    if not agent.decision_loop_running:
+        agent.decision_thread = threading.Thread(target=agent.make_decision)
+        agent.decision_thread.start()
 
 @socketio.on('reset')
 def handle_reset():

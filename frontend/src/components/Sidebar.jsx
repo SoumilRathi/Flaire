@@ -4,21 +4,55 @@ import '../styles/components/Sidebar.css'
 import { FaPlus, FaPencilAlt, FaTrash } from 'react-icons/fa'
 import { db } from '../firebase'
 import { doc, updateDoc, deleteDoc, onSnapshot, collection } from 'firebase/firestore'
+import io from 'socket.io-client'
 
-const Sidebar = ({ onNewProject }) => {
+const SOCKET_SERVER_URL = 'http://localhost:7777'
+
+const Sidebar = ({ onNewProject, socket, setSocket }) => {
     const [projects, setProjects] = useState([])
     const [editingId, setEditingId] = useState(null)
+    const [activeProjects, setActiveProjects] = useState({})
     const navigate = useNavigate()
     const location = useLocation()
 
     useEffect(() => {
+        const newSocket = io(SOCKET_SERVER_URL)
+        setSocket(newSocket)
+
+        newSocket.on('start', (data) => {
+            console.log("START RECEIVED", data)
+            setActiveProjects(prev => ({ ...prev, [data.project_id]: true }))
+        })
+
+        newSocket.on('finish', (data) => {
+            setActiveProjects(prev => ({ ...prev, [data.project_id]: false }))
+        })
+
+        return () => newSocket.close()
+    }, [])
+
+    useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'projects'), (snapshot) => {
-            const updatedProjects = snapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data(),
-                updated: doc.data().updated || false
-            }))
-            setProjects(updatedProjects)
+            const updatedProjects = snapshot.docs.map(doc => {
+                const data = doc.data()
+                return {
+                    id: doc.id,
+                    ...data,
+                    updated: data.updated || false
+                }
+            })
+            setProjects(prevProjects => {
+                return updatedProjects.map(newProject => {
+                    const prevProject = prevProjects.find(p => p.id === newProject.id)
+                    if (prevProject) {
+                        return {
+                            ...newProject,
+                            updated: newProject.updated !== prevProject.updated ? newProject.updated : prevProject.updated
+                        }
+                    }
+                    return newProject
+                })
+            })
         })
 
         return () => unsubscribe()
@@ -55,7 +89,13 @@ const Sidebar = ({ onNewProject }) => {
                     {projects.map((project) => (
                         <div key={project.id} className={`project-item ${location.pathname === `/project/${project.id}` ? 'active' : ''}`}>
                             <div className='project_updated_icon'>
-                                {project.updated && <div className="glowing-indicator"></div>}
+                                {project.updated ? 
+                                    <div className="glowing-indicator"></div>
+                                : (
+                                    activeProjects[project.id] && 
+                                    <div className="spinning-indicator"></div>
+                                )}
+                                
                             </div>
                             {editingId === project.id ? (
                                 <input

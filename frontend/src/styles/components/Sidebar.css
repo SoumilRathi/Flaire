@@ -19,6 +19,8 @@
     padding-bottom: 0;
 }
 
+
+
 .sidebar-title {
     color: var(--primary);
     font-size: 1.5rem;
@@ -136,3 +138,17 @@ input[type="text"] {
     background-color: rgb(8, 154, 8, 0.8);
     box-shadow: 0 0 15px rgb(8, 154, 8);
 }
+
+.spinning-indicator {
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import io from 'socket.io-client'
 import CodeRenderer from './CodeRenderer'
 import ChatComponent from './ChatComponent'
 import AceEditor from 'react-ace'
@@ -12,13 +11,15 @@ import '../styles/components/Project.css'
 import { HiSparkles } from 'react-icons/hi'
 import { addDoc, collection, doc, onSnapshot, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase'
+import { addProject, globalProjects } from '../Router'
 
-const SOCKET_SERVER_URL = 'http://localhost:7777'
-
-const Project = ({ newProject, setNewProject }) => {
+const Project = ({ newProject, setNewProject, socket }) => {
     const { id } = useParams()
     const navigate = useNavigate()
     const [projectID, setProjectID] = useState(id)
+
+    console.log("Project ID", id)
+
     const [activeTab, setActiveTab] = useState('html')
     const [codeType, setCodeType] = useState('html')
     const [htmlCode, setHtmlCode] = useState('')
@@ -28,43 +29,52 @@ const Project = ({ newProject, setNewProject }) => {
     const [cssType, setCssType] = useState('external')
     const [editClasses, setEditClasses] = useState(false)
     const [isNewProject, setIsNewProject] = useState(true)
-    const [socket, setSocket] = useState(null)
-    const [capturedImage, setCapturedImage] = useState(null)
-
-    const codeRendererRef = useRef(null);
+    const [messages, setMessages] = useState([])
+    const codeRendererRef = useRef(null)
 
     useEffect(() => {
-        const newSocket = io(SOCKET_SERVER_URL)
-        setSocket(newSocket)
+        if (socket) {
+            socket.on('styled_code', (data) => {
+                if (data.project_id === projectID) {
+                    if (data.htmlCode) {
+                        setHtmlCode(data.htmlCode)
+                    }
+                    setCssCode(data.code)
+                    setActiveTab('css')
+                    updateProjectInDB(projectID, { cssCode: data.code, updated: true })
+                }
+            })
 
-        newSocket.on('styled_code', (data) => {
-            console.log("Received styled code:", data)
-            if (data.code && data.id === projectID) {
-                setCssCode(data.code)
-                setActiveTab('css')
-                updateProjectInDB(projectID, { cssCode: data.code, updated: true })
+            socket.on('agent_response', (data) => {
+                if (data.project_id === projectID) {
+                    setMessages((prevMessages) => [...prevMessages, { text: data.message, sender: 'agent' }])
+                }
+            })
+
+            socket.on('screenshot', (data) => {
+                console.log("Screenshot received", data)
+                if (data.project_id === projectID && codeRendererRef.current) {
+                    codeRendererRef.current.captureImage().then(imageDataUrl => {
+                        socket.emit('screenshot_response', { screenshot: imageDataUrl, project_id: projectID });
+                    }).catch(error => {
+                        console.error('Error capturing screenshot:', error);
+                        socket.emit('screenshot_response', { error: 'Failed to capture screenshot', project_id: projectID });
+                    });
+                } else {
+                    console.error("Screenshot received for wrong project", data)
+                    socket.emit('screenshot_unavailable', { error: 'Failed to capture screenshot', project_id: projectID });
+                }
+            })
+        }
+
+        return () => {
+            if (socket) {
+                socket.off('styled_code')
+                socket.off('agent_response')
+                socket.off('screenshot')
             }
-        })
-
-        newSocket.on('agent_response', (data) => {
-            setMessages((prevMessages) => [...prevMessages, { text: data.message, sender: 'agent' }])
-        })
-
-        newSocket.on('screenshot', () => {
-            if (codeRendererRef.current) {
-                codeRendererRef.current.captureImage().then(imageDataUrl => {
-                    newSocket.emit('screenshot_response', { screenshot: imageDataUrl });
-                }).catch(error => {
-                    console.error('Error capturing screenshot:', error);
-                    newSocket.emit('screenshot_response', { error: 'Failed to capture screenshot' });
-                });
-            } else {
-                newSocket.emit('screenshot_response', { error: 'CodeRenderer not ready' });
-            }
-        });
-
-        return () => newSocket.close()
-    }, [projectID])
+        }
+    }, [socket, projectID])
 
     useEffect(() => {
         if (id) {
@@ -76,6 +86,7 @@ const Project = ({ newProject, setNewProject }) => {
                     setCssCode(data.cssCode || '')
                     setInstructions(data.instructions || '')
                     setCssType(data.cssType || 'external')
+                    setMessages(data.messages || [])
                     setEditClasses(data.editClasses || false)
                     if (data.updated) {
                         updateDoc(doc.ref, { updated: false })
@@ -106,21 +117,23 @@ const Project = ({ newProject, setNewProject }) => {
 
     const handleCodeChange = (newCode) => {
         setHtmlCode(newCode)
+
         if (!isNewProject) {
-            updateProjectInDB(projectID, { htmlCode: newCode, updated: true })
+            console.log("Updating HTML code locally", projectID)
+            updateProjectLocally(projectID, { htmlCode: newCode })
         }
     }
 
     const handleCssChange = (newCode) => {
         setCssCode(newCode)
+
         if (!isNewProject) {
-            updateProjectInDB(projectID, { cssCode: newCode, updated: true })
+            updateProjectLocally(projectID, { cssCode: newCode })
         }
     }
 
-    const updateProjectInDB = async (id, data) => {
-        const projectRef = doc(db, 'projects', id)
-        await updateDoc(projectRef, data)
+    const updateProjectLocally = async (id, data) => {
+        globalProjects[id] = { ...globalProjects[id], ...data }
     }
 
     const handleCaptureImage = (imageDataUrl) => {
@@ -161,30 +174,33 @@ const Project = ({ newProject, setNewProject }) => {
             setProjectID(newDoc.id)
             projectId = newDoc.id
             navigate(`/project/${newDoc.id}`)
+        } else {
+            console.log("Updating project in DB", projectID)
+            const projectRef = doc(db, 'projects', projectID)
+            await updateDoc(projectRef, { 
+                htmlCode, 
+                cssCode,
+                cssType, 
+                editClasses 
+            })
         }
 
         if (socket && socket.connected) {
-            try {
-                socket.emit('style_code', { 
-                    htmlCode, 
-                    cssCode, 
-                    cssType, 
-                    editClasses,
-                    id: projectId,
-                    messages,
-                });
-                console.log("Style code data emitted successfully");
-            } catch (error) {
-                console.error("Error emitting style_code event:", error);
-            }
+            socket.emit('style_code', { 
+                htmlCode, 
+                cssCode, 
+                cssType, 
+                editClasses,
+                id: projectId,
+                messages,
+            });
+            console.log("Style code data emitted successfully");
         } else {
             console.error("Socket is not connected");
         }
     }
 
-
     // handling the chat section
-    const [messages, setMessages] = useState([])
     const sendMessage = (message) => {
         setMessages((prevMessages) => [...prevMessages, message])
     }
@@ -221,9 +237,8 @@ const Project = ({ newProject, setNewProject }) => {
                 <div className='instruction css_type_selector'>
                     <label style={{marginRight: ".5rem"}}>CSS Type: </label>
                     <select value={cssType} onChange={(e) => setCssType(e.target.value)} className='css_type_selector_select'>
-                        <option value="external">External</option>
-                        <option value="inline">In-Line</option>
-                        <option value="internal">Internal</option>
+                        <option value="css">CSS</option>
+                        <option value="scss">SCSS</option>
                         <option value="tailwind">Tailwind</option>
                     </select>
                 </div>

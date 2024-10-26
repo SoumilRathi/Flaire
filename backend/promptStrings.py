@@ -1,6 +1,6 @@
 from helper_functions import use_claude
 
-def componentPrompt(working_memory):
+def componentPrompt(working_memory, can_edit_classes):
     """Returns a prompt for styling the code"""
     prompt = f"""
     You are an intelligent agent specializing in frontend web development. Your task is to analyze HTML code and separate it into distinct UI components. This process is crucial for organizing and styling web pages effectively.
@@ -61,6 +61,11 @@ def componentPrompt(working_memory):
     }}
     </final_output>
 
+
+    {can_edit_classes and """
+    6. Do not limit yourself to the classes that are already present. You are allowed to create new classes and edit existing classes. Feel free to name UI components that you think make sense, even if they do not have a class assigned to them.
+    """}
+
     Before providing your final output, wrap your component identification process in <component_identification> tags. In this process:
 
     1. Break down the overall structure of the HTML code.
@@ -119,7 +124,7 @@ def instructionPrompt(components, user_input, memory):
     return prompt;
 
 
-def stylePrompt(components, working_memory):
+def stylePrompt(components, working_memory, css_type, can_edit_classes):
     """Returns a prompt for styling the components"""
     prompt = f"""
     You are an intelligent agent specializing in frontend web development. You have been given UI components which are typically placed within a web-page. 
@@ -128,9 +133,15 @@ def stylePrompt(components, working_memory):
 
     You have also been given some details from the user regarding how they want these UI components to look. 
 
-    You job is to list out these components one by one, list out directions for how they are supposed to look, and then provide the final CSS code for that component.
+    You job is to list out these components one by one, list out directions for how they are supposed to look, and then provide the final {css_type.capitalize()} code for that component.
 
-    In case existing CSS code already exists, try to limit the changes you make in terms of formatting (to not change it too much) but feel free to change it if it's part of the styling that you are doing.
+    In case existing {css_type.capitalize()} code already exists, try to limit the changes you make in terms of formatting (to not change it too much) but feel free to change it if it's part of the styling that you are doing.
+    
+    {
+        can_edit_classes and """
+        Remember that you can edit the classes of the components. This means that if you choose to do so, you will also have to edit and output the updated HTML code for that component. In this case, try not to change it too much, but of course feel free to do so if you think it's necessary.
+        """
+    }
     
     Follow these guidelines to decide how to the components are supposed to look:
     1. First priority is what the user input is. If you have received user input regarding how these are supposed to look, use that to list down your directions.
@@ -141,11 +152,32 @@ def stylePrompt(components, working_memory):
     {working_memory.print()}
     </working_memory>
 
-    Once you have finished styling all the components, output the final CSS code in the following format:
+    Once you have finished styling all the components, output the final {css_type.capitalize()} code in the following format:
 
-    <css>
-    {{css_code}}
-    </css>
+    {
+        (css_type == "css" or css_type == "scss") and f"""
+        {
+            can_edit_classes and """
+            <html>
+            {{html_code}}
+            </html>
+            """
+        }
+
+        <css>
+        {{{css_type}_code}}
+        </css>
+        """
+    }
+
+    {
+        css_type == "tailwind" and """
+        <html>
+        {{html_code with tailwind classes}}
+        </html>
+        """
+    }
+    
 
     """
 

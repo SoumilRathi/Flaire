@@ -6,7 +6,6 @@ import Reset from './components/Reset'
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { db } from './firebase'
 
-
 export var globalProjects = {}
 
 export const addProject = (id, projectData) => {
@@ -14,10 +13,9 @@ export const addProject = (id, projectData) => {
 }
 
 const AppRouter = () => {
-
-
     const [projects, setProjects] = useState([])
     const [newProject, setNewProject] = useState(false)
+    const [socket, setSocket] = useState(null)
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -28,17 +26,17 @@ const AppRouter = () => {
     }, [])
 
     const handleNewProject = () => {
-        console.log("new project created");
+        console.log("new project created")
         setNewProject(true)
     }
 
     return (
         <div className="app-layout">
-            <Sidebar projects={projects} setProjects={setProjects} onNewProject={handleNewProject}  />
+            <Sidebar projects={projects} setProjects={setProjects} onNewProject={handleNewProject} setSocket={setSocket} />
             <div className="main-content">
                 <Routes>
-                    <Route path="/" element={<Project projects={projects} setProjects={setProjects} newProject={newProject} setNewProject={setNewProject} />} />
-                    <Route path="/project/:id" element={<Project projects={projects} setProjects={setProjects} />} />
+                    <Route path="/" element={<Project projects={projects} setProjects={setProjects} newProject={newProject} setNewProject={setNewProject} socket={socket} />} />
+                    <Route path="/project/:id" element={<Project projects={projects} setProjects={setProjects} socket={socket} />} />
                     <Route path="/reset" element={<Reset />} />
                 </Routes>
             </div>

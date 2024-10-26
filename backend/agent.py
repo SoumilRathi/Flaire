@@ -24,11 +24,14 @@ class Agent:
         self.reply_callback = None 
         self.style_callback = None
         self.screenshot_callback = None
+        self.finish_callback = None
         self.working_memory = WorkingMemory()
         self.long_term_memory = LongTermMemory()
         self.client_sid = None
         self.project_id = None
         self.images = []
+        self.css_type = "css"
+        self.can_edit_classes = False
         # self.actions_instructions = self.load_actions_from_file("actions.txt")
         self.decision_loop_running = False
         self.decision_thread = None
@@ -39,13 +42,13 @@ class Agent:
     def reply(self, message):
         if (self.client_connected):
             if self.reply_callback:
-                self.reply_callback(message, self.client_sid)
+                self.reply_callback(message, self.client_sid, self.project_id)
         else:
             self.working_memory.observations.append("Client disconnected, cannot reply!")
 
     def style_code(self, html, css, css_type, edit_classes):
         """Styles the code based on the css_type"""
-        component_prompt = componentPrompt(self.working_memory)
+        component_prompt = componentPrompt(self.working_memory, self.can_edit_classes)
 
         componentsResponse = use_claude(component_prompt)
 
@@ -67,9 +70,16 @@ class Agent:
         self.working_memory.store_best_practices(best_practices)
         self.working_memory.store_project_preferences(project_preferences)
 
-        style_prompt = stylePrompt(components, self.working_memory)
+        style_prompt = stylePrompt(components, self.working_memory, self.css_type, self.can_edit_classes)
 
         response = use_claude(user_prompt=style_prompt, images=self.images)
+
+        # Find updated html code if that's there
+        html_start = response.find('<html>')
+        html_end = response.find('</html>')
+        if html_start != -1 and html_end != -1:
+            html_code = response[html_start + 5:html_end].strip()
+            self.working_memory.html_code = html_code;
         
         # Extract CSS code from the response
         css_start = response.find('<css>')
@@ -271,7 +281,7 @@ class Agent:
 
         elif action_name == "screenshot":
             if self.client_connected:
-                self.screenshot_callback(self.client_sid)
+                self.screenshot_callback(self.client_sid, self.project_id)
                 isFinal = True
             else:
                 self.working_memory.observations.append("Unable to access screenshots at the moment.")
@@ -281,6 +291,8 @@ class Agent:
         
         elif action_name == "finish":
             self.learn()
+            if self.finish_callback:
+                self.finish_callback(self.client_sid, self.project_id)
             isFinal = True
 
         print(f"Executing action: {action}")
@@ -345,6 +357,8 @@ class Agent:
         self.working_memory.html_code = html_code
         self.working_memory.css_code = css_code
         self.images = images
+        self.css_type = css_type
+        self.can_edit_classes = edit_classes
         # Handle both single inputs and arrays
         if isinstance(texts, list):
             self.working_memory.observations.extend(texts)
