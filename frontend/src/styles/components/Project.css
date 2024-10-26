@@ -1,0 +1,130 @@
+.project {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.instructions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  height: 5%;
+  margin-bottom: 1%;
+  width: 100%;
+}
+
+.edit_classes {
+    display: flex;
+    align-items: center;
+}
+
+
+.code-area {
+  grid-row: 2 / 4;
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 7.5%;
+  background-color: #f0f0f0;
+}
+
+.tab-switcher {
+  display: flex;
+}
+
+.tab {
+  padding: 5px 10px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #fff;
+  border-bottom: 2px solid #007bff;
+}
+
+.code-type-selector select {
+  padding: 5px;
+}
+
+.rendered-iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+}
+
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 95%;
+}
+
+.section {
+    width: 50%;
+    height: 100%;
+}
+
+.section.left {
+    width: 59%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.section.right {
+    width: 39%;
+    border: 2px solid black;
+}
+
+.render {
+    height: 59%;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.chat {
+    height: 39%;
+    display: flex;
+    flex-direction: column;
+
+    border: 2px solid black;
+}
+
+.style_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    width: 6rem;
+
+    background-color: var(--primary60);
+    border: 1px solid var(--secondary40);
+
+    transition: all 0.3s ease;
+}
+
+.style_button:hover {
+    background-color: var(--primary80);
+    transform: scale(1.01);
+    translate: 0 -1px;
+    box-shadow: 0 1px 2px var(--secondary20);
+}
