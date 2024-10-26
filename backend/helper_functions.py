@@ -27,7 +27,7 @@ def load_file(file_path):
 
 actions_instructions = load_file("actions.txt")
 
-def use_claude(user_prompt, system_prompt=None, temperature=0, json=False):
+def use_claude(user_prompt, system_prompt=None, temperature=0, json=False, tools=[]):
     message_params = {
         "model": "claude-3-5-sonnet-20241022",
         "max_tokens": 2048,
@@ -42,6 +42,9 @@ def use_claude(user_prompt, system_prompt=None, temperature=0, json=False):
     
     if system_prompt is not None:
         message_params["system"] = system_prompt
+
+    if tools is not None and len(tools) > 0:
+        message_params["tools"] = tools;
     
     message = client.messages.create(**message_params)
 

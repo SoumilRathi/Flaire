@@ -44,9 +44,12 @@ def agent_reply_handler(message, client_sid):
 def style_callback(code, client_sid):
     socketio.emit('styled_code', {"code": code}, room=client_sid)
 
+def screenshot_callback(screenshot, client_sid):
+    socketio.emit('screenshot', {"screenshot": screenshot}, room=client_sid)
+
 agent.reply_callback = agent_reply_handler
 agent.style_callback = style_callback
-
+agent.screenshot_callback = screenshot_callback
 @socketio.on('connect')
 def handle_connect():
     print('Client connected')
@@ -69,11 +72,13 @@ def handle_style_code(data):
     html_code = data.get('htmlCode')
     css_code = data.get('cssCode')
     css_type = data.get('cssType')
+    user_input = data.get('messages')
+    client_sid = request.sid
     edit_classes = data.get('editClasses')
 
     print("STYLING CODE", html_code, css_code, css_type, edit_classes)
     
-    styled_code = agent.style_code(html_code, css_code, css_type, edit_classes)
+    styled_code = agent.receive_input(html_code, css_code, user_input, client_sid)
     
     emit('styled_code', styled_code)
 

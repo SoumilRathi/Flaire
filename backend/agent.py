@@ -6,7 +6,8 @@ from bs4 import BeautifulSoup
 from openai import OpenAI
 from memory.working_memory import WorkingMemory
 from memory.lt_memory import LongTermMemory
-from helper_functions import sort_actions_by_priority, actions_instructions
+from helper_functions import sort_actions_by_priority, actions_instructions, use_claude
+from actions.styling.promptStrings import componentPrompt, instructionPrompt, stylePrompt
 import threading
 import os
 from dotenv import load_dotenv
@@ -22,6 +23,7 @@ class Agent:
         """Initialize the agent with working and long-term memory and OpenAI API key"""
         self.reply_callback = None 
         self.style_callback = None
+        self.screenshot_callback = None
         self.working_memory = WorkingMemory()
         self.long_term_memory = LongTermMemory()
         self.client_sid = None
@@ -30,12 +32,53 @@ class Agent:
         self.decision_thread = None
 
 
-    def style_code(self, html_code, css_code, css_type, edit_classes):
+    def style_code(self, html, css, css_type, edit_classes):
         """Styles the code based on the css_type"""
-        code = style_action(html_code, css_type, "")
+        component_prompt = componentPrompt(html, self.working_memory)
+
+        componentsResponse = use_claude(component_prompt)
+
+        # we can then convert these components into memory. 
+        # the intricacies here have not been decided LMAO.
+        # TODO: Decide on how to convert components into memory.
+
+        # Extract components from the Claude response
+        components_start = componentsResponse.find('<final_output>')
+        components_end = componentsResponse.find('</final_output>')
+        if components_start != -1 and components_end != -1:
+            components_json = componentsResponse[components_start + 14:components_end].strip()
+            components_data = json.loads(components_json)
+        else:
+            components_data = {"components": []}  # Handle case where component tags are not found
+        
+        components = components_data["components"]
+
+        components_string = ', '.join([component['name'] for component in components])
+
+        best_practices = self.long_term_memory.get_best_practices(components_string)
+        project_preferences = self.long_term_memory.get_project_preferences(components)
+
+        self.working_memory.store_best_practices(best_practices)
+        self.working_memory.store_project_preferences(project_preferences)
+
+        style_prompt = stylePrompt(components, self.working_memory)
+
+        response = use_claude(style_prompt)
+        
+        # Extract CSS code from the response
+        css_start = response.find('<css>')
+        css_end = response.find('</css>')
+        if css_start != -1 and css_end != -1:
+            css_code = response[css_start + 5:css_end].strip()
+        else:
+            css_code = ""  # Handle case where CSS tags are not found
+        
+        self.working_memory.css_code = css_code;
+
         if self.style_callback:
-            self.style_callback(code, self.client_sid);
-        isFinal = True
+            self.style_callback(css_code, self.client_sid);
+
+        return;
 
 
     
@@ -56,7 +99,7 @@ class Agent:
     def select_action(self, best_action):
         """Decides to either select the highest-scoring action or reject all actions"""
 
-        system_prompt = f"""
+        prompt = f"""
         You are an intelligent agent. You have access to your current working memory, and the actions available to you. 
 
         You will be given an input, access to your current working memory, and the selected best action to take. 
@@ -68,9 +111,7 @@ class Agent:
         First output about what that action would do and entail, and then output the choice. 
 
         {actions_instructions}
-        """
 
-        user_prompt = f"""
         # Working Memory
         {self.working_memory.print()}
 
@@ -78,27 +119,9 @@ class Agent:
         {best_action}
         """
 
-        messages = [
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
+        response = use_claude(prompt);
 
-        # Call OpenAI API to determine the action
-        completion = client.chat.completions.create(
-            model="gpt-4o",
-            messages=messages
-        )
-
-        # Extract the LLM's response (the chosen action)
-        response_content = completion.choices[0].message.content
-
-        if "<execute>" in response_content:
+        if "<execute>" in response:
             return best_action
         else:
             return None
@@ -106,7 +129,7 @@ class Agent:
     def evaluate_actions(self, actions): 
         """Evaluates the proposed actions and assigns them a score based on their relevance"""
 
-        system_prompt = f"""
+        prompt = f"""
         You are an intelligent agent. You have access to your current working memory, and the actions available to you. 
 
         You will be given an input, access to your current working memory, and a list of proposed actions.
@@ -128,9 +151,7 @@ class Agent:
 
 
         Please evaluate each action carefully first, writing down your evaluation for each action. Then finally output the final list with the scores. 
-        """
 
-        user_prompt = f"""
         # Working Memory
         {self.working_memory.print()}
 
@@ -138,35 +159,13 @@ class Agent:
         {', '.join(actions)}
         """
 
-        messages = [
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
-
-        print("EVALUATING ACTIONS: ", messages)
-
-        # Call OpenAI API to determine the action
-        completion = client.chat.completions.create(
-            model="gpt-4o",
-            messages=messages
-        )
-
-        # Extract the LLM's response (the chosen action)
-        response_content = completion.choices[0].message.content
-
-        print("EVALUATED ACTIONS: ", response_content)
+        response = use_claude(prompt);
 
         # Find the JSON-like part in the response
-        start = response_content.find('{')
-        end = response_content.find('}') + 1
+        start = response.find('{')
+        end = response.find('}') + 1
         if start != -1 and end != -1:
-            proposed_actions = response_content[start:end]
+            proposed_actions = response[start:end]
             
             # Separate the last character '}' from the rest, strip whitespaces from the rest
             before_closing_brace = proposed_actions[:-1].rstrip()  # Strip everything except the last character
@@ -186,7 +185,7 @@ class Agent:
         """Use OpenAI API to select the best action based on memory"""
 
         # Construct the user prompt with proposed actions and memory context
-        user_prompt = f"""
+        prompt = f"""
         You are an intelligent agent with access to your current working memory and a set of available actions. Your task is to propose up to five potential actions based on the given input. Here is your current working memory:
 
         <working_memory>
@@ -213,11 +212,14 @@ class Agent:
         - Which actions are most likely to lead to a productive outcome?
         - Are there any actions that might be redundant or less useful given the current context?
 
-        After your analysis, provide your final chosen actions in a JSON format. Here's an example of the expected output structure (note that this is just a format example, not a suggestion for actual actions):
-
+        After your analysis, ensure that youprovide your final chosen actions in a JSON format within <final> tags. 
+        
+        Here's an example of the expected output structure:
+        <final>
         {{
             "actions": ["action_1 'parameter'", "action_2 'parameter'", "action_3 'parameter'"]
         }}
+        </final>
 
         Remember, you must propose at least one action and no more than five actions. Each action should be a string that matches the format of the available actions provided to you.
 
@@ -225,102 +227,20 @@ class Agent:
 
         """
 
-        messages = [
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
-
-
         # Call OpenAI API to determine the action
-        completion = client.chat.completions.create(
-            model="gpt-4o",
-            messages=messages
-        )
+        response = use_claude(prompt);
 
         
-
-        # Extract the LLM's response (the chosen action)
-        response_content = completion.choices[0].message.content
-
-        print("PROPOSED ACTIONS + THOUGHT PROCESS: ", response_content)
-
-        start = response_content.find('{')
-        end = response_content.find('}') + 1
+        start = response.find('{')
+        end = response.find('}') + 1
         if start != -1 and end != -1:
-            proposed_actions = json.loads(response_content[start:end])["actions"]
+            proposed_actions = json.loads(response[start:end])["actions"]
         else:
             proposed_actions = "{}"  # Return empty array if no brackets found
 
         print("PROPOSED ACTIONS: ", proposed_actions)
         return proposed_actions
 
-   
-    def reason(self, focus):
-        """Reason about the current working memory"""
-        system_prompt = """
-        You are an intelligent reasoning agent. You have access to your current working memory, and you will be given a focus topic that you have to reason about.
-
-        This means that you have to use the working memory that you have available and use it to reason new knowledge related to the focus topic. 
-
-        Please ensure that you do not introduce any new information or knowledge that is not already present in the working memory. 
-        
-        There are other ways to introduce new knowledge if you need to, but ensure that you only use the current knowledge that you have available, and not make any new assumptions.
-
-        Any new knowledge that you reason should be in the form of sentences. Take your time to think about it and reason it out. 
-
-        Output your new knowledge as a list of sentences. Even if you only have one sentence, output it as a list. 
-        
-        If there is no new knowledge that you can reason from the current working memory, simply output an empty list.
-        """
-        
-        user_prompt = f"""
-        # Focus
-        {focus}
-
-        # Working Memory
-        {self.working_memory.print()}
-        """
-        
-        messages = [
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
-        
-        completion = client.chat.completions.create(
-            model="gpt-4o",
-            messages=messages
-        )
-        
-        response_content = completion.choices[0].message.content
-
-        print("REASONING: ", response_content)
-        # Find the list within square brackets
-        start = response_content.find('[')
-        end = response_content.find(']') + 1
-        if start != -1 and end != -1:
-            list_content = response_content[start:end]
-            # Manually parse the string into a list
-            reasoned_sentences = [sentence.strip().strip('"') for sentence in list_content.strip('[]').split(',')]
-            # Remove any empty strings from the list
-            reasoned_sentences = [sentence for sentence in reasoned_sentences if sentence]
-        else:
-            reasoned_sentences = []  # Empty list if no brackets found
-
-        # Store the reasoned knowledge in working memory
-        for sentence in reasoned_sentences:
-            self.working_memory.store_knowledge(sentence)
-
-        
-        return response_content
-        
         
     
     def execute_action(self, action):
@@ -330,40 +250,23 @@ class Agent:
         # get the first word of the action
         action_name = action.split()[0]
 
-        if action_name == "reply":
-            if self.reply_callback:
-                self.reply_callback(action[6:], self.client_sid)
+        print("EXECUTING ACTION: ", action)
+
+        if (action_name == "style"):
+            self.style_code(self.working_memory.html_code, self.working_memory.css_code, "external", False)
+
+        elif action_name == "record":
+            self.working_memory.observations.append(action[6:])
             isFinal = True
-        elif action_name == "search":
-            print("SEARCHING", action)
-            query = action[7:].strip('"')  # Extract search query 
-            search_results = self.web_search(query)
-            self.working_memory.store_knowledge(f"Search results for '{query}': {search_results}")
-            print(f"Search completed for query: {query}")
-        elif action_name == "retrieve":
-            print("RETRIEVING MEMORY", action)
 
-            # Split the action, but keep quoted parts together
-            action_parts = re.findall(r'[^\s"]+|"[^"]*"', action)
-            
-            # get the second word of the action
-            memory_type = action_parts[1]
-            # Join the rest of the parts as the memory_request, removing quotes if present
-            memory_request = ' '.join(action_parts[2:]).strip('"')
+        elif action_name == "screenshot":
+            self.screenshot_callback()
 
-            # assume that the retrieved memory is empty for now (no memory)
-            retrieved_memory = self.long_term_memory.retrieve_memory(memory_type, memory_request)
+        elif action_name == "finish":
 
-            self.working_memory.store_retrieved_memory(memory_type, memory_request, retrieved_memory)
+            # TODO: Implement the learning process here
 
-            print("MEMORY RETRIEVED AND STORED")
-            print(self.working_memory.retrieved_memory)
-
-        elif action_name == "reason":
-            print(f"Reasoning: {action[7:]}")
-
-        elif action_name == "learn":
-            print(f"Learning: {action[6:]}")
+            isFinal = True
 
         print(f"Executing action: {action}")
 
@@ -381,7 +284,7 @@ class Agent:
                 proposed_actions = self.propose_actions()
                 scored_actions = self.evaluate_actions(proposed_actions)
 
-                best_action = max(scored_actions, key=scored_actions.get)
+                best_action = max(scored_actions, key=lambda x: int(scored_actions[x]))
 
                 print("BEST ACTION: ", best_action)
                 selected_action = self.select_action(best_action)
@@ -400,15 +303,19 @@ class Agent:
             print("WORKING MEMORY NOW: ", self.working_memory.print())
             
             print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    
-    def receive_input(self, input, client_sid):
-        """Receive input from the user"""
-        self.working_memory.store_observation(input)
+
+    def receive_input(self, html_code, css_code, user_input, client_sid):
+        """Receive HTML code from the user"""
+        self.working_memory.html_code = html_code
+        self.working_memory.css_code = css_code
+        
+        # Handle both single inputs and arrays
+        if isinstance(user_input, list):
+            self.working_memory.observations.extend(user_input)
+        else:
+            self.working_memory.observations.append(user_input)
+        
         self.client_sid = client_sid
         if not self.decision_loop_running:
             self.decision_thread = threading.Thread(target=self.make_decision)
             self.decision_thread.start()
-
-
-
-

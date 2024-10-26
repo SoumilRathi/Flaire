@@ -22,12 +22,10 @@ class WorkingMemory:
         """Initialize working memory with different categories"""
         self.observations = []  # History of observations and final outputs
         self.actions = []  # History of actions taken
-        self.retrieved_memory = {
-            'episodic': {},
-            'semantic': {},
-            'procedural': {}
-        }
-        self.knowledge = []
+        self.html_code = ""
+        self.css_code = ""
+        self.best_practices = []
+        self.project_preferences = []
     
     def store_observation(self, observation):
         """Store an observation or final output"""
@@ -37,50 +35,40 @@ class WorkingMemory:
         """Store an action taken"""
         self.actions.append(action)
 
-    def store_retrieved_memory(self, memory_type, request, memory):
-        """Store a retrieved memory with its request"""
-        if memory_type in self.retrieved_memory:
-            self.retrieved_memory[memory_type][request] = memory
-        else:
-            raise ValueError("Invalid memory type. Must be 'episodic', 'semantic', or 'procedural'.")
+    def store_best_practices(self, best_practices):
+        """Store best practices"""
+        self.best_practices = (best_practices)
 
-    def retrieve_all(self):
-        """Retrieve all contents of working memory"""
-        return {
-            'observations': self.observations,
-            'actions': self.actions,
-            'retrieved_memory': self.retrieved_memory
-        }
+    def store_project_preferences(self, project_preferences):
+        """Store project preferences"""
+        self.project_preferences = project_preferences
 
     def clear(self):
         """Clear working memory"""
-        self.observations = []
-        self.actions = []
-        self.retrieved_memory = {
-            'episodic': {},
-            'semantic': {},
-            'procedural': {}
-        }
-
-    def store_knowledge(self, knowledge):
-        """Store knowledge"""
-        self.knowledge.append(knowledge)
+        self.observations = []  # History of observations and final outputs
+        self.actions = []  # History of actions taken
+        self.html_code = ""
+        self.css_code = ""
+        self.best_practices = []
+        self.project_preferences = []
 
     def print(self): 
         """Return a formatted string of the contents of working memory"""
         return f"""## Observations
         {self.observations if self.observations else "No observations recorded yet."}
 
-        ## Retrieved Memory
-        {"".join([f"### {memory_type.capitalize()} Memory\n" + 
-                  ("".join([f"#### {request}\n{memory if memory else 'No related memories found.'}\n" 
-                            for request, memory in memories.items()]) 
-                   if memories else "No memories retrieved yet.\n")
-                  for memory_type, memories in self.retrieved_memory.items()])}
-
         ## Actions Taken
         {self.actions if self.actions else "No actions taken yet."}
-        
-        ## Knowledge
-        {self.knowledge if self.knowledge else "No knowledge recorded or reasoned."}
+
+        ## Project Preferences
+        {", ".join(self.project_preferences) if self.project_preferences else "No project preferences recorded yet."}
+
+        {f"## Best Practices\n        {' '.join(self.best_practices)}" if self.best_practices else ""}
+
+        ## HTML Code
+        {self.html_code if self.html_code else "No HTML code recorded yet."}
+
+        ## CSS Code
+        {self.css_code if self.css_code else ""}
+
         """
