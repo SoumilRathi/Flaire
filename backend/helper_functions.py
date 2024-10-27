@@ -2,7 +2,8 @@ import re
 import anthropic
 import base64
 
-client = anthropic.Anthropic(api_key="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")
+import os
+client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 
 def sort_actions_by_priority(actions):

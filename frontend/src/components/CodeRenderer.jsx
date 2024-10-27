@@ -4,7 +4,7 @@ import * as Babel from '@babel/standalone';
 import html2canvas from 'html2canvas';
 import '../styles/components/CodeRenderer.css';
 
-const CodeRenderer = forwardRef(({ htmlCode, cssCode, codeType }, ref) => {
+const CodeRenderer = forwardRef(({ htmlCode, cssCode, codeType, cssType }, ref) => {
   const iframeRef = useRef(null);
   const [scale, setScale] = useState(1);
 
@@ -84,7 +84,7 @@ const CodeRenderer = forwardRef(({ htmlCode, cssCode, codeType }, ref) => {
                 scrollbar-color: hsl(243, 49%, 54%, 80%) transparent;
               }
             </style>
-            <script src="https://cdn.tailwindcss.com"></script>
+            ${cssType === 'tailwind' ? '<script src="https://cdn.tailwindcss.com"></script>' : ''}
           </head>
           <body>
             ${content}

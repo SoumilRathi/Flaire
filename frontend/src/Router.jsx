@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Project from './components/Project'
 import Sidebar from './components/Sidebar'
-import Reset from './components/Reset'
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { db } from './firebase'
 
@@ -37,7 +36,6 @@ const AppRouter = () => {
                 <Routes>
                     <Route path="/" element={<Project projects={projects} setProjects={setProjects} newProject={newProject} setNewProject={setNewProject} socket={socket} />} />
                     <Route path="/project/:id" element={<Project projects={projects} setProjects={setProjects} socket={socket} />} />
-                    <Route path="/reset" element={<Reset />} />
                 </Routes>
             </div>
         </div>

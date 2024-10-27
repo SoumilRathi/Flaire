@@ -24,6 +24,8 @@ class WorkingMemory:
         self.actions = []  # History of actions taken
         self.html_code = ""
         self.css_code = ""
+        self.css_type = ""
+        self.can_edit_classes = False
         self.best_practices = []
         self.project_preferences = []
     
@@ -64,6 +66,13 @@ class WorkingMemory:
         {", ".join(self.project_preferences) if self.project_preferences else "No project preferences recorded yet."}
 
         {f"## Best Practices\n        {' '.join(self.best_practices)}" if self.best_practices else ""}
+
+        ## Instructions
+        ### CSS Type: {self.css_type}
+        ### Can Edit Classes: {self.can_edit_classes}
+
+        Please note that these instructions determine the kind of output you will give. SCSS is CSS with special syntax for variables, nesting, and other features. 
+        Tailwind is a utility-first CSS framework that allows you to style your components using classes within the HTML code itself.
 
         ## HTML Code
         {self.html_code if self.html_code else "No HTML code recorded yet."}

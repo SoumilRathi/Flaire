@@ -7,7 +7,7 @@ from openai import OpenAI
 from memory.working_memory import WorkingMemory
 from memory.lt_memory import LongTermMemory
 from helper_functions import sort_actions_by_priority, actions_instructions, use_claude
-from promptStrings import componentPrompt, instructionPrompt, stylePrompt, memoryPrompt
+from promptStrings import componentPrompt, stylePrompt, memoryPrompt
 import threading
 import os
 from dotenv import load_dotenv
@@ -42,6 +42,8 @@ class Agent:
     def reply(self, message):
         if (self.client_connected):
             if self.reply_callback:
+                # Remove quotes from the message before sending
+                message = message.strip("'")
                 self.reply_callback(message, self.client_sid, self.project_id)
         else:
             self.working_memory.observations.append("Client disconnected, cannot reply!")
@@ -56,6 +58,7 @@ class Agent:
         components_end = componentsResponse.find('</final_output>')
         if components_start != -1 and components_end != -1:
             components_json = componentsResponse[components_start + 14:components_end].strip()
+            print("COMPONENTS JSON: ", components_json)
             components_data = json.loads(components_json)
         else:
             components_data = {"components": []}  # Handle case where component tags are not found
@@ -77,8 +80,9 @@ class Agent:
         # Find updated html code if that's there
         html_start = response.find('<html>')
         html_end = response.find('</html>')
+        html_code = None
         if html_start != -1 and html_end != -1:
-            html_code = response[html_start + 5:html_end].strip()
+            html_code = response[html_start + 6:html_end].strip()
             self.working_memory.html_code = html_code;
         
         # Extract CSS code from the response
@@ -92,7 +96,7 @@ class Agent:
         self.working_memory.css_code = css_code;
 
         if self.style_callback:
-            self.style_callback(css_code, self.client_sid, self.project_id);
+            self.style_callback(css_code, self.client_sid, self.project_id, html_code);
 
 
         self.working_memory.reset_after_style();
@@ -173,6 +177,7 @@ class Agent:
             proposed_actions = "{}"  # Return empty array if no brackets found
 
         print("PROPOSED ACTIONS: ", proposed_actions)
+        print("REASONING: ", response)
         return proposed_actions
 
     def evaluate_actions(self, actions): 
@@ -210,7 +215,6 @@ class Agent:
 
         response = use_claude(prompt, images=self.images);
 
-        print("EVALUATE ACTIONS RESPONSE: ", response, prompt)
 
         # Find the JSON-like part in the response
         start = response.find('{')
@@ -228,7 +232,6 @@ class Agent:
         else:
             proposed_actions = "{}"  # Return empty object if no brackets found
 
-        print("SCORED ACTIONS: ", proposed_actions)
         return json.loads(proposed_actions)
 
 
@@ -319,7 +322,7 @@ class Agent:
 
             if selected_action is None:
                 print("Couldn't select an action to pick - must fix something")
-                break
+                continue
 
             print("FINAL SELECTED ACTION: ", selected_action)
             is_final = self.execute_action(selected_action)
@@ -342,13 +345,21 @@ class Agent:
         end = response.find('</memory_update>')
         if start != -1 and end != -1:
             memory_update_json = response[start + len('<memory_update>'):end].strip()
-            memory_updates = json.loads(memory_update_json)["memory_update"]
-            self.long_term_memory.add_project_preferences(memory_updates, self.project_id)
-            print("Memory updates:", memory_updates)
+            # Remove the "memory_update: " prefix if it exists
+            memory_update_json = memory_update_json.replace('"memory_update":', '').strip()
+            try:
+                memory_updates = json.loads(memory_update_json)
+                if isinstance(memory_updates, list):
+                    self.long_term_memory.add_project_preferences(memory_updates, self.project_id)
+                    print("Memory updates:", memory_updates)
+                else:
+                    print("Memory updates is not a list.")
+            except json.JSONDecodeError:
+                print("Failed to parse memory updates JSON.")
         else:
             print("No memory updates found in the response.")
         print("MEMORY UPDATE: ", response)
-        return;
+        return
     
     
     def receive_input(self, html_code, css_code, texts, images, css_type, edit_classes, client_sid, project_id):
@@ -359,6 +370,8 @@ class Agent:
         self.images = images
         self.css_type = css_type
         self.can_edit_classes = edit_classes
+        self.working_memory.can_edit_classes = edit_classes
+        self.working_memory.css_type = css_type
         # Handle both single inputs and arrays
         if isinstance(texts, list):
             self.working_memory.observations.extend(texts)

@@ -85,8 +85,7 @@ const Project = ({ newProject, setNewProject, socket }) => {
                     setHtmlCode(data.htmlCode || '')
                     setCssCode(data.cssCode || '')
                     setInstructions(data.instructions || '')
-                    setCssType(data.cssType || 'external')
-                    setMessages(data.messages || [])
+                    setCssType(data.cssType || 'css')
                     setEditClasses(data.editClasses || false)
                     if (data.updated) {
                         updateDoc(doc.ref, { updated: false })
@@ -104,7 +103,7 @@ const Project = ({ newProject, setNewProject, socket }) => {
             setHtmlCode('')
             setCssCode('')
             setInstructions('')
-            setCssType('external')
+            setCssType('css')
             setMessages([])
             setEditClasses(false)
             setNewProject(false)
@@ -238,7 +237,6 @@ const Project = ({ newProject, setNewProject, socket }) => {
                     <label style={{marginRight: ".5rem"}}>CSS Type: </label>
                     <select value={cssType} onChange={(e) => setCssType(e.target.value)} className='css_type_selector_select'>
                         <option value="css">CSS</option>
-                        <option value="scss">SCSS</option>
                         <option value="tailwind">Tailwind</option>
                     </select>
                 </div>
