@@ -50,10 +50,10 @@ def process_images(images):
             })
     return processed_images
 
-def use_claude(user_prompt, system_prompt=None, temperature=0, json=False, tools=[], images=[]):
+def use_claude(user_prompt, system_prompt=None, temperature=1, json=False, tools=[], images=[]):
     message_params = {
         "model": "claude-3-5-sonnet-20241022",
-        "max_tokens": 2048,
+        "max_tokens": 8192,
         "temperature": temperature,
         "messages": [
             {

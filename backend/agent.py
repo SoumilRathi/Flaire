@@ -77,6 +77,8 @@ class Agent:
 
         response = use_claude(user_prompt=style_prompt, images=self.images)
 
+        print("STYLE RESPONSE: ", response, style_prompt)
+
         # Find updated html code if that's there
         html_start = response.find('<html>')
         html_end = response.find('</html>')

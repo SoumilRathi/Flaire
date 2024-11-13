@@ -84,7 +84,6 @@ const CodeRenderer = forwardRef(({ htmlCode, cssCode, codeType, cssType }, ref) 
                 scrollbar-color: hsl(243, 49%, 54%, 80%) transparent;
               }
             </style>
-            ${cssType === 'tailwind' ? '<script src="https://cdn.tailwindcss.com"></script>' : ''}
           </head>
           <body>
             ${content}

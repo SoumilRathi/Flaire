@@ -104,7 +104,7 @@ class LongTermMemory:
                 cos_sims = similarities / norms
 
                 # Append text from objects for which embeddings are a match (similarity >= 0.5)
-                selected_project_preferences.extend([pref["text"] for pref, sim in zip(all_project_preferences, cos_sims) if sim >= 0.5])
+                selected_project_preferences.extend([pref["text"] for pref, sim in zip(all_project_preferences, cos_sims) if sim >= 0.3])
         else:
             # If all_project_preferences is empty, no preferences to process
             selected_project_preferences = []

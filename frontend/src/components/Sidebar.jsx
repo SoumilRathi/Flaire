@@ -80,7 +80,7 @@ const Sidebar = ({ onNewProject, socket, setSocket }) => {
     return (
         <div className="sidebar">
             <div className='sidebar_header'>
-                <h2 className="sidebar-title">Styler</h2>
+                <h2 className="sidebar-title">Flaire</h2>
                 <FaPlus onClick={handleCreateNewProject} className="new-project-icon" />
             </div>
             

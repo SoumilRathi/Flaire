@@ -17,6 +17,7 @@ body {
 
 @import url('https://fonts.googleapis.com/css?family=Mukta%20Mahee:700|Noto%20Sans%20Duployan:400');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
   font-family: 'Inter', sans-serif;
@@ -24,7 +25,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Mukta Mahee';
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
 }
 
@@ -64,7 +65,7 @@ h1, h2, h3, h4, h5 {
   --primary5: hsl(243, 49%, 54%, 5%);
   --primary10: hsl(243, 49%, 54%, 10%);
   --primary15: hsl(243, 49%, 54%, 15%);
-  --primary20: hsl(243, 49%, 54%, 20%);
+  --primary20: #5650c333;
   --primary25: hsl(243, 49%, 54%, 25%);
   --primary30: hsl(243, 49%, 54%, 30%);
   --primary35: hsl(243, 49%, 54%, 35%);
